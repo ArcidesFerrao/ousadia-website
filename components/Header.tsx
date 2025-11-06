@@ -7,7 +7,7 @@ export const Header = () => {
       {/* Header desktop */}
       <div className="container-menu-desktop">
         {/* Topbar */}
-        <div className="top-bar">
+        {/* <div className="top-bar">
           <div className="content-topbar flex-sb-m h-full container">
             <div className="left-top-bar">
               Free shipping for standard order over $100
@@ -21,7 +21,7 @@ export const Header = () => {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="wrap-menu-desktop">
           <nav className="limiter-menu-desktop container">
             {/* Logo desktop */}
@@ -90,14 +90,14 @@ export const Header = () => {
       <div className="wrap-header-mobile">
         {/* Logo moblie */}
         <div className="logo-mobile">
-          <a href="index.html">
+          <Link href="/">
             <Image
               src="/images/icons/logo-01.png"
               alt="IMG-LOGO"
               width={100}
               height={100}
             />
-          </a>
+          </Link>
         </div>
         {/* Icon header */}
         <div className="wrap-icon-header flex-w flex-r-m m-r-15">
@@ -153,15 +153,31 @@ export const Header = () => {
         <ul className="main-menu-m">
           <li>
             <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="/products">Loja</a>
+          </li>
+          {/* <li>
+            <a
+            href="shoping-cart.html"
+            className="label1 rs1"
+            data-label1="hot"
+            >
+            Features
+            </a>
+            </li>
+            */}
+          <li>
+            <a href="/categorias">Categorias</a>
             <ul className="sub-menu-m">
               <li>
-                <a href="index.html">Homepage 1</a>
+                <a href="index.html">Shetas</a>
               </li>
               <li>
-                <a href="home-02.html">Homepage 2</a>
+                <a href="home-02.html">Bones</a>
               </li>
               <li>
-                <a href="home-03.html">Homepage 3</a>
+                <a href="home-03.html">Collabs</a>
               </li>
             </ul>
             <span className="arrow-main-menu-m">
@@ -169,25 +185,10 @@ export const Header = () => {
             </span>
           </li>
           <li>
-            <a href="product.html">Shop</a>
+            <a href="/sobre">Sobre Ousadia</a>
           </li>
           <li>
-            <a
-              href="shoping-cart.html"
-              className="label1 rs1"
-              data-label1="hot"
-            >
-              Features
-            </a>
-          </li>
-          <li>
-            <a href="blog.html">Blog</a>
-          </li>
-          <li>
-            <a href="about.html">About</a>
-          </li>
-          <li>
-            <a href="contact.html">Contact</a>
+            <a href="/contacto">Contacto</a>
           </li>
         </ul>
       </div>

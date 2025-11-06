@@ -1,21 +1,25 @@
-/* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "@/public/vendor/bootstrap/css/bootstrap.min.css";
+import "@/public/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
+import "@/public/fonts/iconic/css/material-design-iconic-font.min.css";
+import "@/public/fonts/linearicons-v1.0.0/icon-font.min.css";
+import "@/public/vendor/animate/animate.css";
+import "@/public/vendor/css-hamburgers/hamburgers.min.css";
+import "@/public/vendor/animsition/css/animsition.min.css";
+import "@/public/vendor/select2/select2.min.css";
+import "@/public/vendor/daterangepicker/daterangepicker.css";
+import "@/public/vendor/slick/slick.css";
+import "@/public/vendor/MagnificPopup/magnific-popup.css";
+import "@/public/vendor/perfect-scrollbar/perfect-scrollbar.css";
+import "@/public/css/util.css";
+import "@/public/css/main.css";
+
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Cart } from "@/components/Cart";
 import { Footer } from "@/components/Footer";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Veste Ousadia",
@@ -36,64 +40,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" type="image/png" href="images/icons/favicon.png" />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/bootstrap/css/bootstrap.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="fonts/iconic/css/material-design-iconic-font.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="fonts/linearicons-v1.0.0/icon-font.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/animate/animate.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/css-hamburgers/hamburgers.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/animsition/css/animsition.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/select2/select2.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/daterangepicker/daterangepicker.css"
-        />
-        <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css" />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/MagnificPopup/magnific-popup.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="vendor/perfect-scrollbar/perfect-scrollbar.css"
-        />
-        <link rel="stylesheet" type="text/css" href="css/util.css" />
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
       </head>
 
       <body>
@@ -101,11 +47,26 @@ export default function RootLayout({
         <Cart />
         {children}
         <Footer />
-        <Script src="vendor/jquery/jquery-3.2.1.min.js"></Script>
-        <Script src="vendor/animsition/js/animsition.min.js"></Script>
-        <Script src="vendor/bootstrap/js/popper.js"></Script>
-        <Script src="vendor/bootstrap/js/bootstrap.min.js"></Script>
-        <Script src="vendor/select2/select2.min.js"></Script>
+        <Script
+          src="/vendor/jquery/jquery-3.2.1.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="/vendor/animsition/js/animsition.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="/vendor/bootstrap/js/popper.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="/vendor/bootstrap/js/bootstrap.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="/vendor/select2/select2.min.js"
+          strategy="beforeInteractive"
+        />
         {/* <Script>
 		$(".js-select2").each(function(){
 			$(this).select2({
@@ -114,13 +75,25 @@ export default function RootLayout({
 			});
 		})
 	</Script> */}
-        <Script src="vendor/daterangepicker/moment.min.js"></Script>
-        <Script src="vendor/daterangepicker/daterangepicker.js"></Script>
-        <Script src="vendor/slick/slick.min.js"></Script>
-        <Script src="js/slick-custom.js"></Script>
-        <Script src="vendor/parallax100/parallax100.js"></Script>
-        {/* <Script>$('.parallax100').parallax100();</Script> */}
-        <Script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></Script>
+        <Script
+          src="/vendor/daterangepicker/moment.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="/vendor/daterangepicker/daterangepicker.js"
+          strategy="beforeInteractive"
+        />
+        <Script src="/vendor/slick/slick.min.js" strategy="beforeInteractive" />
+        <Script src="/js/slick-custom.js" />
+        <Script
+          src="/vendor/parallax100/parallax100.js"
+          strategy="beforeInteractive"
+        />
+        {/* <Script>$('.parallax100').parallax100();/> */}
+        <Script
+          src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"
+          strategy="beforeInteractive"
+        />
         {/* <Script>
 		$('.gallery-lb').each(function() { // the containers for all your galleries
 			$(this).magnificPopup({
@@ -132,9 +105,15 @@ export default function RootLayout({
 		        mainClass: 'mfp-fade'
 		    });
 		});
-	</Script> */}
-        <Script src="vendor/isotope/isotope.pkgd.min.js"></Script>
-        <Script src="vendor/sweetalert/sweetalert.min.js"></Script>
+	/> */}
+        <Script
+          src="/vendor/isotope/isotope.pkgd.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          src="/vendor/sweetalert/sweetalert.min.js"
+          strategy="beforeInteractive"
+        />
         {/* <Script>
 		$('.js-addwish-b2').on('click', function(e){
 			e.preventDefault();
@@ -169,8 +148,11 @@ export default function RootLayout({
 			});
 		});
 	
-	</Script> */}
-        <Script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></Script>
+	/> */}
+        <Script
+          src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"
+          strategy="beforeInteractive"
+        />
         {/* <Script>
 		$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
@@ -185,8 +167,8 @@ export default function RootLayout({
 				ps.update();
 			})
 		});
-	</Script> */}
-        <Script src="js/main.js"></Script>
+	/> */}
+        <Script src="/js/main.js" />
       </body>
     </html>
   );

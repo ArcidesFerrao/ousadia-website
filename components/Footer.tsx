@@ -5,28 +5,28 @@ export const Footer = () => {
         <div className="container">
           <div className="row max-h-fit">
             <div className="col-sm-6 col-lg-3 p-b-50 max-h-fit">
-              <h4 className="stext-301 cl0 p-b-30">Categories</h4>
+              <h4 className="stext-301 cl0 p-b-30">Categorias</h4>
               <ul>
                 <li className="p-b-10">
                   <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Women
+                    Shetas
                   </a>
                 </li>
                 <li className="p-b-10">
                   <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Men
+                    Bones
                   </a>
                 </li>
                 <li className="p-b-10">
                   <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Shoes
+                    Collabs
                   </a>
                 </li>
-                <li className="p-b-10">
+                {/* <li className="p-b-10">
                   <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
                     Watches
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="col-sm-6 col-lg-3 p-b-50  max-h-fit">
@@ -34,7 +34,7 @@ export const Footer = () => {
               <ul>
                 <li className="p-b-10">
                   <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Returns
+                    Devoluçao
                   </a>
                 </li>
 
@@ -46,11 +46,7 @@ export const Footer = () => {
               </ul>
             </div>
             <div className="col-sm-6 col-lg-3 p-b-50  ">
-              <h4 className="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
-              <p className="stext-107 cl7 max-h-fit">
-                Any questions? Let us know in store at 8th floor, 379 Hudson St,
-                New York, NY 10018 or call us on (+1) 96 716 6879
-              </p>
+              <h4 className="stext-301 cl0 p-b-30">Contacte-nos</h4>
               <div className="p-t-27">
                 <a href="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                   <i className="fa fa-facebook" />

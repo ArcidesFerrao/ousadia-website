@@ -13,7 +13,7 @@ export default function Home() {
       <section className="bg0 p-t-23 p-b-140">
         <div className="container">
           <div className="p-b-10">
-            <h3 className="ltext-103 cl5">Product Overview</h3>
+            <h3 className="ltext-103 cl5">Lançamentos</h3>
           </div>
           <div className="flex-w flex-sb-m p-b-52">
             <div className="flex-w flex-l-m filter-tope-group m-tb-10">
@@ -21,9 +21,9 @@ export default function Home() {
                 className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
                 data-filter="*"
               >
-                All Products
+                Todos
               </button>
-              <button
+              {/* <button
                 className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
                 data-filter=".women"
               >
@@ -52,18 +52,18 @@ export default function Home() {
                 data-filter=".watches"
               >
                 Watches
-              </button>
+              </button> */}
             </div>
             <div className="flex-w flex-c-m m-tb-10">
               <div className="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                 <i className="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list" />
                 <i className="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" />
-                Filter
+                Filtros
               </div>
               <div className="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
                 <i className="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search" />
                 <i className="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" />
-                Search
+                Busca
               </div>
             </div>
             {/* Search product */}
@@ -81,7 +81,7 @@ export default function Home() {
               </div>
             </div>
             {/* Filter */}
-            <div className="dis-none panel-filter w-full p-t-10">
+            {/* <div className="dis-none panel-filter w-full p-t-10">
               <div className="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                 <div className="filter-col1 p-r-15 p-b-27">
                   <div className="mtext-102 cl2 p-b-15">Sort By</div>
@@ -269,7 +269,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="row isotope-grid">
             <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -1095,7 +1095,7 @@ export default function Home() {
               href="#"
               className="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"
             >
-              Load More
+              Ver mais
             </a>
           </div>
         </div>
