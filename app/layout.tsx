@@ -67,14 +67,14 @@ export default function RootLayout({
           src="/vendor/select2/select2.min.js"
           strategy="beforeInteractive"
         />
-        {/* <Script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-	</Script> */}
+        {/* <Script id="modal-script">
+          {`$(".js-select2").each(function(){
+                $(this).select2({
+                  minimumResultsForSearch: 20,
+                  dropdownParent: $(this).next('.dropDownSelect2')
+                });
+              })`}
+        </Script> */}
         <Script
           src="/vendor/daterangepicker/moment.min.js"
           strategy="beforeInteractive"
@@ -168,7 +168,7 @@ export default function RootLayout({
 			})
 		});
 	/> */}
-        <Script src="/js/main.js" />
+        <Script src="/js/main.js" strategy="beforeInteractive" />
       </body>
     </html>
   );
