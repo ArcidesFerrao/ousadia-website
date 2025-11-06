@@ -27,7 +27,8 @@ export const Header = () => {
             {/* Logo desktop */}
             <Link href="/" className="logo">
               <Image
-                src="/images/icons/logo-01.png"
+                // src="/images/icons/logo-01.png"
+                src="/images/icons/logomarca.png"
                 alt="IMG-LOGO"
                 width={100}
                 height={100}
@@ -40,7 +41,7 @@ export const Header = () => {
                   <Link href="/">Home</Link>
                 </li>
                 <li>
-                  <a href="/products">Loja</a>
+                  <a href="/produtos">Loja</a>
                 </li>
                 <li>
                   <a href="/categorias">Categorias</a>
@@ -92,7 +93,8 @@ export const Header = () => {
         <div className="logo-mobile">
           <Link href="/">
             <Image
-              src="/images/icons/logo-01.png"
+              // src="/images/icons/logo-01.png"
+              src="/images/icons/logomarca.png"
               alt="IMG-LOGO"
               width={100}
               height={100}
@@ -152,10 +154,10 @@ export const Header = () => {
         </ul>
         <ul className="main-menu-m">
           <li>
-            <a href="index.html">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <a href="/products">Loja</a>
+            <a href="/produtos">Loja</a>
           </li>
           {/* <li>
             <a
