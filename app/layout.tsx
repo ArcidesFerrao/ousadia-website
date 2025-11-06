@@ -67,6 +67,23 @@ export default function RootLayout({
           src="/vendor/select2/select2.min.js"
           strategy="beforeInteractive"
         />
+        <Script id="init-select2" strategy="beforeInteractive">
+          {`
+
+            console.log("Select2 init script loaded)
+
+            $(document).ready(function() {
+              console.log("Initializing select2);
+
+              $(".js-select2").each(function(){
+                $(this).select2({
+                  minimumResultsForSearch: 20,
+                  dropdownParent: $(this).next('.dropDownSelect2')
+                });
+                });
+            });
+          `}
+        </Script>
         {/* <Script id="modal-script">
           {`$(".js-select2").each(function(){
                 $(this).select2({
@@ -153,8 +170,8 @@ export default function RootLayout({
           src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"
           strategy="beforeInteractive"
         />
-        {/* <Script>
-		$('.js-pscroll').each(function(){
+        <Script id="js-pscroll" strategy="afterInteractive">
+          {`$('.js-pscroll').each(function(){
 			$(this).css('position','relative');
 			$(this).css('overflow','hidden');
 			var ps = new PerfectScrollbar(this, {
@@ -166,8 +183,8 @@ export default function RootLayout({
 			$(window).on('resize', function(){
 				ps.update();
 			})
-		});
-	/> */}
+		});`}
+        </Script>
         <Script src="/js/main.js" strategy="beforeInteractive" />
       </body>
     </html>

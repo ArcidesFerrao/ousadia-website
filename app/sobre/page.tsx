@@ -47,7 +47,7 @@ export default function SobrePage() {
               <div className="how-bor1 ">
                 <div className="hov-img0">
                   <Image
-                    src="/images/about-01.jpg"
+                    src="/images/about-01.jpeg"
                     alt="IMG"
                     width={500}
                     height={600}
@@ -81,7 +81,7 @@ export default function SobrePage() {
               <div className="how-bor2">
                 <div className="hov-img0">
                   <Image
-                    src="/images/about-02.jpg"
+                    src="/images/about-02.jpeg"
                     alt="IMG"
                     width={500}
                     height={600}
