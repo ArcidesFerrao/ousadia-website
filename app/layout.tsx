@@ -113,7 +113,8 @@ export default function RootLayout({
           src="/vendor/daterangepicker/daterangepicker.js"
           strategy="beforeInteractive"
         />
-        <Script src="/vendor/slick/slick.min.js" strategy="beforeInteractive" />
+        <Script src="/vendor/slick/slick.min.js" strategy="afterInteractive" />
+        <Script src="/vendor/slick/slick.js" strategy="afterInteractive" />
         <Script src="/js/slick-custom.js" strategy="afterInteractive" />
         <Script
           src="/vendor/parallax100/parallax100.js"

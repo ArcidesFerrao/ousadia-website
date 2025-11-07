@@ -1,92 +1,28 @@
-import Image from "next/image";
-import React from "react";
+import Block from "./Block";
 
 export const Banner = () => {
   return (
     <div className="sec-banner bg0 p-t-80 p-b-50">
       <div className="container">
         <div className="row">
-          <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-            {/* Block1 */}
-            <div className="block1 wrap-pic-w">
-              <Image
-                src="/images/banner-01.jpg"
-                alt="IMG-BANNER"
-                width={420}
-                height={420}
-              />
-              <a
-                href="product.html"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
-              >
-                <div className="block1-txt-child1 flex-col-l">
-                  <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Shetas
-                  </span>
-                  <span className="block1-info stext-102 trans-04">
-                    Colecao Exclusiva
-                  </span>
-                </div>
-                <div className="block1-txt-child2 p-b-4 trans-05">
-                  <div className="block1-link stext-101 cl0 trans-09">Ver</div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-            {/* Block1 */}
-            <div className="block1 wrap-pic-w">
-              <Image
-                src="/images/banner-02.jpg"
-                alt="IMG-BANNER"
-                width={420}
-                height={420}
-              />
-              <a
-                href="product.html"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
-              >
-                <div className="block1-txt-child1 flex-col-l">
-                  <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Collabs
-                  </span>
-                  <span className="block1-info stext-102 trans-04">
-                    Mais Recentes
-                  </span>
-                </div>
-                <div className="block1-txt-child2 p-b-4 trans-05">
-                  <div className="block1-link stext-101 cl0 trans-09">Ver</div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto">
-            {/* Block1 */}
-            <div className="block1 wrap-pic-w">
-              <Image
-                src="/images/banner-03.jpg"
-                alt="IMG-BANNER"
-                width={420}
-                height={420}
-              />
-              <a
-                href="product.html"
-                className="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3"
-              >
-                <div className="block1-txt-child1 flex-col-l">
-                  <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Bones
-                  </span>
-                  <span className="block1-info stext-102 trans-04">
-                    Nova Trend
-                  </span>
-                </div>
-                <div className="block1-txt-child2 p-b-4 trans-05">
-                  <div className="block1-link stext-101 cl0 trans-09">Ver</div>
-                </div>
-              </a>
-            </div>
-          </div>
+          <Block
+            title="Shetas"
+            details="Colecao Exclusiva"
+            url="/produtos"
+            imageUrl="/images/banner-01.jpg"
+          />
+          <Block
+            title="Collabs"
+            details="Mais Recentes"
+            url="/produtos"
+            imageUrl="/images/banner-02.jpg"
+          />
+          <Block
+            title="Bones"
+            details="Nova Trend"
+            url="/produtos"
+            imageUrl="/images/banner-03.jpg"
+          />
         </div>
       </div>
     </div>
