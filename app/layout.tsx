@@ -211,7 +211,7 @@ export default function RootLayout({
             });`,
           }}
         />
-        <Script src="/js/main.js" strategy="afterInteractive" />
+        <Script src="/js/main.js" strategy="beforeInteractive" />
       </body>
     </html>
   );

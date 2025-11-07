@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-// import $ from "jquery";
-// import "slick-carousel";
 import { usePathname } from "next/navigation";
 
 export default function AppWrapper({
@@ -167,7 +165,38 @@ export default function AppWrapper({
         });
 
         console.log("✅ Slick sliders reinitialized");
-      }, 300);
+      }, 100);
+
+      /*==================================================================
+    [ Fixed Header ]*/
+      const headerDesktop = $(".container-menu-desktop");
+      const wrapMenu = $(".wrap-menu-desktop");
+      let posWrapHeader = 0;
+
+      if ($(".top-bar").length > 0) {
+        posWrapHeader = $(".top-bar").height() || 0;
+      }
+
+      if ($(window).scrollTop() > posWrapHeader) {
+        $(headerDesktop).addClass("fix-menu-desktop");
+        $(wrapMenu).css("top", 0);
+      } else {
+        $(headerDesktop).removeClass("fix-menu-desktop");
+        $(wrapMenu).css("top", posWrapHeader - $(window).scrollTop());
+      }
+
+      const handleScroll = function () {
+        if ($(window).scrollTop() > posWrapHeader) {
+          $(headerDesktop).addClass("fix-menu-desktop");
+          $(wrapMenu).css("top", 0);
+        } else {
+          $(headerDesktop).removeClass("fix-menu-desktop");
+          $(wrapMenu).css("top", posWrapHeader - $(window).scrollTop());
+        }
+      };
+
+      $(window).on("scroll", handleScroll);
+
       // Modal triggers
       $(document).on("click", ".js-show-modal1", function (e) {
         e.preventDefault();
