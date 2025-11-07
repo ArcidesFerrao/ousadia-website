@@ -4,7 +4,7 @@ import React from "react";
 export default function ProdutoPage() {
   return (
     <>
-      <div className="header-separator"></div>
+      {/* <div className="header-separator"></div> */}
       {/* breadcrumb */}
       <div className="container">
         <div className="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">

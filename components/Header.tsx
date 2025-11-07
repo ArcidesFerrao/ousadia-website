@@ -1,27 +1,37 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const Header = () => {
+  const pathname = usePathname();
+
+  let headerClass = "header-v3";
+
+  if (pathname !== "/") {
+    headerClass = "header-v4";
+  }
   return (
-    <header>
+    <header className={headerClass}>
       {/* Header desktop */}
       <div className="container-menu-desktop">
         {/* Topbar */}
-        {/* <div className="top-bar">
+        <div className="top-bar">
           <div className="content-topbar flex-sb-m h-full container">
             <div className="left-top-bar">
-              Free shipping for standard order over $100
+              Entregas na Cidade de Maputo por apenas MZN 100.00
             </div>
             <div className="right-top-bar flex-w h-full">
               <a href="#" className="flex-c-m trans-04 p-lr-25">
                 Help &amp; FAQs
               </a>
-              <a href="#" className="flex-c-m trans-04 p-lr-25">
+              {/* <a href="#" className="flex-c-m trans-04 p-lr-25">
                 My Account
-              </a>
+              </a> */}
             </div>
           </div>
-        </div> */}
+        </div>
         <div className="wrap-menu-desktop">
           <nav className="limiter-menu-desktop container">
             {/* Logo desktop */}
