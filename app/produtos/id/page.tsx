@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function ProdutoPage() {
@@ -8,12 +9,12 @@ export default function ProdutoPage() {
       {/* breadcrumb */}
       <div className="container">
         <div className="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-          <a href="index.html" className="stext-109 cl8 hov-cl1 trans-04">
+          <Link href="/" className="stext-109 cl8 hov-cl1 trans-04">
             Home
             <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
-          </a>
-          <a href="product.html" className="stext-109 cl8 hov-cl1 trans-04">
-            Men
+          </Link>
+          <a href="produtos" className="stext-109 cl8 hov-cl1 trans-04">
+            Loja
             <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
           </a>
           <span className="stext-109 cl4">Lightweight Jacket</span>
@@ -25,8 +26,8 @@ export default function ProdutoPage() {
           <div className="row">
             <div className="col-md-6 col-lg-7 p-b-30">
               <div className="p-l-25 p-r-30 p-lr-0-lg">
-                <div className="wrap-slick3 flex-sb flex-w">
-                  <div className="wrap-slick3-dots" />
+                <div className="wrap- flex-sb flex-w">
+                  <div className="wrap--dots" />
                   <div className="wrap-slick3-arrows flex-sb-m flex-w" />
                   <div className="slick3 gallery-lb">
                     <div
