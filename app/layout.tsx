@@ -20,6 +20,7 @@ import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Cart } from "@/components/Cart";
 import { Footer } from "@/components/Footer";
+import AppWrapper from "@/lib/AppWrapper";
 
 export const metadata: Metadata = {
   title: "Veste Ousadia",
@@ -43,10 +44,12 @@ export default function RootLayout({
       </head>
 
       <body>
-        <Header />
-        <Cart />
-        {children}
-        <Footer />
+        <AppWrapper>
+          <Header />
+          <Cart />
+          {children}
+          <Footer />
+        </AppWrapper>
         <Script
           src="/vendor/jquery/jquery-3.2.1.min.js"
           strategy="beforeInteractive"
@@ -71,31 +74,37 @@ export default function RootLayout({
           src="/vendor/select2/select2.min.js"
           strategy="beforeInteractive"
         />
-        <Script id="init-select2" strategy="beforeInteractive">
-          {`
-
-            console.log("Select2 init script loaded)
-
+        <Script
+          strategy="beforeInteractive"
+          id="init-select2"
+          dangerouslySetInnerHTML={{
+            __html: `console.log("Select2 init script loaded)
+            
             $(document).ready(function() {
               console.log("Initializing select2);
-
+              
               $(".js-select2").each(function(){
                 $(this).select2({
                   minimumResultsForSearch: 20,
                   dropdownParent: $(this).next('.dropDownSelect2')
+                  });
                 });
                 });
-            });
-          `}
-        </Script>
-        {/* <Script id="modal-script">
-          {`$(".js-select2").each(function(){
-                $(this).select2({
-                  minimumResultsForSearch: 20,
-                  dropdownParent: $(this).next('.dropDownSelect2')
+                `,
+          }}
+        />
+        <Script
+          id="modal-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `$(".js-select2").each(function(){
+              $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
                 });
-              })`}
-        </Script> */}
+                })`,
+          }}
+        />
         <Script
           src="/vendor/daterangepicker/moment.min.js"
           strategy="beforeInteractive"
@@ -105,12 +114,18 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
         <Script src="/vendor/slick/slick.min.js" strategy="beforeInteractive" />
-        <Script src="/js/slick-custom.js" />
+        <Script src="/js/slick-custom.js" strategy="afterInteractive" />
         <Script
           src="/vendor/parallax100/parallax100.js"
           strategy="beforeInteractive"
         />
-        {/* <Script>$('.parallax100').parallax100();/> */}
+        <Script
+          id="parallax100"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `$('.parallax100').parallax100();`,
+          }}
+        />
         <Script
           src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"
           strategy="beforeInteractive"
@@ -135,61 +150,68 @@ export default function RootLayout({
           src="/vendor/sweetalert/sweetalert.min.js"
           strategy="beforeInteractive"
         />
-        {/* <Script>
-		$('.js-addwish-b2').on('click', function(e){
-			e.preventDefault();
-		});
+        <Script
+          id="js-addwish-b2"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `$('.js-addwish-b2').on('click', function(e){
+        e.preventDefault();
+        });
+        
+        $('.js-addwish-b2').each(function(){
+          var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+          $(this).on('click', function(){
+            swal(nameProduct, "is added to wishlist !", "success");
+            
+            $(this).addClass('js-addedwish-b2');
+            $(this).off('click');
+            });
+            });
+            
+            $('.js-addwish-detail').each(function(){
+              var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-b2');
+              $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+                
+                $(this).addClass('js-addedwish-detail');
 				$(this).off('click');
 			});
 		});
-
-		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
-
-
+    
+    
 		$('.js-addcart-detail').each(function(){
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
 				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-	
-	/> */}
+        });
+        });`,
+          }}
+        />
         <Script
           src="/vendor/perfect-scrollbar/perfect-scrollbar.min.js"
           strategy="beforeInteractive"
         />
-        <Script id="js-pscroll" strategy="afterInteractive">
-          {`$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
-
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});`}
-        </Script>
-        <Script src="/js/main.js" strategy="beforeInteractive" />
+        <Script
+          id="js-pscroll"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `$('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+              wheelSpeed: 1,
+              scrollingThreshold: 1000,
+              wheelPropagation: false,
+              });
+              
+              $(window).on('resize', function(){
+                ps.update();
+                })
+            });`,
+          }}
+        />
+        <Script src="/js/main.js" strategy="afterInteractive" />
       </body>
     </html>
   );

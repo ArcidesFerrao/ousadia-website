@@ -120,16 +120,14 @@ export default function TermsPage() {
                 <p className="stext-113 cl6 p-b-26">
                   A Veste Ousadia não se responsabiliza por:
                 </p>
-                <p className="stext-113 cl6 p-b-26">
-                  <ul>
-                    <li>Erros de informação causados por terceiros.</li>
-                    <li>
-                      Atrasos de entrega por fatores externos (greves, condições
-                      climáticas, etc).
-                    </li>
-                    <li>Uso incorreto dos produtos adquiridos.</li>
-                  </ul>
-                </p>
+                <ul className="stext-113 cl6 p-b-26">
+                  <li>Erros de informação causados por terceiros.</li>
+                  <li>
+                    Atrasos de entrega por fatores externos (greves, condições
+                    climáticas, etc).
+                  </li>
+                  <li>Uso incorreto dos produtos adquiridos.</li>
+                </ul>
               </div>
             </div>
           </div>
