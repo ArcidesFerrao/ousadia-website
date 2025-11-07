@@ -21,16 +21,14 @@ export const Banner = () => {
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Women
+                    Shetas
                   </span>
                   <span className="block1-info stext-102 trans-04">
-                    Spring 2018
+                    Colecao Exclusiva
                   </span>
                 </div>
                 <div className="block1-txt-child2 p-b-4 trans-05">
-                  <div className="block1-link stext-101 cl0 trans-09">
-                    Shop Now
-                  </div>
+                  <div className="block1-link stext-101 cl0 trans-09">Ver</div>
                 </div>
               </a>
             </div>
@@ -50,16 +48,14 @@ export const Banner = () => {
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Men
+                    Collabs
                   </span>
                   <span className="block1-info stext-102 trans-04">
-                    Spring 2018
+                    Mais Recentes
                   </span>
                 </div>
                 <div className="block1-txt-child2 p-b-4 trans-05">
-                  <div className="block1-link stext-101 cl0 trans-09">
-                    Shop Now
-                  </div>
+                  <div className="block1-link stext-101 cl0 trans-09">Ver</div>
                 </div>
               </a>
             </div>
@@ -79,16 +75,14 @@ export const Banner = () => {
               >
                 <div className="block1-txt-child1 flex-col-l">
                   <span className="block1-name ltext-102 trans-04 p-b-8">
-                    Accessories
+                    Bones
                   </span>
                   <span className="block1-info stext-102 trans-04">
-                    New Trend
+                    Nova Trend
                   </span>
                 </div>
                 <div className="block1-txt-child2 p-b-4 trans-05">
-                  <div className="block1-link stext-101 cl0 trans-09">
-                    Shop Now
-                  </div>
+                  <div className="block1-link stext-101 cl0 trans-09">Ver</div>
                 </div>
               </a>
             </div>

@@ -60,6 +60,10 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
         <Script
+          src="/vendor/bootstrap/js/popper.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
           src="/vendor/bootstrap/js/bootstrap.min.js"
           strategy="beforeInteractive"
         />

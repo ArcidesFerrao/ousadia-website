@@ -2,18 +2,20 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 
 export const Header = () => {
-  const pathname = usePathname();
+  // const pathname = usePathname();
 
-  let headerClass = "header-v4";
+  // let headerClass = "";
 
-  if (pathname !== "/") {
-    headerClass = "header-v4";
-  }
+  // if (pathname !== "/") {
+  //   headerClass = "";
+  // }
   return (
-    <header className={headerClass}>
+    <header
+    // className={headerClass}
+    >
       {/* Header desktop */}
       <div className="container-menu-desktop">
         {/* Topbar */}
