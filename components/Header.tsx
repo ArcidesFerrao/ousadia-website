@@ -2,20 +2,44 @@
 
 import Image from "next/image";
 import Link from "next/link";
-// import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export const Header = () => {
-  // const pathname = usePathname();
+  const pathname = usePathname();
+  const [isMenu, setIsMenu] = useState(false);
+  const [isSubMenu, setIsSubMenu] = useState<string | null>(null);
 
-  // let headerClass = "";
+  let headerClass = "header-v1";
 
-  // if (pathname !== "/") {
-  //   headerClass = "";
-  // }
+  if (pathname !== "/") {
+    headerClass = "header-v4";
+  }
+
+  const handleMenuToggle = () => {
+    setIsMenu((prev) => !prev);
+    if (isMenu) {
+      setIsSubMenu(null);
+    }
+  };
+
+  const handleSubMenu = (index: string | null) => {
+    setIsSubMenu(isSubMenu === index ? null : index);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 992 && isMenu) {
+        setIsMenu(false);
+        setIsSubMenu(null);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isMenu]);
+
   return (
-    <header
-    // className={headerClass}
-    >
+    <header className={headerClass}>
       {/* Header desktop */}
       <div className="container-menu-desktop">
         {/* Topbar */}
@@ -133,14 +157,22 @@ export const Header = () => {
           </a>
         </div>
         {/* Button show menu */}
-        <div className="btn-show-menu-mobile hamburger hamburger--squeeze">
+        <div
+          onClick={handleMenuToggle}
+          className={`btn-show-menu-mobile hamburger hamburger--squeeze ${
+            isMenu ? "is-active" : ""
+          }`}
+        >
           <span className="hamburger-box">
             <span className="hamburger-inner" />
           </span>
         </div>
       </div>
       {/* Menu Mobile */}
-      <div className="menu-mobile">
+      <div
+        style={{ display: isMenu ? "block" : "none" }}
+        className={`menu-mobile ${isMenu ? "menu-open" : ""}`}
+      >
         <ul className="topbar-mobile">
           <li>
             <div className="left-top-bar">
@@ -183,7 +215,10 @@ export const Header = () => {
             */}
           <li>
             <a href="/categorias">Categorias</a>
-            <ul className="sub-menu-m">
+            <ul
+              className="sub-menu-m"
+              style={{ display: isSubMenu === "categorias" ? "block" : "none" }}
+            >
               <li>
                 <a href="index.html">Shetas</a>
               </li>
@@ -194,7 +229,12 @@ export const Header = () => {
                 <a href="home-03.html">Collabs</a>
               </li>
             </ul>
-            <span className="arrow-main-menu-m">
+            <span
+              className={`arrow-main-menu-m ${
+                isSubMenu === "categorias" ? "turn-arrow-main-menu-m" : ""
+              } `}
+              onClick={() => handleSubMenu("categorias")}
+            >
               <i className="fa fa-angle-right" aria-hidden="true" />
             </span>
           </li>
