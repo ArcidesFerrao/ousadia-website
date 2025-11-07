@@ -53,7 +53,7 @@ export default function RootLayout({
         />
         <Script
           src="/vendor/animsition/js/animsition.min.js"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
         />
         <Script
           src="/vendor/bootstrap/js/popper.js"

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export const Header = () => {
   const pathname = usePathname();
 
-  let headerClass = "header-v3";
+  let headerClass = "header-v4";
 
   if (pathname !== "/") {
     headerClass = "header-v4";
