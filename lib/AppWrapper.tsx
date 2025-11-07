@@ -167,6 +167,39 @@ export default function AppWrapper({
         console.log("✅ Slick sliders reinitialized");
       }, 100);
 
+      $(".js-show-modal-search").on("click", function () {
+        $(".modal-search-header").addClass("show-modal-search");
+        $(this).css("opacity", "0");
+      });
+
+      $(".js-hide-modal-search").on("click", function () {
+        $(".modal-search-header").removeClass("show-modal-search");
+        $(".js-show-modal-search").css("opacity", "1");
+      });
+
+      $(".container-search-header").on("click", function (e) {
+        e.stopPropagation();
+      });
+
+      $(".js-show-filter").on("click", function () {
+        $(this).toggleClass("show-filter");
+        $(".panel-filter").slideToggle(400);
+
+        if ($(".js-show-search").hasClass("show-search")) {
+          $(".js-show-search").removeClass("show-search");
+          $(".panel-search").slideUp(400);
+        }
+      });
+
+      $(".js-show-search").on("click", function () {
+        $(this).toggleClass("show-search");
+        $(".panel-search").slideToggle(400);
+
+        if ($(".js-show-filter").hasClass("show-filter")) {
+          $(".js-show-filter").removeClass("show-filter");
+          $(".panel-filter").slideUp(400);
+        }
+      });
       /*==================================================================
     [ Fixed Header ]*/
       const headerDesktop = $(".container-menu-desktop");

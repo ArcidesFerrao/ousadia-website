@@ -10,7 +10,7 @@ export const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [isSubMenu, setIsSubMenu] = useState<string | null>(null);
 
-  let headerClass = "header-v1";
+  let headerClass = "";
 
   if (pathname !== "/") {
     headerClass = "header-v4";
@@ -253,8 +253,8 @@ export const Header = () => {
             <Image
               src="/images/icons/icon-close2.png"
               alt="CLOSE"
-              width={100}
-              height={100}
+              width={32}
+              height={32}
             />
           </button>
           <form className="wrap-search-header flex-w p-l-15">
@@ -266,8 +266,8 @@ export const Header = () => {
               type="text"
               name="search"
               placeholder="Search..."
-              width={100}
-              height={100}
+              // width={24}
+              // height={24}
             />
           </form>
         </div>

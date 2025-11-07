@@ -229,31 +229,31 @@ export default function ProductsPage() {
                 <div className="flex-w p-t-4 m-r--5">
                   <a
                     href="#"
-                    className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
+                    className="flex-c-m stext-107 cl6  bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
                   >
                     Fashion
                   </a>
                   <a
                     href="#"
-                    className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
+                    className="flex-c-m stext-107 cl6  bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
                   >
                     Lifestyle
                   </a>
                   <a
                     href="#"
-                    className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
+                    className="flex-c-m stext-107 cl6  bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
                   >
                     Denim
                   </a>
                   <a
                     href="#"
-                    className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
+                    className="flex-c-m stext-107 cl6  bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
                   >
                     Streetstyle
                   </a>
                   <a
                     href="#"
-                    className="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
+                    className="flex-c-m stext-107 cl6  bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5"
                   >
                     Crafts
                   </a>
