@@ -23,8 +23,8 @@ export const Header = () => {
               Entregas na Cidade de Maputo por apenas MZN 100.00
             </div>
             <div className="right-top-bar flex-w h-full">
-              <a href="#" className="flex-c-m trans-04 p-lr-25">
-                Help &amp; FAQs
+              <a href="/termos" className="flex-c-m trans-04 p-lr-25">
+                Termos &amp; Condiçoes
               </a>
               {/* <a href="#" className="flex-c-m trans-04 p-lr-25">
                 My Account
@@ -147,10 +147,10 @@ export const Header = () => {
           </li>
           <li>
             <div className="right-top-bar flex-w h-full">
-              <a href="#" className="flex-c-m p-lr-10 trans-04">
-                Help &amp; FAQs
+              <a href="/termos" className="flex-c-m p-lr-10 trans-04">
+                Termos &amp; Condiçoes
               </a>
-              <a href="#" className="flex-c-m p-lr-10 trans-04">
+              {/* <a href="#" className="flex-c-m p-lr-10 trans-04">
                 My Account
               </a>
               <a href="#" className="flex-c-m p-lr-10 trans-04">
@@ -158,7 +158,7 @@ export const Header = () => {
               </a>
               <a href="#" className="flex-c-m p-lr-10 trans-04">
                 USD
-              </a>
+              </a> */}
             </div>
           </li>
         </ul>
