@@ -4,6 +4,7 @@ import {
   BannerCard,
   InfoCard,
   ProductDashCard,
+  PromoCard,
   SliderCard,
 } from "./_components/DashCard";
 import { getItems } from "@/actions/items";
@@ -71,20 +72,30 @@ export default async function AdminPage() {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-5 p-4 bg5 rounded-lg ">
-        <h5 className="underline">Banner...</h5>
-        <div className="flex-w gap-2 justify-between ">
-          <BannerCard detail="Colecao Exclusiva" imageUrl="/" title="Shetas" />
-          <BannerCard detail="Mais Recentes" imageUrl="/" title="Collabs" />
-          <BannerCard detail="Nova Trend" imageUrl="/" title="Bones" />
+      <div className="flex flex-col bg5 gap-4 rounded-lg p-4 ">
+        <h3 className="underline">Ads</h3>
+        <div className="border rounded p-2">
+          <PromoCard promo="Entregas na Cidade de Maputo" />
         </div>
-      </div>
-      <div className="flex flex-col gap-5 p-4 bg5 rounded-lg">
-        <h5 className="underline">Slider...</h5>
-        <div className="flex-w gap-2 justify-between ">
-          <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
-          <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
-          <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
+        <div className="flex flex-col gap-5   ">
+          <h5>Banner...</h5>
+          <div className="flex-w gap-2 justify-between ">
+            <BannerCard
+              detail="Colecao Exclusiva"
+              imageUrl="/"
+              title="Shetas"
+            />
+            <BannerCard detail="Mais Recentes" imageUrl="/" title="Collabs" />
+            <BannerCard detail="Nova Trend" imageUrl="/" title="Bones" />
+          </div>
+        </div>
+        <div className="flex flex-col gap-5  ">
+          <h5>Slider...</h5>
+          <div className="flex-w gap-2 justify-between ">
+            <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
+            <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
+            <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
+          </div>
         </div>
       </div>
     </div>

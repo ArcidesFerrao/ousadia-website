@@ -68,7 +68,7 @@ export const ItemForm = () => {
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <div className="flex border items-center gap-2 p-2 rounded">
+        <div className="flex border items-center gap-2 p-2 justify-between rounded">
           <label htmlFor="color">Cor</label>
           <input type="text" name="color" id="color" />
         </div>
