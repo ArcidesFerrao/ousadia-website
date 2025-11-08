@@ -1,0 +1,142 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+
+datasource db {
+  provider = "postgresql" // or "mysql", "sqlite", etc.
+  url      = env("DATABASE_URL")
+}
+
+// Category model (max 5 categories)
+model Category {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  
+  products  Product[]
+  
+  @@index([isActive])
+}
+
+// Product model for t-shirts
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String   @db.Text
+  color       String
+  mainImage   String   // URL for main product image
+  image2      String   // URL for second image
+  image3      String   // URL for third image
+  basePrice   Decimal  @db.Decimal(10, 2)
+  discount    Int      @default(0) // Discount percentage (0-100)
+  
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  
+  // Sizes with individual quantities
+  quantityXS  Int      @default(0)
+  quantityS   Int      @default(0)
+  quantityM   Int      @default(0)
+  quantityL   Int      @default(0)
+  quantityXL  Int      @default(0)
+  
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  orders      Order[]
+  
+  @@index([isActive])
+  @@index([createdAt])
+  @@index([categoryId])
+}
+
+// Order tracking (one item per order)
+model Order {
+  id              String      @id @default(cuid())
+  customerName    String?
+  customerPhone   String?
+  customerMessage String?     @db.Text
+  status          OrderStatus @default(PENDING)
+  
+  // Single product per order
+  productId       String
+  product         Product     @relation(fields: [productId], references: [id])
+  size            Size
+  quantity        Int
+  price           Decimal     @db.Decimal(10, 2) // Price at time of order
+  discount        Int         @default(0) // Discount at time of order
+  totalAmount     Decimal     @db.Decimal(10, 2)
+  
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  
+  @@index([status])
+  @@index([createdAt])
+  @@index([customerPhone])
+  @@index([productId])
+}
+
+// Slider ads (homepage carousel)
+model SliderAd {
+  id          String   @id @default(cuid())
+  imageUrl    String
+  title       String
+  description String   
+  // order       Int      @default(0) // Display order
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([isActive])
+}
+
+// Banner ads
+model BannerAd {
+  id        String   @id @default(cuid())
+  imageUrl  String
+  title       String
+  description String   
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@index([isActive])
+}
+
+// Top bar announcement
+model TopBar {
+  id        String   @id @default(cuid())
+  text      String   
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Enums
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  COMPLETED
+  CANCELLED
+}
+
+enum Size {
+  XS
+  S
+  M
+  L
+  XL
+}

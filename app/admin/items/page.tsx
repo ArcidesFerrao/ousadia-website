@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function ItemsPage() {
@@ -5,7 +6,7 @@ export default function ItemsPage() {
     <div>
       <div className="flex">
         <h3>Lista de Items</h3>
-        <button>Adicionar</button>
+        <Link href="/admin/items/new">Adicionar</Link>
       </div>
       <div>
         <table>
