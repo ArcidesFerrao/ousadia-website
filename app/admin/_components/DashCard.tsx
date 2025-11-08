@@ -5,14 +5,20 @@ export const InfoCard = ({
   title,
   amount,
   value,
+  url,
 }: {
   title: string;
   amount?: number;
   value?: number;
+  url: string;
 }) => {
   return (
     <div className="flex flex-col mb-4 gap-5 p-4 min-w-56 border rounded-md opacity-70 hover:opacity-95">
-      <p>{title}</p>
+      <p className=" hover:underline">
+        <a className="cursor " href={url}>
+          {title}
+        </a>
+      </p>
       {amount && (
         <div className="flex gap-2 justify-between">
           <h4>MZN</h4>

@@ -15,14 +15,14 @@ const poppins = Poppins({
 export default function AdminPage() {
   return (
     <div
-      className={`${poppins.className} bg3 text-gray-300 flex flex-col gap-5 p-4  `}
+      className={`${poppins.className} admin-page bg3 text-gray-300 flex flex-col gap-5 p-4  `}
     >
       <h2>Dashboard</h2>
       <div className="flex-w gap-2 justify-between ">
-        <InfoCard title="Total de Vendas" amount={28900} />
-        <InfoCard title="Items" value={82} />
-        <InfoCard title="Pedidos" value={90} />
-        <InfoCard title="Clientes" value={8} />
+        <InfoCard title="Total de Vendas" amount={28900} url="/admin/sales" />
+        <InfoCard title="Items" value={82} url="/admin/produtcs" />
+        <InfoCard title="Pedidos" value={90} url="/admin/orders" />
+        <InfoCard title="Clientes" value={8} url="/admin/clients" />
       </div>
       <div className="flex flex-col gap-5 p-4 bg5 rounded-lg">
         <h5 className="underline">Mais vendidos...</h5>
