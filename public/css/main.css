@@ -157,6 +157,36 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   color: #b2b2b2;
 }
 
+.admin-pages-section {
+  min-height: 80vh;
+  color: #b2b2b2;
+
+  label {
+    margin: 0;
+  }
+
+  .radio-category input[type="radio"] {
+    display: none;
+  }
+
+  .radio-label .radio-option {
+    border: 1px solid #b2b2b2;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    opacity: 60;
+  }
+  .radio-label .radio-option:hover {
+    border: 1px solid #f4f5fa;
+    background-color: #333;
+    opacity: 95;
+  }
+
+  .radio-label input[type="radio"]:checked + .radio-option {
+    color: #1d1d1d;
+    background-color: #b2b2b2;
+  }
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ BUTTON BACK TO TOP ]*/
 .btn-back-to-top {

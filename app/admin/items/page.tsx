@@ -3,13 +3,15 @@ import React from "react";
 
 export default function ItemsPage() {
   return (
-    <div>
-      <div className="flex">
+    <div className="flex flex-col gap-5 w-full p-4 bg3 admin-pages-section">
+      <div className="flex justify-between">
         <h3>Lista de Items</h3>
-        <Link href="/admin/items/new">Adicionar</Link>
+        <Link href="/admin/items/new" className="px-4 py-2">
+          Adicionar
+        </Link>
       </div>
-      <div>
-        <table>
+      <div className="w-full">
+        <table className="w-full">
           <thead>
             <tr>
               <th>Item</th>

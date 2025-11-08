@@ -6,13 +6,16 @@ import {
   ProductDashCard,
   SliderCard,
 } from "./_components/DashCard";
+import { getItems } from "@/actions/items";
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
-export default function AdminPage() {
+export default async function AdminPage() {
+  const items = getItems();
+
   return (
     <div
       className={`${poppins.className} admin-page bg3 text-gray-300 flex flex-col gap-5 p-4  `}
@@ -20,9 +23,13 @@ export default function AdminPage() {
       <h2>Dashboard</h2>
       <div className="flex-w gap-2 justify-between ">
         <InfoCard title="Total de Vendas" amount={28900} url="/admin/sales" />
-        <InfoCard title="Items" value={82} url="/admin/produtcs" />
-        <InfoCard title="Pedidos" value={90} url="/admin/orders" />
-        <InfoCard title="Clientes" value={8} url="/admin/clients" />
+        <InfoCard
+          title="Items"
+          value={(await items).length}
+          url="/admin/items"
+        />
+        <InfoCard title="Pedidos" value={90} url="/admin/pedidos" />
+        <InfoCard title="Clientes" value={8} url="/admin/clientes" />
       </div>
       <div className="flex flex-col gap-5 p-4 bg5 rounded-lg">
         <h5 className="underline">Mais vendidos...</h5>
