@@ -1,0 +1,68 @@
+import React from "react";
+import { Poppins } from "next/font/google";
+import {
+  BannerCard,
+  InfoCard,
+  ProductDashCard,
+  SliderCard,
+} from "./_components/DashCard";
+
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+export default function AdminPage() {
+  return (
+    <div
+      className={`${poppins.className} bg3 text-gray-300 flex flex-col gap-5 p-4  `}
+    >
+      <h2>Dashboard</h2>
+      <div className="flex-w gap-2 justify-between ">
+        <InfoCard title="Total de Vendas" amount={28900} />
+        <InfoCard title="Items" value={82} />
+        <InfoCard title="Pedidos" value={90} />
+        <InfoCard title="Clientes" value={8} />
+      </div>
+      <div className="flex flex-col gap-5 p-4 bg5 rounded-lg">
+        <h5 className="underline">Mais vendidos...</h5>
+        <div className="flex-w gap-2 justify-between ">
+          <ProductDashCard
+            imageUrl="/"
+            orders={5}
+            price={1000}
+            title="Maningue Cenas"
+          />
+          <ProductDashCard
+            imageUrl="/"
+            orders={5}
+            price={1000}
+            title="Maningue Cenas"
+          />
+          <ProductDashCard
+            imageUrl="/"
+            orders={5}
+            price={1000}
+            title="Maningue Cenas"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col gap-5 p-4 bg5 rounded-lg ">
+        <h5 className="underline">Banner...</h5>
+        <div className="flex-w gap-2 justify-between ">
+          <BannerCard detail="Colecao Exclusiva" imageUrl="/" title="Shetas" />
+          <BannerCard detail="Mais Recentes" imageUrl="/" title="Collabs" />
+          <BannerCard detail="Nova Trend" imageUrl="/" title="Bones" />
+        </div>
+      </div>
+      <div className="flex flex-col gap-5 p-4 bg5 rounded-lg">
+        <h5 className="underline">Slider...</h5>
+        <div className="flex-w gap-2 justify-between ">
+          <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
+          <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
+          <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
+        </div>
+      </div>
+    </div>
+  );
+}

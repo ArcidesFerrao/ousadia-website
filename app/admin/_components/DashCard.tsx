@@ -1,0 +1,97 @@
+import Image from "next/image";
+import React from "react";
+
+export const InfoCard = ({
+  title,
+  amount,
+  value,
+}: {
+  title: string;
+  amount?: number;
+  value?: number;
+}) => {
+  return (
+    <div className="flex flex-col mb-4 gap-5 p-4 min-w-56 border rounded-md opacity-70 hover:opacity-95">
+      <p>{title}</p>
+      {amount && (
+        <div className="flex gap-2 justify-between">
+          <h4>MZN</h4>
+          <h4>{amount}.00</h4>
+        </div>
+      )}
+      {value && <h4>{value}</h4>}
+    </div>
+  );
+};
+
+export const ProductDashCard = ({
+  title,
+  price,
+  orders,
+  imageUrl,
+}: {
+  title: string;
+  price: number;
+  orders: number;
+  imageUrl: string;
+}) => {
+  return (
+    <div className="flex gap-5 mb-4 p-4 min-w-40 border rounded-md opacity-70 hover:opacity-95">
+      <Image src={imageUrl} width={80} height={80} alt="product preview" />
+      <div className="flex flex-col gap-2 justify-between">
+        <h6>{title}</h6>
+        <h5>MZN {price}.00</h5>
+        <p>{orders} pedidos</p>
+      </div>
+    </div>
+  );
+};
+
+export const PromoCard = (promo: string) => {
+  return (
+    <div className="flex flex-col mb-4 gap-5 p-2 min-w-40 opacity-70 hover:opacity-95">
+      <h5>Top Bar Promo</h5>
+      <p>{promo}</p>
+    </div>
+  );
+};
+
+export const BannerCard = ({
+  imageUrl,
+  title,
+  detail,
+}: {
+  imageUrl: string;
+  title: string;
+  detail: string;
+}) => {
+  return (
+    <div className="flex gap-5 bg3 p-4 mb-4 rounded-md border  min-w-64 opacity-70 hover:opacity-95 ">
+      <Image src={imageUrl} alt="banner card image" width={60} height={60} />
+      <div className="flex flex-col gap-5">
+        <h5>{title}</h5>
+        <p>{detail}</p>
+      </div>
+    </div>
+  );
+};
+
+export const SliderCard = ({
+  title,
+  detail,
+  imageUrl,
+}: {
+  title: string;
+  detail: string;
+  imageUrl: string;
+}) => {
+  return (
+    <div className="bg3 flex gap-5 p-4 mb-4 rounded-md border  min-w-64 opacity-70 hover:opacity-95">
+      <Image src={imageUrl} alt="slider image preview" width={60} height={60} />
+      <div className="flex flex-col gap-2 justify-between">
+        <h5>{title}</h5>
+        <p>{detail}</p>
+      </div>
+    </div>
+  );
+};
