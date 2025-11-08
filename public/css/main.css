@@ -165,6 +165,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     margin: 0;
   }
 
+  legend {
+    font-size: medium;
+  }
+
   .radio-category input[type="radio"] {
     display: none;
   }
