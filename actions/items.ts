@@ -14,7 +14,7 @@ export async function getItems() {
 
 
 export async function addItem(prevState: unknown, formData: FormData) {
-  
+  console.log("adding item")
     try {
         const submission = parseWithZod(formData, { schema: itemSchema})
         if(submission.status !== "success") return submission.error

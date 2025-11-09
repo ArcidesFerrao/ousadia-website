@@ -1,5 +1,5 @@
 import React from "react";
-import { Poppins } from "next/font/google";
+
 import {
   BannerCard,
   InfoCard,
@@ -9,11 +9,7 @@ import {
 } from "./_components/DashCard";
 import { getItems } from "@/actions/items";
 import Link from "next/link";
-
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-});
+import { poppins } from "@/lib/font";
 
 export default async function AdminPage() {
   const items = getItems();

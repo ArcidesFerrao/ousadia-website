@@ -155,11 +155,13 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .admin-page a {
   color: #b2b2b2;
+  transition: all ease-out 300ms;
 }
 
 .admin-pages-section {
   min-height: 80vh;
   color: #b2b2b2;
+  transition: all ease-out 300ms;
 
   label {
     margin: 0;
@@ -169,8 +171,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     font-size: medium;
   }
 
+  textarea,
   input {
     background-color: #1d1d1d;
+    padding: 0 0.4rem;
+    color: #bdbdbd;
   }
 
   .radio-category input[type="radio"] {

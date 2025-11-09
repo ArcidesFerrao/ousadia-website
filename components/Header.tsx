@@ -66,7 +66,7 @@ export const Header = () => {
                 // src="/images/icons/logo-01.png"
                 src="/images/icons/logomarca.png"
                 alt="IMG-LOGO"
-                width={100}
+                width={120}
                 height={100}
               />
             </Link>
@@ -132,8 +132,8 @@ export const Header = () => {
               // src="/images/icons/logo-01.png"
               src="/images/icons/logomarca.png"
               alt="IMG-LOGO"
-              width={100}
-              height={100}
+              width={120}
+              height={120}
             />
           </Link>
         </div>
