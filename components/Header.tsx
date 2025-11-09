@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export const Header = () => {
   const pathname = usePathname();
   const [isMenu, setIsMenu] = useState(false);
+  const [promo, setPromo] = useState("");
   const [isSubMenu, setIsSubMenu] = useState<string | null>(null);
 
   let headerClass = "";
@@ -28,6 +29,18 @@ export const Header = () => {
   };
 
   useEffect(() => {
+    const getPromo = async () => {
+      try {
+        const res = await fetch("/api/promo");
+        if (!res.ok) throw new Error("Error getting promo");
+        const data = await res.json();
+        setPromo(data[0].text);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getPromo();
     const handleResize = () => {
       if (window.innerWidth >= 992 && isMenu) {
         setIsMenu(false);
@@ -45,9 +58,7 @@ export const Header = () => {
         {/* Topbar */}
         <div className="top-bar">
           <div className="content-topbar flex-sb-m h-full container">
-            <div className="left-top-bar">
-              Entregas na Cidade de Maputo por apenas MZN 100.00
-            </div>
+            <div className="left-top-bar">{promo}</div>
             <div className="right-top-bar flex-w h-full">
               <a href="/termos" className="flex-c-m trans-04 p-lr-25">
                 Termos &amp; Condiçoes
