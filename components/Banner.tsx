@@ -1,5 +1,5 @@
 import { getBannerAds } from "@/actions/promo";
-import Block from "./Block";
+import { Block } from "./Block";
 
 export const Banner = async () => {
   const bannerAds = await getBannerAds();

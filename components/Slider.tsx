@@ -1,12 +1,25 @@
+import { getSliderAds } from "@/actions/promo";
 import Link from "next/link";
-import React from "react";
+import { Slick } from "./Block";
 
-export const Slider = () => {
+export const Slider = async () => {
+  const sliderAds = await getSliderAds();
+
   return (
     <section className="section-slide">
       <div className="wrap-slick1">
         <div className="slick1">
-          <div
+          {sliderAds &&
+            sliderAds.map((ad) => (
+              <Slick
+                key={ad.id}
+                description={ad.description}
+                title={ad.title}
+                url={ad.collectionId || ""}
+                imageUrl={ad.imageUrl}
+              />
+            ))}
+          {/* <div
             className="item-slick1"
             style={{ backgroundImage: "url(images/slide-01.jpg)" }}
           >
@@ -44,7 +57,7 @@ export const Slider = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div
             className="item-slick1"
             style={{ backgroundImage: "url(images/slide-02.jpg)" }}
