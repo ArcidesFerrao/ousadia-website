@@ -35,7 +35,7 @@ export const SliderForm = () => {
     }
     const getCollections = async () => {
       try {
-        const res = await fetch("/api/collection");
+        const res = await fetch("/api/collections");
         if (!res.ok) throw new Error("Error getting collections");
         const data = await res.json();
         setCollections(data);
@@ -83,8 +83,8 @@ export const SliderForm = () => {
                 <label key={c.id} id={c.id} className="flex radio-label h-fit">
                   <input
                     type="radio"
-                    name="categoryId"
-                    id="categoryId"
+                    name="collectionId"
+                    id="collectionId"
                     value={c.id}
                     onChange={handleCollectionChange}
                   />

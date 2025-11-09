@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 
 export const InfoCard = ({
   title,
@@ -73,7 +72,7 @@ export const BannerCard = ({
 }) => {
   return (
     <div className="flex gap-5 bg3 p-4 mb-4 rounded-md border  min-w-64 opacity-70 hover:opacity-95 ">
-      <Image src={imageUrl} alt="banner card image" width={60} height={60} />
+      <Image src={imageUrl} alt="banner card image" width={100} height={80} />
       <div className="flex flex-col gap-5">
         <h5>{title}</h5>
         <p>{detail}</p>
@@ -93,7 +92,12 @@ export const SliderCard = ({
 }) => {
   return (
     <div className="bg3 flex gap-5 p-4 mb-4 rounded-md border  min-w-64 opacity-70 hover:opacity-95">
-      <Image src={imageUrl} alt="slider image preview" width={60} height={60} />
+      <Image
+        src={imageUrl}
+        alt="slider image preview"
+        width={100}
+        height={80}
+      />
       <div className="flex flex-col gap-2 justify-between">
         <h5>{title}</h5>
         <p>{detail}</p>

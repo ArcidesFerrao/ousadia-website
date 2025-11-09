@@ -48,3 +48,41 @@ export async function addItem(prevState: unknown, formData: FormData) {
         console.error(error)
     }
 }
+
+export async function getMostOrdered() {
+    const mostOrdered = await db.order.groupBy({
+      by: ["productId"],
+      _sum: {
+        quantity: true,
+      },
+      orderBy: {
+        _sum: {
+          quantity: "desc",
+        },
+      },
+      take: 5, // Top 5
+    });
+
+    // Fetch full product details for each productId
+    const products = await Promise.all(
+      mostOrdered.map(async (item) => {
+        const product = await db.product.findUnique({
+          where: { id: item.productId },
+          select: {
+            id: true,
+            name: true,
+            mainImage: true,
+            basePrice: true,
+            discount: true,
+          },
+        });
+
+        return {
+          ...product,
+          totalOrders: item._sum.quantity ?? 0,
+        };
+      })
+    );
+
+    return products
+}
