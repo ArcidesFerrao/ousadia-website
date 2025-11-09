@@ -80,8 +80,8 @@ export default function ClientItemsList({
           </div>
         </div>
       </div>
-      {items.length === 0 ? (
-        <p>Nenhum item encontrado</p>
+      {filteredItems.length === 0 ? (
+        <p className="stext-106">Nenhum item encontrado</p>
       ) : (
         <>
           <div className="row isotope-grid">

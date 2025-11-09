@@ -16,7 +16,7 @@ export default async function ItemsList({ title }: { title?: string }) {
     },
   });
   return (
-    <section className="bg0 p-t-23 p-b-140">
+    <section className="bg0 p-t-23 p-b-140 min-h-2/3">
       <div className="container">
         <div className="p-b-10">
           <h3 className="ltext-103 cl5">

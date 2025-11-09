@@ -8,7 +8,12 @@ type Params = Promise<{ id: string }>;
 export default async function ProdutoPage(props: { params: Params }) {
   const { id } = await props.params;
 
-  if (!id) return <p>Item nao encontrado</p>;
+  if (!id)
+    return (
+      <p className="stext-106 text-center min-h-2/3">
+        Item nao encontrado {id}
+      </p>
+    );
 
   const item = await db.product.findUnique({
     where: {
