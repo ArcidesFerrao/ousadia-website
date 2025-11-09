@@ -138,7 +138,7 @@ export const Header = () => {
           </Link>
         </div>
         {/* Icon header */}
-        <div className="wrap-icon-header flex-w flex-r-m m-r-15">
+        {/* <div className="wrap-icon-header flex-w flex-r-m m-r-15">
           <div className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
             <i className="zmdi zmdi-search" />
           </div>
@@ -155,7 +155,7 @@ export const Header = () => {
           >
             <i className="zmdi zmdi-favorite-outline" />
           </a>
-        </div>
+        </div> */}
         {/* Button show menu */}
         <div
           onClick={handleMenuToggle}
@@ -247,6 +247,7 @@ export const Header = () => {
         </ul>
       </div>
       {/* Modal Search */}
+      {/*       
       <div className="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div className="container-search-header">
           <button className="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
@@ -270,8 +271,9 @@ export const Header = () => {
               // height={24}
             />
           </form>
-        </div>
+        </div> 
       </div>
+        */}
     </header>
   );
 };
