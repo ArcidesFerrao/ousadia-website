@@ -7,6 +7,13 @@ export const categorySchema = z.object({
     slug: z.string().min(3, {message: "Slug must be at least 3 chars"})
 })
 
+export const collectionSchema = z.object({
+    title: z.string().min(3, {message: "Name must be at least 3 chars"}),
+    details: z.string().min(3, {message: "Slug must be at least 3 chars"}),
+    slug: z.string().min(3, {message: "Slug must be at least 3 chars"}),
+    imageUrl: z.string().url().optional(),
+})
+
 
 export const itemSchema = z.object({
     name: z.string().min(3, {message: "Name must be at least 3 chars"}),
@@ -28,5 +35,12 @@ export const bannerSchema = z.object({
     title: z.string().min(3, {message: "Title must be at least 3 chars"}),
     description: z.string().min(5),
     categoryId: z.string(),
+    imageUrl: z.string().url(),
+})
+
+export const sliderSchema = z.object({
+    title: z.string().min(3, {message: "Title must be at least 3 chars"}),
+    description: z.string().min(5),
+    collectionId: z.string(),
     imageUrl: z.string().url(),
 })

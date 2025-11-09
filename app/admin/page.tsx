@@ -20,7 +20,13 @@ export default async function AdminPage() {
     >
       <div className="flex justify-between items-center">
         <h2>Dashboard</h2>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-4 text-sm">
+          <Link
+            className="px-3 py-2 border rounded-sm opacity-55 hover:opacity-95"
+            href="/admin/categorias/collection/new"
+          >
+            + Colecao
+          </Link>
           <Link
             className="px-3 py-2 border rounded-sm opacity-55 hover:opacity-95"
             href="/admin/categorias/new"
