@@ -88,7 +88,7 @@ export default function ClientItemsList({
             {filteredItems.map((i) => (
               <ProductCard
                 key={i.id}
-                id="id"
+                id={i.id}
                 imageUrl={i.mainImage}
                 price={i.basePrice}
                 name={i.name}
