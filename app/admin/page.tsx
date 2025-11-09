@@ -73,8 +73,16 @@ export default async function AdminPage() {
         <div className="border rounded p-2">
           <PromoCard promo="Entregas na Cidade de Maputo" />
         </div>
-        <div className="flex flex-col gap-5   ">
-          <h5>Banner...</h5>
+        <div className="flex flex-col gap-5  py-4 ">
+          <div className="flex justify-between gap-5 items-center">
+            <h5>Banner...</h5>
+            <Link
+              href="/admin/categorias/banner/new"
+              className="py-2 px-4 border rounded-sm opacity-65 hover:opacity-95"
+            >
+              +
+            </Link>
+          </div>
           <div className="flex-w gap-2 justify-between ">
             <BannerCard
               detail="Colecao Exclusiva"

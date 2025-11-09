@@ -23,3 +23,10 @@ export const itemSchema = z.object({
     image2: z.string().url(),
     image3: z.string().url(),
 })
+
+export const bannerSchema = z.object({
+    title: z.string().min(3, {message: "Title must be at least 3 chars"}),
+    description: z.string().min(5),
+    categoryId: z.string(),
+    imageUrl: z.string().url(),
+})
