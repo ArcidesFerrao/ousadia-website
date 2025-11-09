@@ -9,12 +9,14 @@ import Link from "next/link";
 import { poppins } from "@/lib/font";
 import { PromoForm } from "./_components/PromoForm";
 import { getBannerAds, getSliderAds } from "@/actions/promo";
+import { getOrdersCount } from "@/actions/orders";
 
 export default async function AdminPage() {
   const items = getItems();
   const bannerAds = await getBannerAds();
   const sliderAds = await getSliderAds();
   const mostOrdered = await getMostOrdered();
+  const ordersCount = await getOrdersCount();
 
   return (
     <div
@@ -50,8 +52,8 @@ export default async function AdminPage() {
           value={(await items).length}
           url="/admin/items"
         />
-        <InfoCard title="Pedidos" value={90} url="/admin/pedidos" />
-        <InfoCard title="Clientes" value={8} url="/admin/clientes" />
+        <InfoCard title="Pedidos" value={ordersCount} url="/admin/pedidos" />
+        {/* <InfoCard title="Clientes" value={8} url="/admin/clientes" /> */}
       </div>
       {mostOrdered.length > 0 && (
         <div className="flex flex-col gap-5 p-4 bg5 rounded-lg">

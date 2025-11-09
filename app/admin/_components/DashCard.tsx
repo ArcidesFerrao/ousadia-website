@@ -54,7 +54,7 @@ export const ProductDashCard = ({
 
 export const PromoCard = ({ promo }: { promo: string }) => {
   return (
-    <div className="flex flex-col bg3 gap-5 p-2 min-w-40 opacity-70 hover:opacity-95">
+    <div className="flex flex-col bg3 gap-5 px-4 py-2 rounded-sm min-w-40 opacity-70 hover:opacity-95">
       <h5>Top Bar Promo</h5>
       <p>{promo}</p>
     </div>
