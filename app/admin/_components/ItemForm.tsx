@@ -8,6 +8,7 @@ import { UploadButton } from "@/utils/uploadthing";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 
 export const ItemForm = () => {
@@ -30,6 +31,7 @@ export const ItemForm = () => {
   useEffect(() => {
     if (state?.status === "success") {
       console.log(state.message);
+      redirect("/admin");
     }
 
     const getCategories = async () => {
@@ -272,13 +274,7 @@ export const ItemForm = () => {
       {fields.mainImage.errors && <p>{fields.mainImage.errors}</p>}
       {fields.image2.errors && <p>{fields.image2.errors}</p>}
       {fields.image3.errors && <p>{fields.image3.errors}</p>}
-      <div className="border p-2 bg-gray-100 text-xs">
-        <p>Main: {mainImage || "none"}</p>
-        <p>Image2: {image2 || "none"}</p>
-        <p>Image3: {image3 || "none"}</p>
-        <p>Category: {selectedCategory || "none"}</p>
-        <p>Pending: {pending ? "yes" : "no"}</p>
-      </div>
+
       <input
         className="border rounded-sm p-2 pointer text-center opacity-55 hover:opacity-95"
         type="submit"

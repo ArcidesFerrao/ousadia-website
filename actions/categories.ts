@@ -4,17 +4,17 @@ import db from "@/lib/prisma";
 import { categorySchema } from "@/lib/schema";
 import { parseWithZod } from "@conform-to/zod";
 
-export async function createCategorie(prevState: unknown, formData: FormData) {
+export async function createCategory(prevState: unknown, formData: FormData) {
     const submission = parseWithZod(formData, { schema: categorySchema})
 
     if(submission.status !== "success") return submission.error
 
     const addCategory = await  db.category.create({
-    data: {
-        name: submission.value.name,
-        slug:submission.value.slug
-    }
-})
+        data: {
+            name: submission.value.name,
+            slug:submission.value.slug
+        }
+    })
 
     if (submission.status === "success") {
         return {
