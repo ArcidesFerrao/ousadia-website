@@ -1,8 +1,22 @@
+import db from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
-export default function ProdutoPage() {
+type Params = Promise<{ id: string }>;
+
+export default async function ProdutoPage(props: { params: Params }) {
+  const { id } = await props.params;
+
+  const item = await db.product.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      category: true,
+      collection: true,
+    },
+  });
+
   return (
     <>
       {/* <div className="header-separator"></div> */}
@@ -17,7 +31,7 @@ export default function ProdutoPage() {
             Loja
             <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
           </a>
-          <span className="stext-109 cl4">Lightweight Jacket</span>
+          <span className="stext-109 cl4">{item?.name}</span>
         </div>
       </div>
       {/* Product Detail */}
@@ -32,18 +46,18 @@ export default function ProdutoPage() {
                   <div className="slick3 gallery-lb">
                     <div
                       className="item-slick3"
-                      data-thumb="/images/product-detail-01.jpg"
+                      data-thumb={item?.mainImage || ""}
                     >
                       <div className="wrap-pic-w pos-relative">
                         <Image
-                          src="/images/product-detail-01.jpg"
+                          src={item?.mainImage || ""}
                           alt="IMG-PRODUCT"
                           width={500}
                           height={600}
                         />
                         <a
                           className="flex-c-m size-108 items-center how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href="/images/product-detail-01.jpg"
+                          href={item?.mainImage || ""}
                         >
                           <i className="fa fa-expand" />
                         </a>
@@ -51,18 +65,18 @@ export default function ProdutoPage() {
                     </div>
                     <div
                       className="item-slick3"
-                      data-thumb="/images/product-detail-02.jpg"
+                      data-thumb={item?.image2 || ""}
                     >
                       <div className="wrap-pic-w pos-relative">
                         <Image
-                          src="/images/product-detail-02.jpg"
+                          src={item?.image2 || ""}
                           alt="IMG-PRODUCT"
                           width={500}
                           height={600}
                         />
                         <a
                           className="flex-c-m size-108 how-pos1 items-center  bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href="/images/product-detail-02.jpg"
+                          href={item?.image2 || ""}
                         >
                           <i className="fa fa-expand" />
                         </a>
@@ -70,18 +84,18 @@ export default function ProdutoPage() {
                     </div>
                     <div
                       className="item-slick3"
-                      data-thumb="/images/product-detail-03.jpg"
+                      data-thumb={item?.image3 || ""}
                     >
                       <div className="wrap-pic-w pos-relative">
                         <Image
-                          src="/images/product-detail-03.jpg"
+                          src={item?.image3 || ""}
                           alt="IMG-PRODUCT"
                           width={500}
                           height={600}
                         />
                         <a
                           className="flex-c-m size-108 items-center  how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href="/images/product-detail-03.jpg"
+                          href={item?.image3 || ""}
                         >
                           <i className="fa fa-expand" />
                         </a>
@@ -94,13 +108,10 @@ export default function ProdutoPage() {
             <div className="col-md-6 col-lg-5 p-b-30">
               <div className="p-r-50 p-t-5 p-lr-0-lg">
                 <h4 className="mtext-105 cl2 js-name-detail p-b-14">
-                  Lightweight Jacket
+                  {item?.name}
                 </h4>
-                <span className="mtext-106 cl2">$58.79</span>
-                <p className="stext-102 cl3 p-t-23">
-                  Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus
-                  ligula. Mauris consequat ornare feugiat.
-                </p>
+                <span className="mtext-106 cl2">MZN {item?.basePrice}.00 </span>
+                <p className="stext-102 cl3 p-t-23">{item?.description}</p>
                 {/*  */}
                 <div className="p-t-33 flex flex-col gap-2 w-full">
                   <div className="flex justify-between w-full p-b-10">
@@ -393,7 +404,9 @@ export default function ProdutoPage() {
         </div>
         <div className="bg6 flex-c-m flex-w  m-t-73 p-tb-15">
           <span className="stext-107 cl6 p-lr-25">SKU: JAK-01</span>
-          <span className="stext-107 cl6 p-lr-25">Categories: Jacket, Men</span>
+          <span className="stext-107 cl6 p-lr-25">
+            Category: {item?.category.name}
+          </span>
         </div>
       </section>
     </>
