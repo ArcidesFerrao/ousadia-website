@@ -88,7 +88,7 @@ export const Header = () => {
                   <Link href="/">Home</Link>
                 </li>
                 <li>
-                  <a href="/produtos">Loja</a>
+                  <Link href="/produtos">Loja</Link>
                 </li>
                 <li>
                   <a href="/categorias">Categorias</a>
@@ -186,9 +186,7 @@ export const Header = () => {
       >
         <ul className="topbar-mobile">
           <li>
-            <div className="left-top-bar">
-              Free shipping for standard order over $100
-            </div>
+            <div className="left-top-bar">{promo}</div>
           </li>
           <li>
             <div className="right-top-bar flex-w h-full">
@@ -212,7 +210,7 @@ export const Header = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <a href="/produtos">Loja</a>
+            <Link href="/produtos">Loja</Link>
           </li>
           {/* <li>
             <a
