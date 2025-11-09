@@ -13,7 +13,7 @@ export default function Block({
   imageUrl: string;
 }) {
   return (
-    <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+    <div className="col-md-6 col-xl-4 p-b-30 m-lr-auto ">
       {/* Block1 */}
       <div className="block1 wrap-pic-w">
         <Image
@@ -22,6 +22,7 @@ export default function Block({
           alt="IMG-BANNER"
           width={420}
           height={420}
+          className="rounded-xs"
         />
         <a
           //   href="/produtos"

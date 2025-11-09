@@ -1,22 +1,28 @@
+import { getBannerAds } from "@/actions/promo";
 import Block from "./Block";
 
-export const Banner = () => {
+export const Banner = async () => {
+  const bannerAds = await getBannerAds();
   return (
     <div className="sec-banner bg0 p-t-80 p-b-50">
       <div className="container">
         <div className="row">
-          <Block
-            title="Shetas"
-            details="Colecao Exclusiva"
-            url="/produtos"
-            imageUrl="/images/banner-01.jpg"
-          />
-          <Block
+          {bannerAds &&
+            bannerAds.map((ad) => (
+              <Block
+                key={ad.id}
+                title={ad.title}
+                details={ad.description}
+                url={`/categorias/${ad.categoryId}`}
+                imageUrl={ad.imageUrl}
+              />
+            ))}
+          {/* <Block
             title="Collabs"
             details="Mais Recentes"
             url="/produtos"
             imageUrl="/images/banner-02.jpg"
-          />
+          /> */}
           <Block
             title="Bones"
             details="Nova Trend"
