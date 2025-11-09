@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ProductCard } from "./Card";
 import { Category, Product } from "@/lib/generated/prisma/client";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function ClientItemsList({
   items,
@@ -97,12 +98,12 @@ export default function ClientItemsList({
           </div>
           {!pathname.includes("/produtos") && (
             <div className="flex-c-m flex-w w-full p-t-45">
-              <a
+              <Link
                 href="/produtos"
                 className="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04"
               >
                 Ver mais
-              </a>
+              </Link>
             </div>
           )}
         </>

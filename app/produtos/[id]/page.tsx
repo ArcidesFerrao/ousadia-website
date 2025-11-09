@@ -35,10 +35,10 @@ export default async function ProdutoPage(props: { params: Params }) {
             Home
             <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
           </Link>
-          <a href="produtos" className="stext-109 cl8 hov-cl1 trans-04">
+          <Link href="/produtos" className="stext-109 cl8 hov-cl1 trans-04">
             Loja
             <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
-          </a>
+          </Link>
           <span className="stext-109 cl4">{item?.name}</span>
         </div>
       </div>
