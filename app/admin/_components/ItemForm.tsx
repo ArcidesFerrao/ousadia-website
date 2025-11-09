@@ -55,8 +55,14 @@ export const ItemForm = () => {
 
   return (
     <form
+      noValidate
       id={form.id}
       onSubmit={form.onSubmit}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   console.log("form submitting");
+      //   form.onSubmit(e);
+      // }}
       action={action}
       className={`${poppins.className} flex flex-col gap-4 p-2`}
     >
@@ -123,53 +129,53 @@ export const ItemForm = () => {
                 Tamanhos
               </legend>
               <div className="flex gap-4 border p-2 rounded justify-between">
-                <label htmlFor="sizeXS">XS</label>
+                <label htmlFor="quantityXS">XS</label>
                 <input
                   className="max-w-20 bg-gray-100 text-gray-700 px-2 rounded-sm"
                   type="number"
-                  name="sizeXS"
-                  id="sizeXS"
+                  name="quantityXS"
+                  id="quantityXS"
                   min={0}
                 />
               </div>
               <div className="flex gap-4 border p-2 rounded justify-between">
-                <label htmlFor="sizeS">S</label>
+                <label htmlFor="quantityS">S</label>
 
                 <input
                   className="max-w-20 bg-gray-100 text-gray-700 px-2 rounded-sm"
                   type="number"
-                  name="sizeS"
-                  id="sizeS"
+                  name="quantityS"
+                  id="quantityS"
                   min={0}
                 />
               </div>
               <div className="flex gap-4 border p-2 rounded justify-between">
-                <label htmlFor="sizeM">M</label>
+                <label htmlFor="quantityM">M</label>
                 <input
                   className="max-w-20 bg-gray-100 text-gray-700 px-2 rounded-sm"
                   type="number"
-                  name="sizeM"
-                  id="sizeM"
+                  name="quantityM"
+                  id="quantityM"
                   min={0}
                 />
               </div>
               <div className="flex gap-4 border p-2 rounded justify-between">
-                <label htmlFor="sizeL">L</label>
+                <label htmlFor="quantityL">L</label>
                 <input
                   className="max-w-20 bg-gray-100 text-gray-700 px-2 rounded-sm"
                   type="number"
-                  name="sizeL"
-                  id="sizeL"
+                  name="quantityL"
+                  id="quantityL"
                   min={0}
                 />
               </div>
               <div className="flex gap-4 border p-2 rounded justify-between">
-                <label htmlFor="sizeXL">XL</label>
+                <label htmlFor="quantityXL">XL</label>
                 <input
                   className="max-w-20 bg-gray-100 text-gray-700 px-2 rounded-sm"
                   type="number"
-                  name="sizeXL"
-                  id="sizeXL"
+                  name="quantityXL"
+                  id="quantityXL"
                   min={0}
                 />
               </div>
@@ -183,6 +189,7 @@ export const ItemForm = () => {
                 name="mainImage"
                 id="mainImage"
                 value={mainImage}
+                readOnly
               />
               {mainImage ? (
                 <Image
@@ -198,7 +205,7 @@ export const ItemForm = () => {
                   endpoint="imageUploader"
                   onClientUploadComplete={(res) => {
                     console.log("Files: ", res);
-                    setMainImage(res[0].url);
+                    if (res && res[0].ufsUrl) setMainImage(res[0].ufsUrl);
                     alert("Upload Completed");
                   }}
                   onUploadError={(error: Error) => {
@@ -262,15 +269,21 @@ export const ItemForm = () => {
           </div>
         </div>
       </div>
-      {fields.mainImage.errors && (
-        <p className="text-gray-100">{fields.mainImage.errors}</p>
-      )}
+      {fields.mainImage.errors && <p>{fields.mainImage.errors}</p>}
       {fields.image2.errors && <p>{fields.image2.errors}</p>}
       {fields.image3.errors && <p>{fields.image3.errors}</p>}
+      <div className="border p-2 bg-gray-100 text-xs">
+        <p>Main: {mainImage || "none"}</p>
+        <p>Image2: {image2 || "none"}</p>
+        <p>Image3: {image3 || "none"}</p>
+        <p>Category: {selectedCategory || "none"}</p>
+        <p>Pending: {pending ? "yes" : "no"}</p>
+      </div>
       <input
         className="border rounded-sm p-2 pointer text-center opacity-55 hover:opacity-95"
         type="submit"
         value={pending ? "..." : "Criar Item"}
+        disabled={pending}
       />
     </form>
   );

@@ -25,7 +25,26 @@ model Category {
   updatedAt DateTime  @updatedAt
   
   products  Product[]
+  bannerAds BannerAd[]
   
+  @@index([isActive])
+}
+
+model Collection {
+  id String @id @default(cuid())
+  name String @unique
+  slug String @unique
+  featuredImage String?
+  isActive Boolean @default(true)
+  details String 
+  discount    Int      @default(0) // Discount percentage (0-100)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products Product[]
+  sliderAds SliderAd[]
+
   @@index([isActive])
 }
 
@@ -38,19 +57,17 @@ model Product {
   mainImage   String   // URL for main product image
   image2      String   // URL for second image
   image3      String   // URL for third image
-  basePrice   Decimal  @db.Decimal(10, 2)
+  basePrice   Int
   discount    Int      @default(0) // Discount percentage (0-100)
-  
-  categoryId  String
+    categoryId  String
   category    Category @relation(fields: [categoryId], references: [id])
-  
-  // Sizes with individual quantities
+    collectionId  String? 
+  collection    Collection? @relation(fields: [collectionId], references: [id])
   quantityXS  Int      @default(0)
   quantityS   Int      @default(0)
   quantityM   Int      @default(0)
   quantityL   Int      @default(0)
   quantityXL  Int      @default(0)
-  
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -60,6 +77,8 @@ model Product {
   @@index([isActive])
   @@index([createdAt])
   @@index([categoryId])
+  @@index([collectionId])
+
 }
 
 // Order tracking (one item per order)
@@ -75,9 +94,9 @@ model Order {
   product         Product     @relation(fields: [productId], references: [id])
   size            Size
   quantity        Int
-  price           Decimal     @db.Decimal(10, 2) // Price at time of order
+  price           Int // Price at time of order
   discount        Int         @default(0) // Discount at time of order
-  totalAmount     Decimal     @db.Decimal(10, 2)
+  totalAmount     Int
   
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
@@ -94,10 +113,12 @@ model SliderAd {
   imageUrl    String
   title       String
   description String   
-  // order       Int      @default(0) // Display order
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+
+  collectionId String?
+  collection Collection? @relation(fields: [collectionId], references: [id], onDelete: Cascade)
   
   @@index([isActive])
 }
@@ -111,6 +132,8 @@ model BannerAd {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  categoryId String?
+  category Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   
   @@index([isActive])
 }

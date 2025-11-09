@@ -177,6 +177,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     padding: 0 0.4rem;
     color: #bdbdbd;
   }
+  input[type="submit"]:disabled {
+    color: #1d1d1d;
+    padding: 0 0.4rem;
+    background-color: #bdbdbd;
+  }
 
   .radio-category input[type="radio"] {
     display: none;
