@@ -210,21 +210,21 @@ export default function AppWrapper({
         posWrapHeader = $(".top-bar").height() || 0;
       }
 
-      if ($(window).scrollTop() > posWrapHeader) {
+      if (($(window).scrollTop() || 0) > posWrapHeader) {
         $(headerDesktop).addClass("fix-menu-desktop");
         $(wrapMenu).css("top", 0);
       } else {
         $(headerDesktop).removeClass("fix-menu-desktop");
-        $(wrapMenu).css("top", posWrapHeader - $(window).scrollTop());
+        $(wrapMenu).css("top", posWrapHeader - ($(window).scrollTop() || 0));
       }
 
       const handleScroll = function () {
-        if ($(window).scrollTop() > posWrapHeader) {
+        if (($(window).scrollTop() || 0) > posWrapHeader) {
           $(headerDesktop).addClass("fix-menu-desktop");
           $(wrapMenu).css("top", 0);
         } else {
           $(headerDesktop).removeClass("fix-menu-desktop");
-          $(wrapMenu).css("top", posWrapHeader - $(window).scrollTop());
+          $(wrapMenu).css("top", posWrapHeader - ($(window).scrollTop() || 0));
         }
       };
 

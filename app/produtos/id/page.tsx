@@ -1,3 +1,4 @@
+// export const dynamic = "force-dynamic";
 import db from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,9 +8,11 @@ type Params = Promise<{ id: string }>;
 export default async function ProdutoPage(props: { params: Params }) {
   const { id } = await props.params;
 
+  if (!id) return <p>Item nao encontrado</p>;
+
   const item = await db.product.findUnique({
     where: {
-      id,
+      id: id,
     },
     include: {
       category: true,
