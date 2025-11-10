@@ -5,6 +5,7 @@ import { ProductCard } from "./Card";
 import { Category, Product } from "@/lib/generated/prisma/client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { ProductModal } from "./ProductModal";
 
 export default function ClientItemsList({
   items,
@@ -15,6 +16,7 @@ export default function ClientItemsList({
 }) {
   const pathname = usePathname();
   const [search, setSearch] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const filteredItems = items.filter((item) => {
@@ -87,13 +89,18 @@ export default function ClientItemsList({
         <>
           <div className="row isotope-grid">
             {filteredItems.map((i) => (
-              <ProductCard
+              <div
                 key={i.id}
-                id={i.id}
-                imageUrl={i.mainImage}
-                price={i.basePrice}
-                name={i.name}
-              />
+                onClick={() => setSelectedProduct(i)}
+                className=""
+              >
+                <ProductCard
+                  id={i.id}
+                  imageUrl={i.mainImage}
+                  price={i.basePrice}
+                  name={i.name}
+                />
+              </div>
             ))}
           </div>
           {!pathname.includes("/produtos") && (
@@ -107,6 +114,13 @@ export default function ClientItemsList({
             </div>
           )}
         </>
+      )}
+
+      {selectedProduct && (
+        <ProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
       )}
     </>
   );

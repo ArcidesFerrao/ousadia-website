@@ -2,7 +2,7 @@
 
 import { Banner } from "@/components/Banner";
 import ItemsList from "@/components/ItemsList";
-import { ProductModal } from "@/components/ProductModal";
+// import { ProductModal } from "@/components/ProductModal";
 import { Slider } from "@/components/Slider";
 
 export default function Home() {
@@ -14,7 +14,7 @@ export default function Home() {
       <ItemsList />
 
       {/*Product Modal1 */}
-      <ProductModal />
+      {/* <ProductModal /> */}
     </>
   );
 }
