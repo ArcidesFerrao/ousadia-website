@@ -132,10 +132,25 @@ export default function AppWrapper({
           });
         });
 
-        $(".wrap-slick3").each(function () {
-          $(this)
-            .find(".slick3")
-            .slick({
+        setTimeout(() => {
+          $(".wrap-slick3").each(function () {
+            const $wrap = $(this);
+            const $slick3 = $wrap.find(".slick3");
+
+            // Check if element exists and has items
+            if (
+              $slick3.length === 0 ||
+              $slick3.find(".item-slick3").length === 0
+            ) {
+              return;
+            }
+
+            // Don't reinitialize if already initialized
+            if ($slick3.hasClass("slick-initialized")) {
+              return;
+            }
+
+            $slick3.slick({
               slidesToShow: 1,
               slidesToScroll: 1,
               fade: true,
@@ -162,10 +177,11 @@ export default function AppWrapper({
                 );
               },
             });
-        });
+          });
+        }, 300);
 
-        console.log("✅ Slick sliders reinitialized");
-      }, 100);
+        console.log("✅ Sliders reinitialized");
+      }, 50);
 
       $(".js-show-modal-search").on("click", function () {
         $(".modal-search-header").addClass("show-modal-search");

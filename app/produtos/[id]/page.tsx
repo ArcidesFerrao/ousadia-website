@@ -1,4 +1,6 @@
 // export const dynamic = "force-dynamic";
+// import InitSlick3 from "@/components/InitSlick3";
+// import Slick3Init from "@/components/Slick3Init";
 import db from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,9 +27,11 @@ export default async function ProdutoPage(props: { params: Params }) {
     },
   });
 
+  if (!item) return <p>Item nao encontrado</p>;
+
+  console.log(item.mainImage);
   return (
     <>
-      {/* <div className="header-separator"></div> */}
       {/* breadcrumb */}
       <div className="container">
         <div className="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -48,67 +52,64 @@ export default async function ProdutoPage(props: { params: Params }) {
           <div className="row">
             <div className="col-md-6 col-lg-7 p-b-30">
               <div className="p-l-25 p-r-30 p-lr-0-lg">
-                <div className="wrap- flex-sb flex-w">
-                  <div className="wrap--dots" />
+                <div className="wrap-slick3 flex-sb flex-w">
+                  <div className="wrap-slick3-dots" />
                   <div className="wrap-slick3-arrows flex-sb-m flex-w" />
                   <div className="slick3 gallery-lb">
-                    <div
-                      className="item-slick3"
-                      data-thumb={item?.mainImage || ""}
-                    >
-                      <div className="wrap-pic-w pos-relative">
-                        <Image
-                          src={item?.mainImage || ""}
-                          alt="IMG-PRODUCT"
-                          width={500}
-                          height={600}
-                        />
-                        <a
-                          className="flex-c-m size-108 items-center how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href={item?.mainImage || ""}
-                        >
-                          <i className="fa fa-expand" />
-                        </a>
+                    {item.mainImage && (
+                      <div className="item-slick3" data-thumb={item.mainImage}>
+                        <div className="wrap-pic-w pos-relative">
+                          <Image
+                            src={item.mainImage}
+                            alt="IMG-PRODUCT"
+                            width={500}
+                            height={600}
+                          />
+                          <a
+                            className="flex-c-m size-108 items-center how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                            href={item.mainImage}
+                          >
+                            <i className="fa fa-expand" />
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                    <div
-                      className="item-slick3"
-                      data-thumb={item?.image2 || ""}
-                    >
-                      <div className="wrap-pic-w pos-relative">
-                        <Image
-                          src={item?.image2 || ""}
-                          alt="IMG-PRODUCT"
-                          width={500}
-                          height={600}
-                        />
-                        <a
-                          className="flex-c-m size-108 how-pos1 items-center  bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href={item?.image2 || ""}
-                        >
-                          <i className="fa fa-expand" />
-                        </a>
+                    )}
+                    {item.image2 && (
+                      <div className="item-slick3" data-thumb={item.image2}>
+                        <div className="wrap-pic-w pos-relative">
+                          <Image
+                            src={item.image2}
+                            alt="IMG-PRODUCT"
+                            width={500}
+                            height={600}
+                          />
+                          <a
+                            className="flex-c-m size-108 how-pos1 items-center  bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                            href={item.image2}
+                          >
+                            <i className="fa fa-expand" />
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                    <div
-                      className="item-slick3"
-                      data-thumb={item?.image3 || ""}
-                    >
-                      <div className="wrap-pic-w pos-relative">
-                        <Image
-                          src={item?.image3 || ""}
-                          alt="IMG-PRODUCT"
-                          width={500}
-                          height={600}
-                        />
-                        <a
-                          className="flex-c-m size-108 items-center  how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href={item?.image3 || ""}
-                        >
-                          <i className="fa fa-expand" />
-                        </a>
+                    )}
+                    {item.image3 && (
+                      <div className="item-slick3" data-thumb={item.image3}>
+                        <div className="wrap-pic-w pos-relative">
+                          <Image
+                            src={item.image3}
+                            alt="IMG-PRODUCT"
+                            width={500}
+                            height={600}
+                          />
+                          <a
+                            className="flex-c-m size-108 items-center  how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                            href={item.image3}
+                          >
+                            <i className="fa fa-expand" />
+                          </a>
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -116,11 +117,10 @@ export default async function ProdutoPage(props: { params: Params }) {
             <div className="col-md-6 col-lg-5 p-b-30">
               <div className="p-r-50 p-t-5 p-lr-0-lg">
                 <h4 className="mtext-105 cl2 js-name-detail p-b-14">
-                  {item?.name}
+                  {item.name}
                 </h4>
-                <span className="mtext-106 cl2">MZN {item?.basePrice}.00 </span>
-                <p className="stext-102 cl3 p-t-23">{item?.description}</p>
-                {/*  */}
+                <span className="mtext-106 cl2">MZN {item.basePrice}.00 </span>
+                <p className="stext-102 cl3 p-t-23">{item.description}</p>
                 <div className="p-t-33 flex flex-col gap-2 w-full">
                   <div className="flex justify-between w-full p-b-10">
                     <div className=" flex-c-m respon6">Size</div>
@@ -137,23 +137,9 @@ export default async function ProdutoPage(props: { params: Params }) {
                       </div>
                     </div>
                   </div>
-                  {/* <div className="flex justify-between w-full  p-b-10">
-                    <div className=" flex-c-m respon6">Color</div>
-                    <div className=" respon6-next">
-                      <div className="rs1-select2 bor8 bg0">
-                        <select className="js-select2" name="time">
-                          <option>Choose an option</option>
-                          <option>Red</option>
-                          <option>Blue</option>
-                          <option>White</option>
-                          <option>Grey</option>
-                        </select>
-                        <div className="dropDownSelect2" />
-                      </div>
-                    </div>
-                  </div>
+
                   <div className="flex justify-between w-full  p-b-10">
-                    <div className=" flex-w flex-m respon6-next">
+                    <div className=" flex-w flex-m respon6-next w-full">
                       <div className="wrap-num-product flex-w m-r-20 m-tb-10">
                         <div className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                           <i className="fs-16 zmdi zmdi-minus" />
@@ -168,46 +154,12 @@ export default async function ProdutoPage(props: { params: Params }) {
                           <i className="fs-16 zmdi zmdi-plus" />
                         </div>
                       </div>
-                      <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                        Add to cart
+                      <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                        Comprar
                       </button>
                     </div>
-                  </div> */}
-                </div>
-                {/*  
-                <div className="flex-w flex-m p-l-100 p-t-40 respon7">
-                  <div className="flex-m bor9 p-r-10 m-r-11">
-                    <a
-                      href="#"
-                      className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                      data-tooltip="Add to Wishlist"
-                    >
-                      <i className="zmdi zmdi-favorite" />
-                    </a>
                   </div>
-                  <a
-                    href="#"
-                    className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                    data-tooltip="Facebook"
-                  >
-                    <i className="fa fa-facebook" />
-                  </a>
-                  <a
-                    href="#"
-                    className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                    data-tooltip="Twitter"
-                  >
-                    <i className="fa fa-twitter" />
-                  </a>
-                  <a
-                    href="#"
-                    className="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100"
-                    data-tooltip="Google Plus"
-                  >
-                    <i className="fa fa-google-plus" />
-                  </a>
                 </div>
-                */}
               </div>
             </div>
           </div>
@@ -216,7 +168,7 @@ export default async function ProdutoPage(props: { params: Params }) {
             <div className="tab01">
               {/* Nav tabs */}
               <ul className="nav nav-tabs" role="tablist">
-                {/* <li className="nav-item p-b-10">
+                <li className="nav-item p-b-10">
                   <a
                     className="nav-link active"
                     data-toggle="tab"
@@ -225,7 +177,7 @@ export default async function ProdutoPage(props: { params: Params }) {
                   >
                     Description
                   </a>
-                </li> */}
+                </li>
                 <li className="nav-item p-b-10">
                   <a
                     className="nav-link"
@@ -249,7 +201,7 @@ export default async function ProdutoPage(props: { params: Params }) {
               </ul>
               {/* Tab panes */}
               <div className="tab-content p-t-43">
-                {/* <div
+                <div
                   className="tab-pane fade show active"
                   id="description"
                   role="tabpanel"
@@ -270,7 +222,7 @@ export default async function ProdutoPage(props: { params: Params }) {
                       Nulla non tempor erat. Duis in egestas nunc.
                     </p>
                   </div>
-                </div> */}
+                </div>
                 {/* - */}
                 <div className="tab-pane fade" id="information" role="tabpanel">
                   <div className="row">
@@ -290,119 +242,12 @@ export default async function ProdutoPage(props: { params: Params }) {
                           <span className="stext-102 cl3">Materials</span>
                           <span className="stext-102 cl6">60% cotton</span>
                         </li>
-                        {/* <li className="flex-w flex-t p-b-7  flex justify-between">
-                          <span className="stext-102 cl3 ">Color</span>
-                          <span className="stext-102 cl6 ">
-                            Black, Blue, Grey, Green, Red, White
-                          </span>
-                        </li> */}
+
                         <li className="flex-w flex-t p-b-7  flex justify-between">
                           <span className="stext-102 cl3 ">Size</span>
                           <span className="stext-102 cl6 ">XL, L, M, S</span>
                         </li>
                       </ul>
-                    </div>
-                  </div>
-                </div>
-                {/* - */}
-                <div className="tab-pane fade" id="reviews" role="tabpanel">
-                  <div className="row">
-                    <div className="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                      <div className="p-b-30 m-lr-15-sm">
-                        {/* Review */}
-                        <div className="flex-w flex-t p-b-68">
-                          <div className="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-                            <Image
-                              src="/images/avatar-01.jpg"
-                              alt="AVATAR"
-                              width={100}
-                              height={100}
-                            />
-                          </div>
-                          <div className="">
-                            <div className="flex-w flex-sb-m p-b-17">
-                              <span className="mtext-107 cl2 p-r-20">
-                                Ariana Grande
-                              </span>
-                              <span className="fs-18 cl11">
-                                <i className="zmdi zmdi-star" />
-                                <i className="zmdi zmdi-star" />
-                                <i className="zmdi zmdi-star" />
-                                <i className="zmdi zmdi-star" />
-                                <i className="zmdi zmdi-star-half" />
-                              </span>
-                            </div>
-                            <p className="stext-102 cl6">
-                              Quod autem in homine praestantissimum atque
-                              optimum est, id deseruit. Apud ceteros autem
-                              philosophos
-                            </p>
-                          </div>
-                        </div>
-                        {/* Add review */}
-                        <form className="w-full">
-                          <h5 className="mtext-108 cl2 p-b-7">Add a review</h5>
-                          <p className="stext-102 cl6">
-                            Your email address will not be published. Required
-                            fields are marked *
-                          </p>
-                          <div className="flex-w flex-m p-t-50 p-b-23">
-                            <span className="stext-102 cl3 m-r-16">
-                              Your Rating
-                            </span>
-                            <span className="wrap-rating fs-18 cl11 pointer">
-                              <i className="item-rating pointer zmdi zmdi-star-outline" />
-                              <i className="item-rating pointer zmdi zmdi-star-outline" />
-                              <i className="item-rating pointer zmdi zmdi-star-outline" />
-                              <i className="item-rating pointer zmdi zmdi-star-outline" />
-                              <i className="item-rating pointer zmdi zmdi-star-outline" />
-                              <input
-                                className="dis-none"
-                                type="number"
-                                name="rating"
-                              />
-                            </span>
-                          </div>
-                          <div className="row p-b-25">
-                            <div className="col-12 p-b-5">
-                              <label className="stext-102 cl3" htmlFor="review">
-                                Your review
-                              </label>
-                              <textarea
-                                className="h-32 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-                                id="review"
-                                name="review"
-                                defaultValue={""}
-                              />
-                            </div>
-                            <div className="col-sm-6 p-b-5">
-                              <label className="stext-102 cl3" htmlFor="name">
-                                Name
-                              </label>
-                              <input
-                                className="size-111 bor8 stext-102 cl2 p-lr-20"
-                                id="name"
-                                type="text"
-                                name="name"
-                              />
-                            </div>
-                            <div className="col-sm-6 p-b-5">
-                              <label className="stext-102 cl3" htmlFor="email">
-                                Email
-                              </label>
-                              <input
-                                className="size-111 bor8 stext-102 cl2 p-lr-20"
-                                id="email"
-                                type="text"
-                                name="email"
-                              />
-                            </div>
-                          </div>
-                          <button className="flex-c-m stext-101 w-full cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-                            Submit
-                          </button>
-                        </form>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -417,6 +262,8 @@ export default async function ProdutoPage(props: { params: Params }) {
           </span>
         </div>
       </section>
+      {/* <Slick3Init item={item} /> */}
+      {/* <InitSlick3 item={item} /> */}
     </>
   );
 }

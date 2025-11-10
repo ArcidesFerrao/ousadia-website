@@ -5,7 +5,7 @@ export const Footer = () => {
         <div className="container">
           <div className="row max-h-fit">
             <div className="col-sm-6 col-lg-3 p-b-50 max-h-fit">
-              <h4 className="stext-301 cl0 p-b-30">Categorias</h4>
+              <h4 className="stext-301 cl0 p-b-10">Categorias</h4>
               <ul>
                 <li className="p-b-10">
                   <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
@@ -30,7 +30,7 @@ export const Footer = () => {
               </ul>
             </div>
             <div className="col-sm-6 col-lg-3 p-b-50  max-h-fit">
-              <h4 className="stext-301 cl0 p-b-30">Help</h4>
+              <h4 className="stext-301 cl0 p-b-10">Help</h4>
               <ul>
                 <li className="p-b-10">
                   <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
@@ -46,8 +46,8 @@ export const Footer = () => {
               </ul>
             </div>
             <div className="col-sm-6 col-lg-3 p-b-50  ">
-              <h4 className="stext-301 cl0 p-b-30">Contacte-nos</h4>
-              <div className="p-t-27">
+              <h4 className="stext-301 cl0 p-b-10">Contacte-nos</h4>
+              <div className="p-t-2">
                 <a href="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                   <i className="fa fa-facebook" />
                 </a>
