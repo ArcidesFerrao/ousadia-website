@@ -25,11 +25,9 @@ import AppWrapper from "@/lib/AppWrapper";
 export const metadata: Metadata = {
   title: "Veste Ousadia",
   description: "Marca moçambicana de vestuário",
-  // icons: {
-  //   icon: [
-  //     { url: "/favicon.png" },
-  //   ],
-  // },
+  icons: {
+    icon: [{ url: "/favicon.png" }],
+  },
 };
 
 export default function RootLayout({
@@ -39,10 +37,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" type="image/png" href="images/icons/favicon.png" />
-      </head>
-
       <body>
         <AppWrapper>
           <Header />
@@ -131,18 +125,21 @@ export default function RootLayout({
           src="/vendor/MagnificPopup/jquery.magnific-popup.min.js"
           strategy="beforeInteractive"
         />
-        {/* <Script>
-		$('.gallery-lb').each(function() { // the containers for all your galleries
-			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
-		});
-	/> */}
+        <Script
+          id="gallery-lb"
+          dangerouslySetInnerHTML={{
+            __html: `$('.gallery-lb').each(function() { // the containers for all your galleries
+              $(this).magnificPopup({
+                    delegate: 'a', // the selector for gallery item
+                    type: 'image',
+                    gallery: {
+                      enabled:true
+                    },
+                    mainClass: 'mfp-fade'
+                });
+            });`,
+          }}
+        />
         <Script
           src="/vendor/isotope/isotope.pkgd.min.js"
           strategy="beforeInteractive"
