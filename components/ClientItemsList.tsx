@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ProductCard } from "./Card";
+import { Card, ProductCard } from "./Card";
 import { Category, Product } from "@/lib/generated/prisma/client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -88,11 +88,12 @@ export default function ClientItemsList({
       ) : (
         <>
           <div className="row isotope-grid">
+            <Card />
             {filteredItems.map((i) => (
               <div
                 key={i.id}
                 onClick={() => setSelectedProduct(i)}
-                className=""
+                className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"
               >
                 <ProductCard
                   id={i.id}
