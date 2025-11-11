@@ -53,7 +53,7 @@ export default async function ProdutoPage(props: { params: Params }) {
       {/* Product Detail */}
       <section className="sec-product-detail mt-16 bg0 p-t-65 p-b-60">
         <div className="container">
-          <div className="row w-fit">
+          <div className="row">
             <div className="col-md-6 col-lg-7 p-b-30">
               <div className="p-l-25 p-r-30 p-lr-0-lg">
                 <ProductSlider images={images} />

@@ -153,6 +153,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   }
 }
 
+.form-modal-item {
+  padding: 2rem;
+}
+
 .slick-prev {
   left: 15px !important;
   z-index: 5;
