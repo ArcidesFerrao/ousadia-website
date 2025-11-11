@@ -68,37 +68,11 @@ export default function BuyButton({
         </div>
       </div>
 
-      {/* <div className="flex justify-between w-full  p-b-10"> */}
       <div className=" flex-w flex-m w-full">
-        {/* <div className="flex justify-between items-center w-full m-b-20">
-          <div className=" flex-c-m respon6">Quantity</div>
-
-          <div className="flex items-center ">
-            <button
-              className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m "
-              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-            >
-              <i className="fs-16 zmdi zmdi-minus" />
-            </button>
-            <input
-              className="mtext-104 txt-center w-20 "
-              type="number"
-              name="num-product"
-              value={quantity}
-              readOnly
-            />
-            <button
-              className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
-              onClick={() => setQuantity((q) => q + 1)}
-              
-            >
-              <i className="fs-16 zmdi zmdi-plus" />
-            </button>
-          </div>
-        </div> */}
-
         <button
-          onClick={() => setShowForm(true)}
+          onClick={() => {
+            if (size !== "Choose an option") setShowForm(true);
+          }}
           className="flex-c-m stext-101 cl0 h-14 bg1 bor1 hov-btn1 p-lr-15 trans-04 w-full"
         >
           Comprar
