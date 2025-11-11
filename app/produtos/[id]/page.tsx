@@ -1,10 +1,4 @@
-// export const dynamic = "force-dynamic";
-// import InitSlick3 from "@/components/InitSlick3";
-// import Slick3Init from "@/components/Slick3Init";
-// import { Slider } from "@/components/Slider";
-// import Slider from "react-slick";
 import db from "@/lib/prisma";
-// import Image from "next/image";
 import Link from "next/link";
 import ProductSlider from "@/components/ProductSlider";
 
@@ -58,40 +52,35 @@ export default async function ProdutoPage(props: { params: Params }) {
       {/* Product Detail */}
       <section className="sec-product-detail mt-16 bg0 p-t-65 p-b-60">
         <div className="container">
-          <div className="row">
+          <div className="row w-fit">
             <div className="col-md-6 col-lg-7 p-b-30">
               <div className="p-l-25 p-r-30 p-lr-0-lg">
-                <div className="wrap-slick3 flex-sb flex-w">
-                  <ProductSlider images={images} />
-                </div>
+                <ProductSlider images={images} />
               </div>
             </div>
-            <div className="col-md-6 col-lg-5 p-b-30">
+            <div className="col-md-6 col-lg-5 p-b-30 max-w-fill">
               <div className="p-r-50 p-t-5 p-lr-0-lg">
                 <h4 className="mtext-105 cl2 js-name-detail p-b-14">
                   {item.name}
                 </h4>
                 <span className="mtext-106 cl2">MZN {item.basePrice}.00 </span>
                 <p className="stext-102 cl3 p-t-23">{item.description}</p>
-                <div className="p-t-33 flex flex-col gap-2 w-full">
+                <div className="p-t-33 flex flex-col gap-2">
                   <div className="flex justify-between w-full p-b-10">
                     <div className=" flex-c-m respon6">Size</div>
-                    <div className="respon6-next">
-                      <div className="rs1-select2 bor8 bg0">
-                        <select className="js-select2" name="time">
-                          <option>Choose an option</option>
-                          <option>Size S</option>
-                          <option>Size M</option>
-                          <option>Size L</option>
-                          <option>Size XL</option>
-                        </select>
-                        <div className="dropDownSelect2" />
-                      </div>
+                    <div className="rs1-select2 bor8 bg0">
+                      <select className="" name="time">
+                        <option>Choose an option</option>
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                      </select>
                     </div>
                   </div>
 
                   <div className="flex justify-between w-full  p-b-10">
-                    <div className=" flex-w flex-m respon6-next w-full">
+                    <div className=" flex-w flex-m w-full">
                       <div className="wrap-num-product flex-w m-r-20 m-tb-10">
                         <div className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                           <i className="fs-16 zmdi zmdi-minus" />
@@ -106,7 +95,7 @@ export default async function ProdutoPage(props: { params: Params }) {
                           <i className="fs-16 zmdi zmdi-plus" />
                         </div>
                       </div>
-                      <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
+                      <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 w-full">
                         Comprar
                       </button>
                     </div>
@@ -130,26 +119,6 @@ export default async function ProdutoPage(props: { params: Params }) {
                     Description
                   </a>
                 </li>
-                <li className="nav-item p-b-10">
-                  <a
-                    className="nav-link"
-                    data-toggle="tab"
-                    href="#information"
-                    role="tab"
-                  >
-                    Additional information
-                  </a>
-                </li>
-                <li className="nav-item p-b-10">
-                  <a
-                    className="nav-link"
-                    data-toggle="tab"
-                    href="#reviews"
-                    role="tab"
-                  >
-                    Reviews (1)
-                  </a>
-                </li>
               </ul>
               {/* Tab panes */}
               <div className="tab-content p-t-43">
@@ -159,48 +128,7 @@ export default async function ProdutoPage(props: { params: Params }) {
                   role="tabpanel"
                 >
                   <div className="how-pos2 p-lr-15-md">
-                    <p className="stext-102 cl6">
-                      Aenean sit amet gravida nisi. Nam fermentum est felis,
-                      quis feugiat nunc fringilla sit amet. Ut in blandit ipsum.
-                      Quisque luctus dui at ante aliquet, in hendrerit lectus
-                      interdum. Morbi elementum sapien rhoncus pretium maximus.
-                      Nulla lectus enim, cursus et elementum sed, sodales vitae
-                      eros. Ut ex quam, porta consequat interdum in, faucibus eu
-                      velit. Quisque rhoncus ex ac libero varius molestie.
-                      Aenean tempor sit amet orci nec iaculis. Cras sit amet
-                      nulla libero. Curabitur dignissim, nunc nec laoreet
-                      consequat, purus nunc porta lacus, vel efficitur tellus
-                      augue in ipsum. Cras in arcu sed metus rutrum iaculis.
-                      Nulla non tempor erat. Duis in egestas nunc.
-                    </p>
-                  </div>
-                </div>
-                {/* - */}
-                <div className="tab-pane fade" id="information" role="tabpanel">
-                  <div className="row">
-                    <div className="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-                      <ul className="p-lr-28 p-lr-15-sm">
-                        <li className="flex-w flex-t p-b-7 flex justify-between">
-                          <span className="stext-102 cl3 ">Weight</span>
-                          <span className="stext-102 cl6">0.79 kg</span>
-                        </li>
-                        <li className="flex-w flex-t p-b-7  flex justify-between">
-                          <span className="stext-102 cl3">Dimensions</span>
-                          <span className="stext-102 cl6">
-                            110 x 33 x 100 cm
-                          </span>
-                        </li>
-                        <li className="flex-w flex-t p-b-7  flex justify-between">
-                          <span className="stext-102 cl3">Materials</span>
-                          <span className="stext-102 cl6">60% cotton</span>
-                        </li>
-
-                        <li className="flex-w flex-t p-b-7  flex justify-between">
-                          <span className="stext-102 cl3 ">Size</span>
-                          <span className="stext-102 cl6 ">XL, L, M, S</span>
-                        </li>
-                      </ul>
-                    </div>
+                    <p className="stext-102 cl6">{item.description}</p>
                   </div>
                 </div>
               </div>
@@ -216,11 +144,4 @@ export default async function ProdutoPage(props: { params: Params }) {
       </section>
     </>
   );
-}
-
-{
-  /* <Slick3Init item={item} /> */
-}
-{
-  /* <InitSlick3 item={item} /> */
 }

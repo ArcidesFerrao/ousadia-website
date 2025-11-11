@@ -59,10 +59,10 @@ export const ProductModal = ({
                       <div className="rs1-select2 bor8 bg0">
                         <select className="js-select2" name="time">
                           <option>Choose an option</option>
-                          <option>Size S</option>
-                          <option>Size M</option>
-                          <option>Size L</option>
-                          <option>Size XL</option>
+                          <option>S</option>
+                          <option>M</option>
+                          <option>L</option>
+                          <option>XL</option>
                         </select>
                         <div className="dropDownSelect2" />
                       </div>
