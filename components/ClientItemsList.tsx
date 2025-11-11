@@ -32,7 +32,7 @@ export default function ClientItemsList({
 
   return (
     <>
-      <div className="flex-w flex-sb-m p-b-52">
+      <div className="flex-w flex-sb-m p-b-10">
         <div className="flex-w flex-l-m filter-tope-group m-tb-10">
           <button
             className={`stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${
@@ -117,12 +117,7 @@ export default function ClientItemsList({
         </>
       )}
 
-      {selectedProduct && (
-        <ProductModal
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        />
-      )}
+      {selectedProduct && <ProductModal product={selectedProduct} />}
     </>
   );
 }

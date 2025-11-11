@@ -132,53 +132,53 @@ export default function AppWrapper({
           });
         });
 
-        setTimeout(() => {
-          $(".wrap-slick3").each(function () {
-            const $wrap = $(this);
-            const $slick3 = $wrap.find(".slick3");
+        // setTimeout(() => {
+        //   $(".wrap-slick3").each(function () {
+        //     const $wrap = $(this);
+        //     const $slick3 = $wrap.find(".slick3");
 
-            // Check if element exists and has items
-            if (
-              $slick3.length === 0 ||
-              $slick3.find(".item-slick3").length === 0
-            ) {
-              return;
-            }
+        //     // Check if element exists and has items
+        //     if (
+        //       $slick3.length === 0 ||
+        //       $slick3.find(".item-slick3").length === 0
+        //     ) {
+        //       return;
+        //     }
 
-            // Don't reinitialize if already initialized
-            if ($slick3.hasClass("slick-initialized")) {
-              return;
-            }
+        //     // Don't reinitialize if already initialized
+        //     if ($slick3.hasClass("slick-initialized")) {
+        //       return;
+        //     }
 
-            $slick3.slick({
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              fade: true,
-              infinite: true,
-              autoplay: false,
-              autoplaySpeed: 6000,
+        //     $slick3.slick({
+        //       slidesToShow: 1,
+        //       slidesToScroll: 1,
+        //       fade: true,
+        //       infinite: true,
+        //       autoplay: false,
+        //       autoplaySpeed: 6000,
 
-              arrows: true,
-              appendArrows: $(this).find(".wrap-slick3-arrows"),
-              prevArrow:
-                '<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-              nextArrow:
-                '<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+        //       arrows: true,
+        //       appendArrows: $(this).find(".wrap-slick3-arrows"),
+        //       prevArrow:
+        //         '<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+        //       nextArrow:
+        //         '<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
 
-              dots: true,
-              appendDots: $(this).find(".wrap-slick3-dots"),
-              dotsClass: "slick3-dots",
-              customPaging: function (slick, index) {
-                const portrait = $(slick.$slides[index]).data("thumb");
-                return (
-                  '<img src=" ' +
-                  portrait +
-                  ' "/><div class="slick3-dot-overlay"></div>'
-                );
-              },
-            });
-          });
-        }, 300);
+        //       dots: true,
+        //       appendDots: $(this).find(".wrap-slick3-dots"),
+        //       dotsClass: "slick3-dots",
+        //       customPaging: function (slick, index) {
+        //         const portrait = $(slick.$slides[index]).data("thumb");
+        //         return (
+        //           '<img src=" ' +
+        //           portrait +
+        //           ' "/><div class="slick3-dot-overlay"></div>'
+        //         );
+        //       },
+        //     });
+        //   });
+        // }, 300);
 
         console.log("✅ Sliders reinitialized");
       }, 50);

@@ -1,9 +1,12 @@
 // export const dynamic = "force-dynamic";
 // import InitSlick3 from "@/components/InitSlick3";
 // import Slick3Init from "@/components/Slick3Init";
+// import { Slider } from "@/components/Slider";
+// import Slider from "react-slick";
 import db from "@/lib/prisma";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
+import ProductSlider from "@/components/ProductSlider";
 
 type Params = Promise<{ id: string }>;
 
@@ -29,7 +32,13 @@ export default async function ProdutoPage(props: { params: Params }) {
 
   if (!item) return <p>Item nao encontrado</p>;
 
-  console.log(item.mainImage);
+  const images = [
+    item.mainImage && { src: item.mainImage, dataThumb: item.mainImage },
+    item.image2 && { src: item.image2, dataThumb: item.image2 },
+    item.image3 && { src: item.image3, dataThumb: item.image3 },
+  ].filter(Boolean) as { src: string; dataThumb: string }[];
+
+  // console.log(item.mainImage);
   return (
     <>
       {/* breadcrumb */}
@@ -53,64 +62,7 @@ export default async function ProdutoPage(props: { params: Params }) {
             <div className="col-md-6 col-lg-7 p-b-30">
               <div className="p-l-25 p-r-30 p-lr-0-lg">
                 <div className="wrap-slick3 flex-sb flex-w">
-                  <div className="wrap-slick3-dots" />
-                  <div className="wrap-slick3-arrows flex-sb-m flex-w" />
-                  <div className="slick3 gallery-lb">
-                    {item.mainImage && (
-                      <div className="item-slick3" data-thumb={item.mainImage}>
-                        <div className="wrap-pic-w pos-relative">
-                          <Image
-                            src={item.mainImage}
-                            alt="IMG-PRODUCT"
-                            width={500}
-                            height={600}
-                          />
-                          <a
-                            className="flex-c-m size-108 items-center how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                            href={item.mainImage}
-                          >
-                            <i className="fa fa-expand" />
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                    {item.image2 && (
-                      <div className="item-slick3" data-thumb={item.image2}>
-                        <div className="wrap-pic-w pos-relative">
-                          <Image
-                            src={item.image2}
-                            alt="IMG-PRODUCT"
-                            width={500}
-                            height={600}
-                          />
-                          <a
-                            className="flex-c-m size-108 how-pos1 items-center  bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                            href={item.image2}
-                          >
-                            <i className="fa fa-expand" />
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                    {item.image3 && (
-                      <div className="item-slick3" data-thumb={item.image3}>
-                        <div className="wrap-pic-w pos-relative">
-                          <Image
-                            src={item.image3}
-                            alt="IMG-PRODUCT"
-                            width={500}
-                            height={600}
-                          />
-                          <a
-                            className="flex-c-m size-108 items-center  how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                            href={item.image3}
-                          >
-                            <i className="fa fa-expand" />
-                          </a>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <ProductSlider images={images} />
                 </div>
               </div>
             </div>
@@ -262,8 +214,13 @@ export default async function ProdutoPage(props: { params: Params }) {
           </span>
         </div>
       </section>
-      {/* <Slick3Init item={item} /> */}
-      {/* <InitSlick3 item={item} /> */}
     </>
   );
+}
+
+{
+  /* <Slick3Init item={item} /> */
+}
+{
+  /* <InitSlick3 item={item} /> */
 }

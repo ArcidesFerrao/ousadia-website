@@ -153,6 +153,28 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   }
 }
 
+.slick-prev {
+  left: 15px !important;
+  z-index: 5;
+}
+.slick-next {
+  right: 15px !important;
+  z-index: 5;
+}
+.slick-next:before,
+.slick-prev:before {
+  color: #1d1d1dd3;
+}
+/* .slick-next,
+.slick-prev {
+  height: 80%;
+  width: 100%;
+} */
+
+.slick-gallery {
+  max-width: 500px;
+}
+
 .admin-page a {
   color: #b2b2b2;
   transition: all ease-out 300ms;

@@ -1,5 +1,6 @@
 import { Product } from "@/lib/generated/prisma/client";
 import Image from "next/image";
+import ProductSlider from "./ProductSlider";
 // import InitSlick3 from "./InitSlick3";
 
 // interface ProductModalProps {
@@ -13,6 +14,17 @@ export const ProductModal = ({
 {
   product: Product;
 }) => {
+  if (!product) return <p>Item nao encontrado</p>;
+
+  const images = [
+    product.mainImage && {
+      src: product.mainImage,
+      dataThumb: product.mainImage,
+    },
+    product.image2 && { src: product.image2, dataThumb: product.image2 },
+    product.image3 && { src: product.image3, dataThumb: product.image3 },
+  ].filter(Boolean) as { src: string; dataThumb: string }[];
+
   return (
     <div className="wrap-modal1 js-modal1 p-t-60 p-b-20">
       <div className="overlay-modal1 js-hide-modal1" />
@@ -26,67 +38,9 @@ export const ProductModal = ({
               height={24}
             />
           </button>
-          <div className="row">
-            <div className="col-md-6 col-lg-7 p-b-30">
-              <div className="p-l-25 p-r-30 p-lr-0-lg">
-                <div className="wrap-slick3 flex-sb flex-w">
-                  <div className="wrap-slick3-dots" />
-                  <div className="wrap-slick3-arrows flex-sb-m flex-w" />
-                  <div className="slick3 gallery-lb">
-                    <div
-                      className="item-slick3"
-                      data-thumb={product?.mainImage}
-                    >
-                      <div className="wrap-pic-w pos-relative">
-                        <Image
-                          src={product?.mainImage || ""}
-                          alt="IMG-PRODUCT"
-                          width={400}
-                          height={500}
-                        />
-                        <a
-                          className="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href={product?.mainImage}
-                        >
-                          <i className="fa fa-expand" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="item-slick3" data-thumb={product.image2}>
-                      <div className="wrap-pic-w pos-relative">
-                        <Image
-                          src={product.image2}
-                          alt="IMG-PRODUCT"
-                          width={400}
-                          height={500}
-                        />
-                        <a
-                          className="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href={product.image2}
-                        >
-                          <i className="fa fa-expand" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className="item-slick3" data-thumb={product.image3}>
-                      <div className="wrap-pic-w pos-relative">
-                        <Image
-                          src={product.image3}
-                          alt="IMG-PRODUCT"
-                          width={400}
-                          height={500}
-                        />
-                        <a
-                          className="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                          href={product.image3}
-                        >
-                          <i className="fa fa-expand" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="flex flex-wrap">
+            <div className="col-md-6 col-lg-7 p-5 justify-self-center">
+              <ProductSlider images={images} />
             </div>
             <div className="col-md-6 col-lg-5 p-b-30">
               <div className="p-r-50 p-t-5 p-lr-0-lg ">

@@ -4,7 +4,7 @@ import { Block } from "./Block";
 export const Banner = async () => {
   const bannerAds = await getBannerAds();
   return (
-    <div className="sec-banner bg0 p-t-80 p-b-50">
+    <div className="sec-banner bg0 p-t-80 p-b-80">
       <div className="container">
         <div className="row">
           {bannerAds &&

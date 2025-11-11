@@ -1,8 +1,10 @@
 'use server'
 
+import { Size } from "@/lib/generated/prisma/enums";
 import db from "@/lib/prisma";
 import { itemSchema } from "@/lib/schema";
 import { parseWithZod } from "@conform-to/zod";
+import { redirect } from "next/navigation";
 
 
 export async function getItems() {
@@ -85,4 +87,26 @@ export async function getMostOrdered() {
     );
 
     return products
+}
+
+
+export async function buyItem({id, amount, size}:{id: string; amount:number; size: Size}) {
+  const item = await db.product.findUnique({
+    where: {id},
+  })
+
+  if (!item ) return "item not found";
+
+  const pedido = await db.order.create({
+    data: {
+      productId: id,
+      price: item.basePrice,
+      quantity: amount,
+      totalAmount: item.basePrice * amount,
+      size: size
+    }
+  })
+  console.log(pedido)
+  redirect(`/produtos/${id}`)
+
 }
