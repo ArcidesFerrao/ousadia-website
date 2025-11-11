@@ -4,7 +4,6 @@ import { Size } from "@/lib/generated/prisma/enums";
 import db from "@/lib/prisma";
 import { itemSchema } from "@/lib/schema";
 import { parseWithZod } from "@conform-to/zod";
-import { redirect } from "next/navigation";
 
 
 export async function getItems() {
@@ -90,23 +89,42 @@ export async function getMostOrdered() {
 }
 
 
-export async function buyItem({id, amount, size}:{id: string; amount:number; size: Size}) {
-  const item = await db.product.findUnique({
-    where: {id},
-  })
-
-  if (!item ) return "item not found";
-
-  const pedido = await db.order.create({
-    data: {
-      productId: id,
-      price: item.basePrice,
-      quantity: amount,
-      totalAmount: item.basePrice * amount,
-      size: size
-    }
-  })
+export async function buyItem({
+  productId,
+  productName,
+  basePrice,
+  size,
+  quantity,
+  name,
+  phone,}:{
+    productId: string; productName: string; basePrice: number; quantity:number; size: Size; name: string; phone: string 
+  }) {
+    const message = `
+    *Novo Pedido*
+    ---------------------
+    *Nome:* ${name}
+    *Telefone:* ${phone}
+    ---------------------
+    *Produto:* ${productName}
+    *Tamanho:* ${size}
+    *Quantidade:* ${quantity}
+    *Preco:* ${basePrice * quantity}
+    ID do produto: ${productId}
+    `
+    const whatsappNumber = "258852740554"
+    const encodedMessage = encodeURIComponent(message.trim());
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    
+    const pedido = await db.order.create({
+      data: {
+        productId: productId,
+        price: basePrice,
+        quantity: quantity,
+        totalAmount: basePrice * quantity,
+        size: size
+      }
+    })
   console.log(pedido)
-  redirect(`/produtos/${id}`)
-
+  
+  return { redirect: whatsappURL}
 }

@@ -1,6 +1,7 @@
 import db from "@/lib/prisma";
 import Link from "next/link";
 import ProductSlider from "@/components/ProductSlider";
+import BuyButton from "@/components/BuyButton";
 
 type Params = Promise<{ id: string }>;
 
@@ -65,7 +66,12 @@ export default async function ProdutoPage(props: { params: Params }) {
                 </h4>
                 <span className="mtext-106 cl2">MZN {item.basePrice}.00 </span>
                 <p className="stext-102 cl3 p-t-23">{item.description}</p>
-                <div className="p-t-33 flex flex-col gap-2">
+                <BuyButton
+                  productId={item.id}
+                  productName={item.name}
+                  basePrice={item.basePrice}
+                />
+                {/* <div className="p-t-33 flex flex-col gap-2">
                   <div className="flex justify-between w-full p-b-10">
                     <div className=" flex-c-m respon6">Size</div>
                     <div className="rs1-select2 bor8 bg0">
@@ -100,7 +106,7 @@ export default async function ProdutoPage(props: { params: Params }) {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
