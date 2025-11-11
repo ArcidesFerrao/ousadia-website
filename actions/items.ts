@@ -108,7 +108,8 @@ export async function buyItem({
     *Produto:* ${productName}
     *Tamanho:* ${size}
     *Quantidade:* ${quantity}
-    *Preco:* ${basePrice * quantity}
+    *Preco:* ${basePrice}
+    *Valor:* ${basePrice * quantity}
     ID do produto: ${productId}
     `
     const whatsappNumber = "258852740554"

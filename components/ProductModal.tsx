@@ -1,6 +1,7 @@
 import { Product } from "@/lib/generated/prisma/client";
 import Image from "next/image";
 import ProductSlider from "./ProductSlider";
+import BuyButton from "./BuyButton";
 // import InitSlick3 from "./InitSlick3";
 
 // interface ProductModalProps {
@@ -52,44 +53,11 @@ export const ProductModal = ({
                 </span>
                 <p className="stext-102 cl3 p-t-23">{product?.description}</p>
                 {/*  */}
-                <div className=" flex flex-col justify-between gap-5 p-t-33">
-                  <div className="flex justify-between p-b-10">
-                    <div className=" flex-c-m respon6">Size</div>
-                    <div className=" respon6-next">
-                      <div className="rs1-select2 bor8 bg0">
-                        <select className="js-select2" name="time">
-                          <option>Choose an option</option>
-                          <option>S</option>
-                          <option>M</option>
-                          <option>L</option>
-                          <option>XL</option>
-                        </select>
-                        <div className="dropDownSelect2" />
-                      </div>
-                    </div>
-                  </div>
-                  {/* <div className="flex justify-between p-b-10">
-                      <div className=" flex-c-m respon6">Color</div>
-                      <div className=" respon6-next">
-                        <div className="rs1-select2 bor8 bg0">
-                          <select className="js-select2" name="time">
-                            <option>Choose an option</option>
-                            <option>Red</option>
-                            <option>Blue</option>
-                            <option>White</option>
-                            <option>Grey</option>
-                          </select>
-                          <div className="dropDownSelect2" />
-                        </div>
-                      </div>
-                    </div> */}
-                  <div className="flex-w flex-r-m p-b-10">
-                    <button className="flex-c-m stext-101 cl0 w-full p-2 bg1 bor1 hov-btn1 p-lr-15 trans-04 ">
-                      {/* <button className="flex-c-m stext-101 cl0 w-full p-2 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail"> */}
-                      Comprar
-                    </button>
-                  </div>
-                </div>
+                <BuyButton
+                  productId={product.id}
+                  basePrice={product.basePrice}
+                  productName={product.name}
+                />
               </div>
             </div>
           </div>
