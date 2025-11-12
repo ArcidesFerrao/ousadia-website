@@ -131,55 +131,6 @@ export default function AppWrapper({
             }
           });
         });
-
-        // setTimeout(() => {
-        //   $(".wrap-slick3").each(function () {
-        //     const $wrap = $(this);
-        //     const $slick3 = $wrap.find(".slick3");
-
-        //     // Check if element exists and has items
-        //     if (
-        //       $slick3.length === 0 ||
-        //       $slick3.find(".item-slick3").length === 0
-        //     ) {
-        //       return;
-        //     }
-
-        //     // Don't reinitialize if already initialized
-        //     if ($slick3.hasClass("slick-initialized")) {
-        //       return;
-        //     }
-
-        //     $slick3.slick({
-        //       slidesToShow: 1,
-        //       slidesToScroll: 1,
-        //       fade: true,
-        //       infinite: true,
-        //       autoplay: false,
-        //       autoplaySpeed: 6000,
-
-        //       arrows: true,
-        //       appendArrows: $(this).find(".wrap-slick3-arrows"),
-        //       prevArrow:
-        //         '<button class="arrow-slick3 prev-slick3"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-        //       nextArrow:
-        //         '<button class="arrow-slick3 next-slick3"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-
-        //       dots: true,
-        //       appendDots: $(this).find(".wrap-slick3-dots"),
-        //       dotsClass: "slick3-dots",
-        //       customPaging: function (slick, index) {
-        //         const portrait = $(slick.$slides[index]).data("thumb");
-        //         return (
-        //           '<img src=" ' +
-        //           portrait +
-        //           ' "/><div class="slick3-dot-overlay"></div>'
-        //         );
-        //       },
-        //     });
-        //   });
-        // }, 300);
-
         console.log("✅ Sliders reinitialized");
       }, 50);
 
@@ -216,8 +167,7 @@ export default function AppWrapper({
           $(".panel-filter").slideUp(400);
         }
       });
-      /*==================================================================
-    [ Fixed Header ]*/
+      /*================================================[ Fixed Header ]*/
       const headerDesktop = $(".container-menu-desktop");
       const wrapMenu = $(".wrap-menu-desktop");
       let posWrapHeader = 0;
@@ -246,6 +196,37 @@ export default function AppWrapper({
 
       $(window).on("scroll", handleScroll);
 
+      /*============================================[ Menu mobile ]*/
+      $(".btn-show-menu-mobile").on("click", function () {
+        $(this).toggleClass("is-active");
+        $(".menu-mobile").slideToggle();
+      });
+
+      const arrowMainMenu = $(".arrow-main-menu-m");
+      for (let i = 0; i < arrowMainMenu.length; i++) {
+        $(arrowMainMenu[i]).on("click", function () {
+          $(this).parent().find(".sub-menu-m").slideToggle();
+          $(this).toggleClass("turn-arrow-main-menu-m");
+        });
+      }
+
+      const handleResize = function () {
+        if (($(window).width() || 0) >= 992) {
+          if ($(".menu-mobile").css("display") === "block") {
+            $(".menu-mobile").css("display", "none");
+            $(".btn-show-menu-mobile").toggleClass("is-active");
+          }
+          $(".sub-menu-m").each(function () {
+            if ($(this).css("display") === "block") {
+              $(this).css("display", "none");
+              $(arrowMainMenu).removeClass("turn-arrow-main-menu-m");
+            }
+          });
+        }
+      };
+
+      $(window).on("resize", handleResize);
+
       // Modal triggers
       $(document).on("click", ".js-show-modal1", function (e) {
         e.preventDefault();
@@ -256,9 +237,32 @@ export default function AppWrapper({
         $(".js-modal1").removeClass("show-modal1");
       });
 
+      /*=========================================[ Back to top ]*/
+      const windowH = ($(window).height() || 0) / 2;
+
+      const handleBackToTopScroll = function () {
+        if (($(window).scrollTop() || 0) > windowH) {
+          $("#myBtn").css("display", "flex");
+        } else {
+          $("#myBtn").css("display", "none");
+        }
+      };
+
+      $(window).on("scroll", handleBackToTopScroll);
+
+      $("#myBtn").on("click", function () {
+        $("html, body").animate({ scrollTop: 0 }, 300);
+      });
+
       //  Cleanup
       return () => {
         clearTimeout(timer);
+        $(window).off("scroll", handleScroll);
+        $(window).off("resize", handleResize);
+        $(window).off("scroll", handleBackToTopScroll);
+        $(".btn-show-menu-mobile").off("click");
+        $(arrowMainMenu).off("click");
+        $("#myBtn").off("click");
         $(document).off("click", ".js-show-modal1");
         $(document).off("click", ".js-hide-modal1");
       };
