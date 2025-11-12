@@ -112,6 +112,9 @@ export async function getCategoriesWithProducts(): Promise<CategoryWithProducts[
     
     try {
         const data = await db.category.findMany({
+            where: {
+                isActive: true,
+            },
             include: {
                 products: true,
             },
@@ -124,6 +127,48 @@ export async function getCategoriesWithProducts(): Promise<CategoryWithProducts[
     } catch (error) {
         console.error('Error fetching categories with products:', error);
         return [];
+    }
+    
+}
+export async function getCategoryWithProducts(id: string): Promise<CategoryWithProducts | null> {
+    
+    try {
+        const data = await db.category.findUnique({
+            where: { id },
+            include: {
+                products: true,
+            },
+        });
+        if (!data) {
+            throw new Error('Failed to fetch category data');
+        }
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching category with products:', error);
+        return null;
+    }
+    
+}
+export async function getCategoryBySlug(slug: string): Promise<CategoryWithProducts | null> {
+    
+    try {
+        const data = await db.category.findUnique({
+            where: { slug, 
+                isActive: true,
+             },
+            include: {
+                products: true,
+            },
+        });
+        if (!data) {
+            throw new Error('Failed to fetch category data');
+        }
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching category with products:', error);
+        return null;
     }
     
 }

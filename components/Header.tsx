@@ -1,5 +1,6 @@
 "use client";
 
+import { Category } from "@/lib/generated/prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,6 +10,7 @@ export const Header = () => {
   const pathname = usePathname();
   const [isMenu, setIsMenu] = useState(false);
   const [promo, setPromo] = useState("");
+  const [categories, setCategories] = useState<Category[]>([]);
   const [isSubMenu, setIsSubMenu] = useState<string | null>(null);
 
   let headerClass = "";
@@ -29,6 +31,16 @@ export const Header = () => {
   };
 
   useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const res = await fetch("/api/categories");
+        if (!res.ok) throw new Error("Error getting categories");
+        const data = await res.json();
+        setCategories(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     const getPromo = async () => {
       try {
         const res = await fetch("/api/promo");
@@ -40,6 +52,7 @@ export const Header = () => {
       }
     };
 
+    getCategories();
     getPromo();
     const handleResize = () => {
       if (window.innerWidth >= 992 && isMenu) {
@@ -93,15 +106,13 @@ export const Header = () => {
                 <li>
                   <a href="/categorias">Categorias</a>
                   <ul className="sub-menu">
-                    <li>
-                      <a href="index.html">Shetas</a>
-                    </li>
-                    <li>
-                      <a href="home-02.html">Bones</a>
-                    </li>
-                    <li>
-                      <a href="home-03.html">Collabs</a>
-                    </li>
+                    {categories.map((category) => (
+                      <li key={category.id}>
+                        <a href={`/categorias/${category.slug}`}>
+                          {category.name}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </li>
                 <li>
@@ -228,15 +239,11 @@ export const Header = () => {
               className="sub-menu-m"
               style={{ display: isSubMenu === "categorias" ? "block" : "none" }}
             >
-              <li>
-                <a href="index.html">Shetas</a>
-              </li>
-              <li>
-                <a href="home-02.html">Bones</a>
-              </li>
-              <li>
-                <a href="home-03.html">Collabs</a>
-              </li>
+              {categories.map((category) => (
+                <li key={category.id}>
+                  <a href={`/categorias/${category.slug}`}>{category.name}</a>
+                </li>
+              ))}
             </ul>
             <span
               className={`arrow-main-menu-m ${

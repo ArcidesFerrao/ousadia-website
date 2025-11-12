@@ -7,7 +7,7 @@ import Slider, { Settings } from "react-slick";
 
 type ImageItem = {
   src: string;
-  dataThumb: string;
+  // dataThumb: string;
 };
 
 export default function ProductSlider({ images }: { images: ImageItem[] }) {
@@ -24,7 +24,7 @@ export default function ProductSlider({ images }: { images: ImageItem[] }) {
     <div className="gallery-lb max-w-fit">
       <Slider {...settings}>
         {images.map((image, index) => (
-          <div key={index} data-thumb={image.dataThumb}>
+          <div key={index} data-thumb={image.src} data-caption="Product Image">
             <div>
               <Image
                 src={image.src}

@@ -228,14 +228,14 @@ export default function AppWrapper({
       $(window).on("resize", handleResize);
 
       // Modal triggers
-      $(document).on("click", ".js-show-modal1", function (e) {
-        e.preventDefault();
-        $(".js-modal1").addClass("show-modal1");
-      });
+      // $(document).on("click", ".js-show-modal1", function (e) {
+      //   e.preventDefault();
+      //   $(".js-modal1").addClass("show-modal1");
+      // });
 
-      $(document).on("click", ".js-hide-modal1", function () {
-        $(".js-modal1").removeClass("show-modal1");
-      });
+      // $(document).on("click", ".js-hide-modal1", function () {
+      //   $(".js-modal1").removeClass("show-modal1");
+      // });
 
       /*=========================================[ Back to top ]*/
       const windowH = ($(window).height() || 0) / 2;

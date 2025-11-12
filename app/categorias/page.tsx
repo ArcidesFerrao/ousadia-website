@@ -1,5 +1,5 @@
 import { getCategoriesWithProducts } from "@/actions/categories";
-import CategorySelection from "@/components/CategorySelection";
+import { CategorySelection } from "@/components/CategorySelection";
 import { CategoryWithProducts } from "@/types/types";
 import Link from "next/link";
 

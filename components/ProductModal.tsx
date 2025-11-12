@@ -1,20 +1,12 @@
+"use client";
+
 import { Product } from "@/lib/generated/prisma/client";
 import Image from "next/image";
 import ProductSlider from "./ProductSlider";
 import BuyButton from "./BuyButton";
-// import InitSlick3 from "./InitSlick3";
+import { useState } from "react";
 
-// interface ProductModalProps {
-//   product: Product | null;
-//   onClose: () => void;
-// }
-
-export const ProductModal = ({
-  product,
-}: //  onClose
-{
-  product: Product;
-}) => {
+export const ProductModal = ({ product }: { product: Product }) => {
   if (!product) return <p>Item nao encontrado</p>;
 
   const images = [
@@ -63,7 +55,72 @@ export const ProductModal = ({
           </div>
         </div>
       </div>
-      {/* <InitSlick3 /> */}
     </div>
+  );
+};
+
+export const ProductModalSimple = ({
+  product,
+  trigger,
+}: {
+  product: Product;
+  trigger: React.ReactNode;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <div onClick={() => setIsOpen(true)}>{trigger}</div>
+      {isOpen && (
+        <div className="wrap-modal1 js-modal1 p-t-60 p-b-20">
+          <div className="overlay-modal1 js-hide-modal1" />
+          <div className="container">
+            <div className="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="how-pos3 hov3 trans-04 js-hide-modal1"
+              >
+                <Image
+                  src="/images/icons/icon-close.png"
+                  alt="CLOSE"
+                  width={24}
+                  height={24}
+                />
+              </button>
+              <div className="flex flex-wrap">
+                <div className="col-md-6 col-lg-7 p-5 justify-self-center">
+                  <ProductSlider
+                    images={[
+                      product.mainImage,
+                      product.image2,
+                      product.image3,
+                    ].map((src) => ({ src, dataThumb: src }))}
+                  />
+                </div>
+                <div className="col-md-6 col-lg-5 p-b-30">
+                  <div className="p-r-50 p-t-5 p-lr-0-lg ">
+                    <h4 className="mtext-105 cl2 js-name-detail p-b-14">
+                      {product?.name}
+                    </h4>
+                    <span className="mtext-106 cl2">
+                      MZN {product?.basePrice.toFixed(2)}
+                    </span>
+                    <p className="stext-102 cl3 p-t-23">
+                      {product?.description}
+                    </p>
+                    {/*  */}
+                    <BuyButton
+                      productId={product.id}
+                      basePrice={product.basePrice}
+                      productName={product.name}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
