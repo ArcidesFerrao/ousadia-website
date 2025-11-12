@@ -2,6 +2,7 @@
 
 import db from "@/lib/prisma";
 import { bannerSchema, categorySchema, collectionSchema, sliderSchema } from "@/lib/schema";
+import { CategoryWithProducts } from "@/types/types";
 import { parseWithZod } from "@conform-to/zod";
 
 export async function createCategory(prevState: unknown, formData: FormData) {
@@ -105,4 +106,24 @@ export async function createCollectionSliderAd(prevState: unknown, formData: For
             addedSliderAd
         }
     }
+}
+
+export async function getCategoriesWithProducts(): Promise<CategoryWithProducts[]> {
+    
+    try {
+        const data = await db.category.findMany({
+            include: {
+                products: true,
+            },
+        });
+        if (!data) {
+            throw new Error('Failed to fetch categories');
+        }
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching categories with products:', error);
+        return [];
+    }
+    
 }
