@@ -58,6 +58,7 @@ export const Card = () => {
     </div>
   );
 };
+
 export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <>
@@ -69,12 +70,17 @@ export const ProductCard = ({ product }: { product: Product }) => {
             width={400}
             height={500}
           />
-          <a
-            href="#"
-            className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
-          >
-            Comprar
-          </a>
+          <ProductModalSimple
+            product={product}
+            trigger={
+              <a
+                href="#"
+                className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+              >
+                Comprar
+              </a>
+            }
+          />
         </div>
         <div className="block2-txt flex-w flex-t p-t-14">
           <div className="block2-txt-child1 flex-col-l ">
@@ -84,9 +90,18 @@ export const ProductCard = ({ product }: { product: Product }) => {
             >
               {product.name}
             </a>
-            <span className="stext-105 cl3">MZN {product.basePrice}.00</span>
+            <span className="stext-105 cl3">
+              MZN {product.basePrice.toFixed(2)}
+            </span>
           </div>
-          {/* <div className="block2-txt-child2 flex-r p-t-3">
+        </div>
+      </div>
+    </>
+  );
+};
+
+{
+  /* <div className="block2-txt-child2 flex-r p-t-3">
             <a
             href="#"
             className="btn-addwish-b2 dis-block pos-relative js-addwish-b2"
@@ -106,17 +121,5 @@ export const ProductCard = ({ product }: { product: Product }) => {
                 height={500}
               />
               </a>
-              </div> */}
-        </div>
-      </div>
-      <ProductModalSimple
-        product={product}
-        trigger={
-          <a href="#" className="...">
-            Quick View
-          </a>
-        }
-      />
-    </>
-  );
-};
+              </div> */
+}

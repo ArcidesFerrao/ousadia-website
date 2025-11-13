@@ -67,12 +67,21 @@ export const ProductModalSimple = ({
   trigger: React.ReactNode;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const images = [product.mainImage, product.image2, product.image3]
+    .filter((img): img is string => !!img)
+    .map((src) => ({ src, dataThumb: src }));
   return (
     <>
-      <div onClick={() => setIsOpen(true)}>{trigger}</div>
+      <div
+        onClick={(e) => {
+          e.preventDefault();
+          setIsOpen(true);
+        }}
+      >
+        {trigger}
+      </div>
       {isOpen && (
-        <div className="wrap-modal1 js-modal1 p-t-60 p-b-20">
+        <div className="wrap-modal1 js-modal1 p-t-60 p-b-20 show-modal1">
           <div className="overlay-modal1 js-hide-modal1" />
           <div className="container">
             <div className="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
@@ -89,13 +98,7 @@ export const ProductModalSimple = ({
               </button>
               <div className="flex flex-wrap">
                 <div className="col-md-6 col-lg-7 p-5 justify-self-center">
-                  <ProductSlider
-                    images={[
-                      product.mainImage,
-                      product.image2,
-                      product.image3,
-                    ].map((src) => ({ src, dataThumb: src }))}
-                  />
+                  <ProductSlider images={images} />
                 </div>
                 <div className="col-md-6 col-lg-5 p-b-30">
                   <div className="p-r-50 p-t-5 p-lr-0-lg ">
