@@ -7,7 +7,6 @@ import Slider, { Settings } from "react-slick";
 
 type ImageItem = {
   src: string;
-  // dataThumb: string;
 };
 
 export default function ProductSlider({ images }: { images: ImageItem[] }) {

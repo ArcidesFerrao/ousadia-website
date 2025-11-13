@@ -30,7 +30,6 @@ export function CategorySelected({
 }: {
   category: CategoryWithProducts;
 }) {
-  // console.log("CategorySelected category:", category.products.length);
   return (
     <>
       <div className="p-b-10" id={category.id}>
