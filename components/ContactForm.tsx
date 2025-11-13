@@ -1,39 +1,14 @@
+"use client";
+
 import Image from "next/image";
-import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function ContactForm() {
-  const [isSending, setIsSending] = useState(false);
+  const [state, handleSubmit] = useForm("xgvkkrkw");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSending(true);
-
-    const form = e.currentTarget as HTMLFormElement;
-    const formData = new FormData(form);
-
-    try {
-      const response = await fetch("https://formspree.io/f/xvgaadaz", {
-        method: "POST",
-        body: formData,
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      if (response.ok) {
-        form.reset();
-        alert("Mensagem enviada com sucesso!");
-      } else {
-        alert(
-          "Ocorreu um erro ao enviar a mensagem. Por favor, tente novamente."
-        );
-      }
-    } catch (error) {
-      console.error("Erro ao enviar o formulário:", error);
-    } finally {
-      setIsSending(false);
-    }
-  };
+  if (state.succeeded) {
+    return <p>Obrigado por entrar em contacto connosco!</p>;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -53,6 +28,7 @@ export default function ContactForm() {
           height={18}
         />
       </div>
+      <ValidationError prefix="Email" field="email" errors={state.errors} />
       <div className="bor8 m-b-20 how-pos4-parent">
         <input
           className="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
@@ -61,6 +37,7 @@ export default function ContactForm() {
           placeholder="Nome Completo"
         />
       </div>
+      <ValidationError prefix="Email" field="email" errors={state.errors} />
       <div className="bor8 m-b-20 how-pos4-parent">
         <input
           className="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
@@ -77,12 +54,13 @@ export default function ContactForm() {
           defaultValue={""}
         />
       </div>
+      <ValidationError prefix="message" field="msg" errors={state.errors} />
       <button
         type="submit"
-        disabled={isSending}
+        disabled={state.submitting}
         className="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
       >
-        {isSending ? "..." : "Enviar"}
+        {state.submitting ? "..." : "Enviar"}
       </button>
     </form>
   );

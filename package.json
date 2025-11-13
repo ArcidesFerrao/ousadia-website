@@ -12,6 +12,7 @@
   "dependencies": {
     "@conform-to/react": "^1.13.3",
     "@conform-to/zod": "^1.13.3",
+    "@formspree/react": "^3.0.0",
     "@prisma/client": "^6.19.0",
     "@prisma/extension-accelerate": "^2.0.2",
     "@uploadthing/react": "^7.3.3",

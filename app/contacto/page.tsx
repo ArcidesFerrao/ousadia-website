@@ -1,4 +1,5 @@
-import Image from "next/image";
+import ContactForm from "@/components/ContactForm";
+// import Image from "next/image";
 
 export default function ContactoPage() {
   return (
@@ -11,9 +12,10 @@ export default function ContactoPage() {
       </section>
       <section className="bg0 p-t-104 p-b-116">
         <div className="container">
-          <div className="flex">
+          <div className="flex-w flex-tr">
             <div className="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-              <form>
+              <ContactForm />
+              {/* <form>
                 <div className="bor8 m-b-20 how-pos4-parent">
                   <input
                     className="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
@@ -59,9 +61,9 @@ export default function ContactoPage() {
                 >
                   Enviar
                 </button>
-              </form>
+              </form> */}
             </div>
-            <div className=" bor10 flex-w flex-col-m gap-5 p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+            <div className="size-210 bor10 m-t-20 flex-w flex-col-m gap-5 p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
               <div className="flex-w w-full ">
                 <div className=" p-t-2">
                   <span className="mtext-110 cl2">Endereço</span>
@@ -76,7 +78,7 @@ export default function ContactoPage() {
                 </span>
                 <div className=" p-t-2">
                   <span className="mtext-110 cl2">Contacte-nos</span>
-                  <p className="stext-115 cl1  p-t-18">+258 845398661</p>
+                  <p className="stext-115 cl6  p-t-18">+258 845398661</p>
                 </div>
               </div>
             </div>
