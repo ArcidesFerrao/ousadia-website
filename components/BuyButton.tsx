@@ -81,7 +81,7 @@ export default function BuyButton({
       {showForm && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50 ">
           <div className="bg2 form-modal-item rounded-lg shadow-md">
-            <div className="p-6 flex flex-col gap-5 m-6 w-88">
+            <div className="p-6 flex flex-col gap-5 m-6 max-w-88">
               <span className="mtext-109">Finalizar Pedido</span>
               <div className="py-2 flex flex-col gap-4">
                 <div>

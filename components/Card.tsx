@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ProductModalSimple } from "./ProductModal";
+// import { ProductModalSimple } from "./ProductModal";
 import { Product } from "@/lib/generated/prisma/client";
 
 export const Card = () => {
@@ -48,7 +48,13 @@ export const ProductCard = ({ product }: { product: Product }) => {
             width={400}
             height={500}
           />
-          <ProductModalSimple
+          <a
+            href="#"
+            className="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1"
+          >
+            Comprar
+          </a>
+          {/* <ProductModalSimple
             product={product}
             trigger={
               <a
@@ -58,7 +64,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
                 Comprar
               </a>
             }
-          />
+          /> */}
         </div>
         <div className="block2-txt flex-w flex-t p-t-14">
           <div className="block2-txt-child1 flex-col-l ">
