@@ -22,7 +22,11 @@ export default async function CategoriesPage() {
       <div className="bg0 m-t-23 p-b-140">
         <div className="container">
           {categoriesWithProducts.map((category: CategoryWithProducts) => (
-            <CategorySelection key={category.id} category={category} />
+            <div key={category.id}>
+              {category.products.length !== 0 && (
+                <CategorySelection key={category.id} category={category} />
+              )}
+            </div>
           ))}
         </div>
       </div>

@@ -63,6 +63,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
   return (
     <>
       <div className="block2">
+        {/* <div className="block2-pic hov-img0"> */}
         <div className="block2-pic hov-img0">
           <Image
             src={product.mainImage}
