@@ -19,6 +19,9 @@ export default function ClientItemsList({
   const [selectedItem, setSelectedItem] = useState<Product | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
+  const [showFilter, setShowFilter] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+
   const filteredItems = items.filter((item) => {
     const matchesSearch = item.name
       .toLowerCase()
@@ -30,10 +33,41 @@ export default function ClientItemsList({
     return matchesCategory && matchesSearch;
   });
 
+  const handleFilterToggle = () => {
+    setShowFilter(!showFilter);
+
+    if (showSearch) {
+      setShowSearch(false);
+    }
+  };
+
+  const handleSearchToggle = () => {
+    setShowSearch(!showSearch);
+
+    if (showFilter) {
+      setShowFilter(false);
+    }
+  };
+
   return (
     <>
       <div className="flex-w flex-sb-m p-b-10">
-        <div className="flex-w flex-l-m filter-tope-group m-tb-10">
+        <div
+          onClick={handleFilterToggle}
+          className={`flex-c-m w-full stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-filter ${
+            showFilter ? "show-filter" : ""
+          } `}
+        >
+          <i
+            className={`icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list `}
+          />
+          Filtro
+        </div>
+        <div
+          className={`flex-w flex-l-m p-l-15 filter-tope-group m-tb-10 panel-filter ${
+            showFilter ? "" : "dis-none"
+          }`}
+        >
           <button
             className={`stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${
               selectedCategory === null ? "how-active1" : ""
@@ -54,15 +88,28 @@ export default function ClientItemsList({
             </button>
           ))}
         </div>
-        <div className="flex-w flex-c-m m-tb-10">
-          <div className="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-            <i className="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search" />
-            <i className="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" />
+        <div className="flex-w flex-c-m m-tb-10 w-full">
+          <div
+            onClick={handleSearchToggle}
+            className={`flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search ${
+              showSearch ? "show-search" : ""
+            } `}
+          >
+            <i
+              className={`cl2 m-r-6 fs-15 trans-04 zmdi ${
+                showSearch ? " zmdi-close" : " zmdi-search"
+              }`}
+            />
+            {/* <i className="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" /> */}
             Busca
           </div>
         </div>
         {/* Search product */}
-        <div className="dis-none panel-search w-full p-t-10 p-b-15">
+        <div
+          className={`panel-search w-full p-t-10 p-b-15 ${
+            showSearch ? "" : "dis-none"
+          }`}
+        >
           <div className="bor8 dis-flex p-l-15">
             <button className="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
               <i className="zmdi zmdi-search" />
