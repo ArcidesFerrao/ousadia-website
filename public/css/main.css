@@ -103,6 +103,16 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   max-width: 1380px;
 }
 
+@media (min-width: 600px) {
+  .dash-buttons-mobile {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .dash-buttons-display {
+    display: none;
+  }
+}
 @media (max-width: 1600px) {
   .container {
     max-width: 1200px;

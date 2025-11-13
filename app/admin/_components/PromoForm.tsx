@@ -36,7 +36,7 @@ export const PromoForm = () => {
   }, []);
 
   return (
-    <div className="flex justify-between gap-4">
+    <div className="flex justify-between w-full gap-4">
       {onEdit ? (
         <form
           onSubmit={(e) => {
@@ -45,7 +45,7 @@ export const PromoForm = () => {
             createPromo(promo);
             // if (createdPromo) redirect("/admin");
           }}
-          className="flex flex-col bg3 gap-5 p-2 min-w-40 opacity-70 hover:opacity-95"
+          className="flex flex-col bg3 gap-5 p-2 w-full  min-w-40 opacity-70 hover:opacity-95"
         >
           <div className="flex flex-col gap-2">
             <h5>Top Bar Promo</h5>

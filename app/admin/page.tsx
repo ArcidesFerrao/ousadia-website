@@ -20,11 +20,11 @@ export default async function AdminPage() {
 
   return (
     <div
-      className={`${poppins.className} admin-page bg3 text-gray-300 flex flex-col gap-5 p-4  `}
+      className={`${poppins.className} container admin-page bg3 text-gray-300 flex flex-col gap-5 p-4  `}
     >
       <div className="flex justify-between items-center">
         <h2>Dashboard</h2>
-        <div className="flex items-center gap-4 text-sm">
+        <div className="flex items-center gap-4 text-sm dash-buttons-display">
           <Link
             className="px-3 py-2 border rounded-sm opacity-55 hover:opacity-95"
             href="/admin/categorias/collection/new"
@@ -53,6 +53,26 @@ export default async function AdminPage() {
           url="/admin/items"
         />
         <InfoCard title="Pedidos" value={ordersCount} url="/admin/pedidos" />
+        <div className="flex flex-col  gap-4 text-sm dash-buttons-mobile">
+          <Link
+            className="px-3 py-2 border rounded-sm max-h-fit opacity-55 hover:opacity-95"
+            href="/admin/categorias/collection/new"
+          >
+            + Colecao
+          </Link>
+          <Link
+            className="px-3 py-2 border rounded-sm max-h-fit opacity-55 hover:opacity-95"
+            href="/admin/categorias/new"
+          >
+            + Categoria
+          </Link>
+          <Link
+            className="px-3 py-2 border rounded-sm max-h-fit opacity-55 hover:opacity-95"
+            href="/admin/items/new"
+          >
+            + Item
+          </Link>
+        </div>
         {/* <InfoCard title="Clientes" value={8} url="/admin/clientes" /> */}
       </div>
       {mostOrdered.length > 0 && (
