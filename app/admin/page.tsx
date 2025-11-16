@@ -51,7 +51,7 @@ export default async function AdminPage() {
         <InfoTotalCard
           title="Total de Vendas"
           amount={completedTotalCount}
-          url="/admin/sales"
+          url="/admin/vendas"
         />
         <InfoCard
           title="Items"

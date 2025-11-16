@@ -3,6 +3,18 @@ import { poppins } from "@/lib/font";
 
 export default async function OrdersPage() {
   const orders = await getOrders();
+
+  if (orders.length === 0) {
+    return (
+      <div
+        className={`${poppins.className} flex flex-col items-center justify-center gap-5 w-full p-4 bg3 admin-pages-section`}
+      >
+        {" "}
+        Nenhum pedido encontrado
+      </div>
+    );
+  }
+
   return (
     <div
       className={`${poppins.className} container admin-pages-section bg3 text-gray-300 flex flex-col gap-5 p-4  `}
