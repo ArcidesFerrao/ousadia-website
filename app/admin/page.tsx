@@ -9,7 +9,7 @@ import Link from "next/link";
 import { poppins } from "@/lib/font";
 import { PromoForm } from "./_components/PromoForm";
 import { getBannerAds, getSliderAds } from "@/actions/promo";
-import { getOrdersCount } from "@/actions/orders";
+import { completedTotal, getOrdersCount } from "@/actions/orders";
 
 export default async function AdminPage() {
   const items = getItems();
@@ -17,6 +17,7 @@ export default async function AdminPage() {
   const sliderAds = await getSliderAds();
   const mostOrdered = await getMostOrdered();
   const ordersCount = await getOrdersCount();
+  const completedTotalCount = await completedTotal();
 
   return (
     <div
@@ -46,7 +47,11 @@ export default async function AdminPage() {
         </div>
       </div>
       <div className="flex-w gap-2 justify-between ">
-        <InfoCard title="Total de Vendas" amount={28900} url="/admin/sales" />
+        <InfoCard
+          title="Total de Vendas"
+          amount={completedTotalCount}
+          url="/admin/sales"
+        />
         <InfoCard
           title="Items"
           value={(await items).length}

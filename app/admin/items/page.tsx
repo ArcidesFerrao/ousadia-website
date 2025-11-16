@@ -1,8 +1,10 @@
+import { getItems } from "@/actions/items";
 import { poppins } from "@/lib/font";
 import Link from "next/link";
 import React from "react";
 
-export default function ItemsPage() {
+export default async function ItemsPage() {
+  const items = await getItems();
   return (
     <div
       className={`${poppins.className} flex flex-col gap-5 w-full p-4 bg3 admin-pages-section`}
@@ -19,14 +21,20 @@ export default function ItemsPage() {
             <tr>
               <th>Item</th>
               <th>Cor</th>
-              <th>Tamanho</th>
               <th>Stock</th>
               <th>Preco</th>
               <th>Desconto</th>
             </tr>
           </thead>
           <tbody>
-            <tr></tr>
+            {items.map((item) => (
+              <tr key={item.id}>
+                <td>{item.name}</td>
+                <td>{item.color}</td>
+                <td>{item.basePrice}</td>
+                <td>{item.discount}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
