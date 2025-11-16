@@ -32,3 +32,18 @@ export async function completedTotal() {
     return orders._sum.totalAmount || 0
 
 }
+export async function getCompletedOrders() {
+
+    const orders = await  db.order.findMany({
+                where: {
+            status: 'COMPLETED'
+        },
+        include: {
+            product: true
+        }
+    })
+
+    return orders
+
+}
+

@@ -1,6 +1,7 @@
 import {
   BannerCard,
   InfoCard,
+  InfoTotalCard,
   ProductDashCard,
   SliderCard,
 } from "./_components/DashCard";
@@ -47,7 +48,7 @@ export default async function AdminPage() {
         </div>
       </div>
       <div className="flex-w gap-2 justify-between ">
-        <InfoCard
+        <InfoTotalCard
           title="Total de Vendas"
           amount={completedTotalCount}
           url="/admin/sales"
