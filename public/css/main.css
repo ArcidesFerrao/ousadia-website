@@ -205,6 +205,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   transition: all ease-out 300ms;
 }
 
+.admin-pages-section tr th,
+.admin-pages-section tr td {
+  padding: 0.4rem 0;
+}
 .admin-page tr th,
 .admin-page tr td {
   padding: 0.4rem 1rem;
