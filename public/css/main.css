@@ -167,11 +167,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .panel-search {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease-out;
+  transition: max-height 0.4s ease-in;
 }
-.panel-filter:not(.dis-none),
-.panel-search:not(.dis-none) {
-  max-height: 500px;
+.panel-filter.show,
+.panel-search.show {
+  max-height: 200px;
 }
 
 .form-modal-item {

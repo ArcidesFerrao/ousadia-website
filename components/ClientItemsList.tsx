@@ -64,34 +64,36 @@ export default function ClientItemsList({
           Filtro
         </div>
         <div
-          className={`flex-w flex-l-m p-l-15 filter-tope-group m-tb-10 panel-filter ${
-            showFilter ? "" : "dis-none"
+          className={` p-l-15 filter-tope-group m-tb-10 panel-filter ${
+            showFilter ? "show" : ""
           }`}
         >
-          <button
-            className={`stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${
-              selectedCategory === null ? "how-active1" : ""
-            } `}
-            onClick={() => setSelectedCategory(null)}
-          >
-            Todos
-          </button>
-          {categories.map((c) => (
+          <div className="bor8 dis-flex p-l-15">
             <button
-              key={c.id}
               className={`stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${
-                selectedCategory === c.id ? "how-active1" : ""
-              }`}
-              onClick={() => setSelectedCategory(c.id)}
+                selectedCategory === null ? "how-active1" : ""
+              } `}
+              onClick={() => setSelectedCategory(null)}
             >
-              {c.name}
+              Todos
             </button>
-          ))}
+            {categories.map((c) => (
+              <button
+                key={c.id}
+                className={`stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 ${
+                  selectedCategory === c.id ? "how-active1" : ""
+                }`}
+                onClick={() => setSelectedCategory(c.id)}
+              >
+                {c.name}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="flex-w flex-c-m m-tb-10 w-full">
           <div
             onClick={handleSearchToggle}
-            className={`flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search ${
+            className={`flex-c-m w-full  stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search ${
               showSearch ? "show-search" : ""
             } `}
           >
@@ -107,7 +109,7 @@ export default function ClientItemsList({
         {/* Search product */}
         <div
           className={`panel-search w-full p-t-10 p-b-15 ${
-            showSearch ? "" : "dis-none"
+            showSearch ? "show" : ""
           }`}
         >
           <div className="bor8 dis-flex p-l-15">
