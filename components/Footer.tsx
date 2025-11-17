@@ -51,13 +51,25 @@ export const Footer = () => {
             <div className="col-sm-6 col-lg-3 p-b-50  ">
               <h4 className="stext-301 cl0 p-b-10">Contacte-nos</h4>
               <div>
-                <a href="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                <a
+                  href="https://api.whatsapp.com/send?phone=%2B258845398661&context=AffveXQCHGj3O5MJbVSuNam1GwahGj95PSOy3tKLvG7ON8EuGRkpTOXjgBMF8JPmGNGcn1isUnVBH0rxFgbUg1AJp2cT0hBuqYH67rUAPAFbD_NTjpwYBnxTLJuOKgGLkRybf6wEkoXDtFx53CUnhY3m_A&source=FB_Page&app=facebook&entry_point=page_cta&fbclid=IwY2xjawOHtENleHRuA2FlbQIxMABicmlkETF5T1NnaFV4ek1oTThKT3Zwc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MghjYWxsc2l0ZQEyAAEenn2FQhTpBJ1o6ghHo12RKgqB94TmHSIh0wOmYyf-x5XLgR2oVhAhizJG36E_aem_HFUB72noPgPyfKSHj0rohA"
+                  target="_blank"
+                  className="fs-18 cl7 hov-cl1 trans-04 m-r-16"
+                >
                   <i className="fa fa-whatsapp" />
                 </a>
-                <a href="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100085448553558"
+                  target="_blank"
+                  className="fs-18 cl7 hov-cl1 trans-04 m-r-16"
+                >
                   <i className="fa fa-facebook" />
                 </a>
-                <a href="#" className="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                <a
+                  href="https://www.instagram.com/vesteousadia/"
+                  target="_blank"
+                  className="fs-18 cl7 hov-cl1 trans-04 m-r-16"
+                >
                   <i className="fa fa-instagram" />
                 </a>
               </div>
