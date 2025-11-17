@@ -7,7 +7,6 @@ import {
 } from "./_components/DashCard";
 import { getItems, getMostOrdered } from "@/actions/items";
 import Link from "next/link";
-import { poppins } from "@/lib/font";
 import { PromoForm } from "./_components/PromoForm";
 import { getBannerAds, getSliderAds } from "@/actions/promo";
 import { completedTotal, getOrdersCount } from "@/actions/orders";
@@ -21,9 +20,7 @@ export default async function AdminPage() {
   const completedTotalCount = await completedTotal();
 
   return (
-    <div
-      className={`${poppins.className} container admin-page bg3 text-gray-300 flex flex-col gap-5 p-4  `}
-    >
+    <>
       <div className="flex justify-between items-center">
         <h2>Dashboard</h2>
         <div className="flex items-center gap-4 text-sm dash-buttons-display">
@@ -161,6 +158,6 @@ export default async function AdminPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

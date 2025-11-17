@@ -7,7 +7,7 @@ export default async function SalesPage() {
   if (completedOrders.length === 0) {
     return (
       <div
-        className={`${poppins.className} flex flex-col items-center justify-center gap-5 w-full p-4 bg3 admin-pages-section`}
+        className={`${poppins.className} flex flex-col items-center justify-center w-full`}
       >
         {" "}
         Nenhuma venda encontrada
@@ -15,9 +15,7 @@ export default async function SalesPage() {
     );
   }
   return (
-    <div
-      className={`${poppins.className} flex flex-col gap-5 w-full p-4 bg3 admin-pages-section`}
-    >
+    <>
       <div className="flex justify-between">
         <h3>Lista de Vendas</h3>
       </div>
@@ -43,6 +41,6 @@ export default async function SalesPage() {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }

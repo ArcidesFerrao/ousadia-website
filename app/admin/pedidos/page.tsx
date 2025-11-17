@@ -1,24 +1,14 @@
 import { getOrders } from "@/actions/orders";
-import { poppins } from "@/lib/font";
 
 export default async function OrdersPage() {
   const orders = await getOrders();
 
   if (orders.length === 0) {
-    return (
-      <div
-        className={`${poppins.className} flex flex-col items-center justify-center gap-5 w-full p-4 bg3 admin-pages-section`}
-      >
-        {" "}
-        Nenhum pedido encontrado
-      </div>
-    );
+    return <> Nenhum pedido encontrado</>;
   }
 
   return (
-    <div
-      className={`${poppins.className} container admin-pages-section bg3 text-gray-300 flex flex-col gap-5 p-4  `}
-    >
+    <>
       <div className="flex">
         <h3>Lista de Pedidos</h3>
       </div>
@@ -48,6 +38,6 @@ export default async function OrdersPage() {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }

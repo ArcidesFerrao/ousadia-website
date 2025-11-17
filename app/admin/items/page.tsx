@@ -1,25 +1,13 @@
 import { getItems } from "@/actions/items";
-import { poppins } from "@/lib/font";
 import Link from "next/link";
-import React from "react";
-
 export default async function ItemsPage() {
   const items = await getItems();
 
   if (items.length === 0) {
-    return (
-      <div
-        className={`${poppins.className} flex flex-col items-center justify-center gap-5 w-full p-4 bg3 admin-pages-section`}
-      >
-        {" "}
-        Nenhum item encontrado
-      </div>
-    );
+    return <> Nenhum item encontrado</>;
   }
   return (
-    <div
-      className={`${poppins.className} flex flex-col gap-5 w-full p-4 bg3 admin-pages-section`}
-    >
+    <>
       <div className="flex justify-between">
         <h3>Lista de Items</h3>
         <Link href="/admin/items/new" className="px-4 py-2">
@@ -49,6 +37,6 @@ export default async function ItemsPage() {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }
