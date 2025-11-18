@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export const OrderList = ({ orders }: { orders: OrderWithProduct[] }) => {
   const [search, setSearch] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   const filteredOrders = orders.filter((order) => {
     const idMatchesSearch = order.id
@@ -12,8 +13,10 @@ export const OrderList = ({ orders }: { orders: OrderWithProduct[] }) => {
     const nameMatchesSearch = order.product.name
       .toLowerCase()
       .includes(search.toLocaleLowerCase());
-
-    return nameMatchesSearch || idMatchesSearch;
+    const matchesSearch = nameMatchesSearch || idMatchesSearch;
+    const matchesStatus =
+      selectedStatus === "" || order.status === selectedStatus;
+    return matchesSearch && matchesStatus;
   });
 
   return (
@@ -27,7 +30,13 @@ export const OrderList = ({ orders }: { orders: OrderWithProduct[] }) => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Buscar por nome, telefone ou ID do pedido"
         />
-        <select className="w-fit bg3 p-2" name="status" id="status">
+        <select
+          className="w-fit bg3 p-2"
+          name="status"
+          id="status"
+          onChange={(e) => setSelectedStatus(e.target.value)}
+          value={selectedStatus}
+        >
           <option value="">Status:</option>
           <option value="PENDING">PENDING</option>
           <option value="CONFIRMED">CONFIRMED</option>
@@ -36,6 +45,7 @@ export const OrderList = ({ orders }: { orders: OrderWithProduct[] }) => {
           <option value="CANCELLED">CANCELLED</option>
         </select>
       </div>
+      {filteredOrders.length === 0 && <p>Nenhum pedido encontrado</p>}
       {filteredOrders.map((order) => (
         <div
           key={order.id}

@@ -9,6 +9,18 @@ export default async function OrdersPage() {
     return <> Nenhum pedido encontrado</>;
   }
 
+  const stats = {
+    pending: orders.filter(
+      (order) => order.status.toLocaleLowerCase() === "pending"
+    ).length,
+    processing: orders.filter(
+      (order) => order.status.toLocaleLowerCase() === "processing"
+    ).length,
+    completed: orders.filter(
+      (order) => order.status.toLocaleLowerCase() === "completed"
+    ).length,
+  };
+
   return (
     <>
       <div className="flex flex-col">
@@ -17,37 +29,11 @@ export default async function OrdersPage() {
       </div>
       <div className="flex-w gap-2 justify-between">
         <InfoCard title="Total de Pedidos" value={orders.length} url="#" />
-        <InfoCard title="Pendentes" value={orders.length} url="#" />
-        <InfoCard title="Em Processamento" value={orders.length} url="#" />
-        <InfoCard title="Concluidos" value={orders.length} url="#" />
+        <InfoCard title="Pendentes" value={stats.pending} url="#" />
+        <InfoCard title="Em Processamento" value={stats.processing} url="#" />
+        <InfoCard title="Concluidos" value={stats.completed} url="#" />
       </div>
       <OrderList orders={orders} />
-      {/* <div className="w-full">
-        <table className="w-full">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Tamanho</th>
-              <th>Quantidade</th>
-              <th>Preco</th>
-              <th>Total</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.product.name}</td>
-                <td>{order.quantity}</td>
-                <td>{order.size}</td>
-                <td>MZN {order.price}</td>
-                <td>MZN {order.totalAmount}</td>
-                <td>{order.status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div> */}
     </>
   );
 }
