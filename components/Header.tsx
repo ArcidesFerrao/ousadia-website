@@ -104,7 +104,7 @@ export const Header = () => {
                   <Link href="/produtos">Loja</Link>
                 </li>
                 <li>
-                  <a href="/categorias">Categorias</a>
+                  <Link href="/categorias">Categorias</Link>
                   <ul className="sub-menu">
                     {categories.map((category) => (
                       <li key={category.id}>
@@ -128,19 +128,19 @@ export const Header = () => {
               <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                 <i className="zmdi zmdi-search" />
               </div>
-              <div
+              {/* <div
                 className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
                 data-notify={2}
               >
                 <i className="zmdi zmdi-shopping-cart" />
-              </div>
-              <a
+              </div> */}
+              {/* <a
                 href="#"
                 className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
                 data-notify={0}
               >
                 <i className="zmdi zmdi-favorite-outline" />
-              </a>
+              </a> */}
             </div>
           </nav>
         </div>
@@ -234,7 +234,7 @@ export const Header = () => {
             </li>
             */}
           <li>
-            <a href="/categorias">Categorias</a>
+            <Link href="/categorias">Categorias</Link>
             <ul
               className="sub-menu-m"
               style={{ display: isSubMenu === "categorias" ? "block" : "none" }}

@@ -1,4 +1,6 @@
 import { getOrders } from "@/actions/orders";
+import { InfoCard } from "../_components/DashCard";
+import { OrderList } from "../_components/OrderList";
 
 export default async function OrdersPage() {
   const orders = await getOrders();
@@ -9,10 +11,18 @@ export default async function OrdersPage() {
 
   return (
     <>
-      <div className="flex">
-        <h3>Lista de Pedidos</h3>
+      <div className="flex flex-col">
+        <h3>Gerenciar de Pedidos</h3>
+        <p>Visualize e gerencie todos os pedidos da loja</p>
       </div>
-      <div className="w-full">
+      <div className="flex-w gap-2 justify-between">
+        <InfoCard title="Total de Pedidos" value={orders.length} url="#" />
+        <InfoCard title="Pendentes" value={orders.length} url="#" />
+        <InfoCard title="Em Processamento" value={orders.length} url="#" />
+        <InfoCard title="Concluidos" value={orders.length} url="#" />
+      </div>
+      <OrderList orders={orders} />
+      {/* <div className="w-full">
         <table className="w-full">
           <thead>
             <tr>
@@ -37,7 +47,7 @@ export default async function OrdersPage() {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </>
   );
 }
