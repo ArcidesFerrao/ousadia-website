@@ -1,6 +1,6 @@
 "use client";
 
-import { Category } from "@/lib/generated/prisma/client";
+import { Category, Collection } from "@/lib/generated/prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,6 +11,7 @@ export const Header = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [promo, setPromo] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
+  const [collections, setCollections] = useState<Collection[]>([]);
   const [isSubMenu, setIsSubMenu] = useState<string | null>(null);
 
   let headerClass = "";
@@ -41,6 +42,16 @@ export const Header = () => {
         console.error(error);
       }
     };
+    const getCollections = async () => {
+      try {
+        const res = await fetch("/api/collections");
+        if (!res.ok) throw new Error("Error getting collections");
+        const data = await res.json();
+        setCollections(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     const getPromo = async () => {
       try {
         const res = await fetch("/api/promo");
@@ -52,6 +63,7 @@ export const Header = () => {
       }
     };
 
+    getCollections();
     getCategories();
     getPromo();
     const handleResize = () => {
@@ -110,6 +122,18 @@ export const Header = () => {
                       <li key={category.id}>
                         <a href={`/categorias/${category.slug}`}>
                           {category.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+                <li>
+                  <Link href="/colecoes">Colecoes</Link>
+                  <ul className="sub-menu">
+                    {collections.map((collection) => (
+                      <li key={collection.id}>
+                        <a href={`/colecoes/${collection.slug}`}>
+                          {collection.name}
                         </a>
                       </li>
                     ))}
@@ -250,6 +274,27 @@ export const Header = () => {
                 isSubMenu === "categorias" ? "turn-arrow-main-menu-m" : ""
               } `}
               onClick={() => handleSubMenu("categorias")}
+            >
+              <i className="fa fa-angle-right" aria-hidden="true" />
+            </span>
+          </li>
+          <li>
+            <Link href="/colecoes">Coleções</Link>
+            <ul
+              className="sub-menu-m"
+              style={{ display: isSubMenu === "coleções" ? "block" : "none" }}
+            >
+              {collections.map((collection) => (
+                <li key={collection.id}>
+                  <a href={`/colecoes/${collection.slug}`}>{collection.name}</a>
+                </li>
+              ))}
+            </ul>
+            <span
+              className={`arrow-main-menu-m ${
+                isSubMenu === "colecoes" ? "turn-arrow-main-menu-m" : ""
+              } `}
+              onClick={() => handleSubMenu("colecoes")}
             >
               <i className="fa fa-angle-right" aria-hidden="true" />
             </span>

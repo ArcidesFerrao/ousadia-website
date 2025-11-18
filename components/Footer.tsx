@@ -1,34 +1,74 @@
+"use client";
+
+import { Category, Collection } from "@/lib/generated/prisma/client";
+import { useEffect, useState } from "react";
 export const Footer = () => {
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [collections, setCollections] = useState<Collection[]>([]);
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const res = await fetch("/api/categories");
+        if (!res.ok) throw new Error("Error getting categories");
+        const data = await res.json();
+        setCategories(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    const getCollections = async () => {
+      try {
+        const res = await fetch("/api/collections");
+        if (!res.ok) throw new Error("Error getting collections");
+        const data = await res.json();
+        setCollections(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getCategories();
+    getCollections();
+  }, []);
   return (
     <>
       <footer className="bg3 p-t-75 p-b-32">
         <div className="container">
           <div className="row max-h-fit">
-            <div className="col-sm-6 col-lg-3 p-b-50 max-h-fit">
-              <h4 className="stext-301 cl0 p-b-10">Categorias</h4>
-              <ul>
-                <li className="p-b-10">
-                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Shetas
-                  </a>
-                </li>
-                <li className="p-b-10">
-                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Bones
-                  </a>
-                </li>
-                <li className="p-b-10">
-                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Collabs
-                  </a>
-                </li>
-                {/* <li className="p-b-10">
-                  <a href="#" className="stext-107 cl7 hov-cl1 trans-04">
-                    Watches
-                  </a>
-                </li> */}
-              </ul>
-            </div>
+            {categories.length > 0 && (
+              <div className="col-sm-6 col-lg-3 p-b-50 max-h-fit">
+                <h4 className="stext-301 cl0 p-b-10">Categorias</h4>
+                <ul>
+                  {categories.map((category) => (
+                    <li key={category.id} className="p-b-10">
+                      <a
+                        href={`/categorias/${category.slug}`}
+                        className="stext-107 cl7 hov-cl1 trans-04"
+                      >
+                        {category.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {collections.length > 0 && (
+              <div className="col-sm-6 col-lg-3 p-b-50 max-h-fit">
+                <h4 className="stext-301 cl0 p-b-10">Colecoes</h4>
+                <ul>
+                  {collections.map((collection) => (
+                    <li key={collection.id} className="p-b-10">
+                      <a
+                        href={`/colecoes/${collection.slug}`}
+                        className="stext-107 cl7 hov-cl1 trans-04"
+                      >
+                        {collection.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className="col-sm-6 col-lg-3 p-b-50  max-h-fit">
               <h4 className="stext-301 cl0 p-b-10">Help</h4>
               <ul>

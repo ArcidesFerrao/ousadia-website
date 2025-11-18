@@ -2,7 +2,7 @@
 
 import db from "@/lib/prisma";
 import { bannerSchema, categorySchema, collectionSchema, sliderSchema } from "@/lib/schema";
-import { CategoryWithProducts } from "@/types/types";
+import { CategoryWithProducts, CollectionWithProducts } from "@/types/types";
 import { parseWithZod } from "@conform-to/zod";
 
 export async function createCategory(prevState: unknown, formData: FormData) {
@@ -130,6 +130,28 @@ export async function getCategoriesWithProducts(): Promise<CategoryWithProducts[
     }
     
 }
+export async function getCollectionsWithProducts(): Promise<CollectionWithProducts[]> {
+    
+    try {
+        const data = await db.collection.findMany({
+            where: {
+                isActive: true,
+            },
+            include: {
+                products: true,
+            },
+        });
+        if (!data) {
+            throw new Error('Failed to fetch collections');
+        }
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching collections with products:', error);
+        return [];
+    }
+    
+}
 export async function getCategoryWithProducts(id: string): Promise<CategoryWithProducts | null> {
     
     try {
@@ -150,6 +172,7 @@ export async function getCategoryWithProducts(id: string): Promise<CategoryWithP
     }
     
 }
+
 export async function getCategoryBySlug(slug: string): Promise<CategoryWithProducts | null> {
     
     try {
@@ -168,6 +191,29 @@ export async function getCategoryBySlug(slug: string): Promise<CategoryWithProdu
 
     } catch (error) {
         console.error('Error fetching category with products:', error);
+        return null;
+    }
+    
+}
+
+export async function getCollectionBySlug(slug: string): Promise<CollectionWithProducts | null> {
+    
+    try {
+        const data = await db.collection.findUnique({
+            where: { slug, 
+                isActive: true,
+             },
+            include: {
+                products: true,
+            },
+        });
+        if (!data) {
+            throw new Error('Failed to fetch collection data');
+        }
+        return data;
+
+    } catch (error) {
+        console.error('Error fetching collection with products:', error);
         return null;
     }
     

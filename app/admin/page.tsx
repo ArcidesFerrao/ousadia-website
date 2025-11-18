@@ -76,7 +76,6 @@ export default async function AdminPage() {
             + Item
           </Link>
         </div>
-        {/* <InfoCard title="Clientes" value={8} url="/admin/clientes" /> */}
       </div>
       {mostOrdered.length > 0 && (
         <div className="flex flex-col gap-5 p-4 bg5 rounded-lg">
@@ -91,18 +90,6 @@ export default async function AdminPage() {
                 title={item.name || ""}
               />
             ))}
-            {/* <ProductDashCard
-            imageUrl="/"
-            orders={5}
-            price={1000}
-            title="Maningue Cenas"
-            />
-            <ProductDashCard
-            imageUrl="/"
-            orders={5}
-            price={1000}
-            title="Maningue Cenas"
-            /> */}
           </div>
         </div>
       )}
