@@ -1,13 +1,30 @@
 import { getItems } from "@/actions/items";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import Link from "next/link";
 export default async function ItemsPage() {
   const items = await getItems();
 
   if (items.length === 0) {
-    return <> Nenhum item encontrado</>;
+    return (
+      <>
+        <Breadcrumb
+          breadcrumbs={{
+            links: [{ name: "admin", href: "/admin" }],
+            last: "items",
+          }}
+        />
+        <p>Nenhum item encontrado</p>
+      </>
+    );
   }
   return (
     <>
+      <Breadcrumb
+        breadcrumbs={{
+          links: [{ name: "admin", href: "/admin" }],
+          last: "items",
+        }}
+      />
       <div className="flex justify-between">
         <h3>Lista de Items</h3>
         <Link href="/admin/items/new" className="px-4 py-2">

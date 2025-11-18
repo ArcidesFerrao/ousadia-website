@@ -1,12 +1,23 @@
 import { getOrders } from "@/actions/orders";
 import { InfoCard } from "../_components/DashCard";
 import { OrderList } from "../_components/OrderList";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 export default async function OrdersPage() {
   const orders = await getOrders();
 
   if (orders.length === 0) {
-    return <> Nenhum pedido encontrado</>;
+    return (
+      <>
+        <Breadcrumb
+          breadcrumbs={{
+            links: [{ name: "admin", href: "/admin" }],
+            last: "items",
+          }}
+        />
+        <p>Nenhum pedido encontrado</p>
+      </>
+    );
   }
 
   const stats = {
@@ -23,6 +34,12 @@ export default async function OrdersPage() {
 
   return (
     <>
+      <Breadcrumb
+        breadcrumbs={{
+          links: [{ name: "admin", href: "/admin" }],
+          last: "pedidos",
+        }}
+      />
       <div className="flex flex-col">
         <h3>Gerenciar de Pedidos</h3>
         <p>Visualize e gerencie todos os pedidos da loja</p>

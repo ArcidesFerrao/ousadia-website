@@ -52,7 +52,7 @@ export const OrderList = ({ orders }: { orders: OrderWithProduct[] }) => {
           className="flex flex-col gap-4 border  opacity-55 p-2 rounded-sm hover:opacity-95 "
         >
           <div className="flex justify-between">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4">
               <h3>{order.product.name}</h3>
               <div className="flex flex-col gap-2">
                 <p className="font-thin text-xs">Id: {order.id}</p>
@@ -73,7 +73,7 @@ export const OrderList = ({ orders }: { orders: OrderWithProduct[] }) => {
           </div>
           {order.customerMessage && <p>Mensagem: {order.customerMessage}</p>}
           <div className="flex gap-2">
-            <button className="bg5 p-2 rounded-sm">Processar</button>
+            <button className="bg5 p-2 rounded-sm ">Processar</button>
             <button className="bg5 p-2 rounded-sm">Concluir</button>
             <button className="bg5 p-2 rounded-sm">Cancelar</button>
           </div>

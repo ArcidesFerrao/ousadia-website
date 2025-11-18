@@ -1,4 +1,5 @@
 import { getCompletedOrders } from "@/actions/orders";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { poppins } from "@/lib/font";
 
 export default async function SalesPage() {
@@ -6,16 +7,30 @@ export default async function SalesPage() {
 
   if (completedOrders.length === 0) {
     return (
-      <div
-        className={`${poppins.className} flex flex-col items-center justify-center w-full`}
-      >
-        {" "}
-        Nenhuma venda encontrada
-      </div>
+      <>
+        <Breadcrumb
+          breadcrumbs={{
+            links: [{ name: "admin", href: "/admin" }],
+            last: "vendas",
+          }}
+        />
+        <div
+          className={`${poppins.className} flex flex-col items-center justify-center w-full`}
+        >
+          {" "}
+          Nenhuma venda encontrada
+        </div>
+      </>
     );
   }
   return (
     <>
+      <Breadcrumb
+        breadcrumbs={{
+          links: [{ name: "admin", href: "/admin" }],
+          last: "vendas",
+        }}
+      />
       <div className="flex justify-between">
         <h3>Lista de Vendas</h3>
       </div>

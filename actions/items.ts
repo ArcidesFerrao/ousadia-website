@@ -96,8 +96,9 @@ export async function buyItem({
   size,
   quantity,
   name,
-  phone,}:{
-    productId: string; productName: string; basePrice: number; quantity:number; size: Size; name: string; phone: string 
+  phone,
+customerMessage}:{
+    productId: string; productName: string; basePrice: number; quantity:number; size: Size; name: string; phone: string; customerMessage?: string 
   }) {
     const message = `
     *Novo Pedido*
@@ -118,11 +119,14 @@ export async function buyItem({
     
     const pedido = await db.order.create({
       data: {
+        customerName: name,
+        customerPhone: phone,
         productId: productId,
         price: basePrice,
         quantity: quantity,
         totalAmount: basePrice * quantity,
-        size: size
+        size: size,
+        customerMessage
       }
     })
   console.log(pedido)

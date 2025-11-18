@@ -2,6 +2,7 @@
 
 import { buyItem } from "@/actions/items";
 import { Size } from "@/lib/generated/prisma/enums";
+import { redirect } from "next/navigation";
 import React, { useState } from "react";
 
 export default function BuyButton({
@@ -22,8 +23,9 @@ export default function BuyButton({
   const [form, setForm] = useState({
     name: "",
     phone: "",
-    size: "" as Size,
+    size: "S",
     quantity: 1,
+    message: "",
   });
 
   const handleSubmit = async () => {
@@ -37,14 +39,16 @@ export default function BuyButton({
       productId,
       productName,
       basePrice,
-      size: form.size,
+      size: form.size as Size,
       quantity: form.quantity,
       name: form.name,
       phone: form.phone,
+      customerMessage: form.message,
     });
     setLoading(false);
     if (result.redirect) {
       window.open(result.redirect, "_blank");
+      redirect("/");
     }
   };
 
@@ -57,7 +61,11 @@ export default function BuyButton({
             className=""
             name="size"
             value={size}
-            onChange={(e) => setSize(e.target.value as Size)}
+            onChange={(e) => {
+              const s = e.target.value as Size;
+              setSize(s);
+              setForm({ ...form, size: s });
+            }}
           >
             <option>Choose an option</option>
             <option>S</option>
@@ -104,10 +112,10 @@ export default function BuyButton({
                     }
                   />
                 </div>
-                <div className="flex justify-between items-center w-full">
-                  <span className="stext-102">Quantity</span>
+                <div className="flex justify-between gap-4 items-center ">
+                  <span className="mtext-104 ">Quantidade</span>
                   <input
-                    className="mtext-104"
+                    className="mtext-104 max-w-32"
                     type="number"
                     name="quantity"
                     min={1}
@@ -117,9 +125,19 @@ export default function BuyButton({
                     }
                   />
                 </div>
+                <div className="flex flex-col gap-2">
+                  <textarea
+                    className="mtext-104 w-full"
+                    placeholder="Mensagem (opcional)"
+                    name="message"
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
+                  />
+                </div>
               </div>
               <button
-                className="flex-c-m stext-101 cl0 h-14 bg1 bor1 hov-btn1 p-lr-15 trans-04 w-full"
+                className="flex-c-m stext-101 cl0 h-14 bg1 bor1 hov-btn1 p-lr-15 trans-04 w-80"
                 onClick={handleSubmit}
                 disabled={loading}
               >
