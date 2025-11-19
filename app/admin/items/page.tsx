@@ -37,7 +37,6 @@ export default async function ItemsPage() {
             <tr>
               <th>Item</th>
               <th>Cor</th>
-              <th>Stock</th>
               <th>Preco</th>
               <th>Desconto</th>
             </tr>
