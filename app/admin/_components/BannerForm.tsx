@@ -1,11 +1,12 @@
 "use client";
 
 import { createCategoryBannerAd } from "@/actions/categories";
-import type { Category } from "@/lib/generated/prisma/client";
+// import type { Category } from "@/lib/generated/prisma/client";
 import { bannerSchema } from "@/lib/schema";
 import { UploadButton } from "@/utils/uploadthing";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
+import { Category } from "@prisma/client";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";

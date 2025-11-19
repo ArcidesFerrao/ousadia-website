@@ -1,4 +1,4 @@
-import { Category, Collection, Order, Product } from "@/lib/generated/prisma/client";
+import { Category, Collection, Order, Product }  from "@prisma/client";
 
 
 export type CategoryWithProducts = Category & {

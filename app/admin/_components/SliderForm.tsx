@@ -1,11 +1,12 @@
 "use client";
 
 import { createCollectionSliderAd } from "@/actions/categories";
-import type { Collection } from "@/lib/generated/prisma/client";
+// import type { Collection } from "@/lib/generated/prisma/client";
 import { sliderSchema } from "@/lib/schema";
 import { UploadButton } from "@/utils/uploadthing";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
+import { Collection } from "@prisma/client";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";

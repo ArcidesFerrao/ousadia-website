@@ -1,10 +1,11 @@
 "use client";
 
-import { Product } from "@/lib/generated/prisma/client";
+// import { Product } from "@/lib/generated/prisma/client";
 import Image from "next/image";
 import ProductSlider from "./ProductSlider";
 import BuyButton from "./BuyButton";
 import { useState } from "react";
+import { Product } from "@prisma/client";
 
 export const ProductModal = ({ product }: { product: Product }) => {
   if (!product) return <p>Item nao encontrado</p>;

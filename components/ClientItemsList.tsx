@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { Card, ProductCard } from "./Card";
-import { Category, Product } from "@/lib/generated/prisma/client";
+// import { Category, Product } from "@/lib/generated/prisma/client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ProductModal } from "./ProductModal";
+import { Category, Product } from "@prisma/client";
 
 export default function ClientItemsList({
   items,

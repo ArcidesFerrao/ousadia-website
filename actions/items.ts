@@ -1,9 +1,10 @@
 'use server'
 
-import { Size } from "@/lib/generated/prisma/enums";
+// import { Size } from "@/lib/generated/prisma/enums";
 import db from "@/lib/prisma";
 import { itemSchema } from "@/lib/schema";
 import { parseWithZod } from "@conform-to/zod";
+import { Size } from "@prisma/client";
 
 
 export async function getItems() {

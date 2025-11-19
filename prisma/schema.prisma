@@ -5,10 +5,9 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
+  // output   = "../lib/generated/prisma"
 }
-
 
 datasource db {
   provider = "postgresql" // or "mysql", "sqlite", etc.
@@ -17,32 +16,32 @@ datasource db {
 
 // Category model (max 5 categories)
 model Category {
-  id        String    @id @default(cuid())
-  name      String    @unique
-  slug      String    @unique
-  isActive  Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   products  Product[]
   bannerAds BannerAd[]
-  
+
   @@index([isActive])
 }
 
 model Collection {
-  id String @id @default(cuid())
-  name String @unique
-  slug String @unique
+  id            String  @id @default(cuid())
+  name          String  @unique
+  slug          String  @unique
   featuredImage String?
-  isActive Boolean @default(true)
-  details String 
-  discount    Int      @default(0) // Discount percentage (0-100)
+  isActive      Boolean @default(true)
+  details       String
+  discount      Int     @default(0) // Discount percentage (0-100)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  products Product[]
+  products  Product[]
   sliderAds SliderAd[]
 
   @@index([isActive])
@@ -50,35 +49,34 @@ model Collection {
 
 // Product model for t-shirts
 model Product {
-  id          String   @id @default(cuid())
-  name        String
-  description String   @db.Text
-  color       String
-  mainImage   String   // URL for main product image
-  image2      String   // URL for second image
-  image3      String   // URL for third image
-  basePrice   Int
-  discount    Int      @default(0) // Discount percentage (0-100)
-    categoryId  String
-  category    Category @relation(fields: [categoryId], references: [id])
-    collectionId  String? 
-  collection    Collection? @relation(fields: [collectionId], references: [id])
-  quantityXS  Int      @default(0)
-  quantityS   Int      @default(0)
-  quantityM   Int      @default(0)
-  quantityL   Int      @default(0)
-  quantityXL  Int      @default(0)
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  
-  orders      Order[]
-  
+  id           String      @id @default(cuid())
+  name         String
+  description  String      @db.Text
+  color        String
+  mainImage    String // URL for main product image
+  image2       String // URL for second image
+  image3       String // URL for third image
+  basePrice    Int
+  discount     Int         @default(0) // Discount percentage (0-100)
+  categoryId   String
+  category     Category    @relation(fields: [categoryId], references: [id])
+  collectionId String?
+  collection   Collection? @relation(fields: [collectionId], references: [id])
+  quantityXS   Int         @default(0)
+  quantityS    Int         @default(0)
+  quantityM    Int         @default(0)
+  quantityL    Int         @default(0)
+  quantityXL   Int         @default(0)
+  isActive     Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  orders Order[]
+
   @@index([isActive])
   @@index([createdAt])
   @@index([categoryId])
   @@index([collectionId])
-
 }
 
 // Order tracking (one item per order)
@@ -88,19 +86,19 @@ model Order {
   customerPhone   String?
   customerMessage String?     @db.Text
   status          OrderStatus @default(PENDING)
-  
+
   // Single product per order
-  productId       String
-  product         Product     @relation(fields: [productId], references: [id])
-  size            Size
-  quantity        Int
-  price           Int // Price at time of order
-  discount        Int         @default(0) // Discount at time of order
-  totalAmount     Int
-  
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-  
+  productId   String
+  product     Product @relation(fields: [productId], references: [id])
+  size        Size
+  quantity    Int
+  price       Int // Price at time of order
+  discount    Int     @default(0) // Discount at time of order
+  totalAmount Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([status])
   @@index([createdAt])
   @@index([customerPhone])
@@ -112,36 +110,36 @@ model SliderAd {
   id          String   @id @default(cuid())
   imageUrl    String
   title       String
-  description String   
+  description String
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   collectionId String?
-  collection Collection? @relation(fields: [collectionId], references: [id], onDelete: Cascade)
-  
+  collection   Collection? @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+
   @@index([isActive])
 }
 
 // Banner ads
 model BannerAd {
-  id        String   @id @default(cuid())
-  imageUrl  String
+  id          String    @id @default(cuid())
+  imageUrl    String
   title       String
-  description String   
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  categoryId String?
-  category Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  
+  description String
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
   @@index([isActive])
 }
 
 // Top bar announcement
 model TopBar {
   id        String   @id @default(cuid())
-  text      String   
+  text      String
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

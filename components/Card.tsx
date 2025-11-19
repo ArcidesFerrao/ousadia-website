@@ -1,7 +1,8 @@
+import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 // import { ProductModalSimple } from "./ProductModal";
-import { Product } from "@/lib/generated/prisma/client";
+// import { Product } from "@/lib/generated/prisma/client";
 
 export const Card = () => {
   return (

@@ -5,7 +5,8 @@ import { ProductCard } from "./Card";
 import { CategoryWithProducts, CollectionWithProducts } from "@/types/types";
 import { useState } from "react";
 import { ProductModal } from "./ProductModal";
-import { Product } from "@/lib/generated/prisma/client";
+import { Product } from "@prisma/client";
+// import { Product } from "@/lib/generated/prisma/client";
 
 export function CategorySelection({
   category,
@@ -21,7 +22,7 @@ export function CategorySelection({
         </Link>
       </div>
       <div className="row isotope-grid">
-        {category.products.map((product) => (
+        {category.products.map((product: Product) => (
           <div
             key={product.id}
             onClick={() => setSelectedProduct(product)}
@@ -49,7 +50,7 @@ export function CategorySelected({
       </div>
       <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ">
         {category.products.length !== 0 ? (
-          category.products.map((product) => (
+          category.products.map((product: Product) => (
             <div
               key={product.id}
               onClick={() => setSelectedProduct(product)}
@@ -82,7 +83,7 @@ export function CollectionSelected({
       </div>
       <div className="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item ">
         {collection.products.length !== 0 ? (
-          collection.products.map((product) => (
+          collection.products.map((product: Product) => (
             <div
               key={product.id}
               onClick={() => setSelectedProduct(product)}
@@ -116,7 +117,7 @@ export function CollectionSelection({
         </Link>
       </div>
       <div className="row isotope-grid">
-        {collection.products.map((product) => (
+        {collection.products.map((product: Product) => (
           <div
             key={product.id}
             onClick={() => setSelectedProduct(product)}

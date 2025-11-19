@@ -1,6 +1,7 @@
 import { getItems } from "@/actions/items";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { Product } from "@/lib/generated/prisma/client";
+import { Product } from "@prisma/client";
+// import { Product } from "@/lib/generated/prisma/client";
 import Link from "next/link";
 export default async function ItemsPage() {
   const items = await getItems();

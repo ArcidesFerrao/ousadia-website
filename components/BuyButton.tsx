@@ -1,7 +1,8 @@
 "use client";
 
 import { buyItem } from "@/actions/items";
-import { Size } from "@/lib/generated/prisma/enums";
+import { Size } from "@prisma/client";
+// import { Size } from "@/lib/generated/prisma/enums";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 

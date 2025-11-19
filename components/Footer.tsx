@@ -1,6 +1,7 @@
 "use client";
 
-import { Category, Collection } from "@/lib/generated/prisma/client";
+import { Category, Collection } from "@prisma/client";
+// import { Category, Collection } from "@/lib/generated/prisma/client";
 import { useEffect, useState } from "react";
 export const Footer = () => {
   const [categories, setCategories] = useState<Category[]>([]);

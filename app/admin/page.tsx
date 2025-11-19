@@ -10,7 +10,7 @@ import Link from "next/link";
 import { PromoForm } from "./_components/PromoForm";
 import { getBannerAds, getSliderAds } from "@/actions/promo";
 import { completedTotal, getOrdersCount } from "@/actions/orders";
-import { BannerAd } from "@/lib/generated/prisma/client";
+// import { BannerAd, SliderAd } from "@/lib/generated/prisma/client";
 
 export default async function AdminPage() {
   const items = getItems();
@@ -111,7 +111,7 @@ export default async function AdminPage() {
           </div>
           <div className="flex-w gap-2 justify-between ">
             {bannerAds &&
-              bannerAds.map((ad: BannerAd) => (
+              bannerAds.map((ad) => (
                 <BannerCard
                   key={ad.id}
                   detail={ad.description}

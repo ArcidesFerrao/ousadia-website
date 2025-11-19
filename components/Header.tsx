@@ -1,6 +1,6 @@
 "use client";
 
-import { Category, Collection } from "@/lib/generated/prisma/client";
+import { Category, Collection } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

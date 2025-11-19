@@ -1,6 +1,7 @@
 "use client";
 
-import { Product } from "@/lib/generated/prisma/client";
+import { Product } from "@prisma/client";
+// import { Product } from "@/lib/generated/prisma/client";
 import { useEffect } from "react";
 // import "slick-carousel";
 
