@@ -1,8 +1,22 @@
 import { getCollectionBySlug } from "@/actions/categories";
 import { CollectionSelected } from "@/components/CategorySelection";
+import db from "@/lib/prisma";
 import Link from "next/link";
 
 type Params = Promise<{ slug: string }>;
+
+export async function generateStaticParams() {
+  const collections = await db.collection.findMany({
+    where: { isActive: true },
+    select: { slug: true },
+  });
+
+  return collections.map((collection) => ({
+    slug: collection.slug,
+  }));
+}
+
+export const revalidate = 3600;
 
 export default async function ColecaoPage(props: { params: Params }) {
   const { slug } = await props.params;

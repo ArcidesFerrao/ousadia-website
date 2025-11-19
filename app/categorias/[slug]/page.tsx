@@ -1,8 +1,22 @@
 import { getCategoryBySlug } from "@/actions/categories";
 import { CategorySelected } from "@/components/CategorySelection";
+import db from "@/lib/prisma";
 import Link from "next/link";
 
 type Params = Promise<{ slug: string }>;
+
+export async function generateStaticParams() {
+  const categories = await db.category.findMany({
+    where: { isActive: true },
+    select: { slug: true },
+  });
+
+  return categories.map((category) => ({
+    slug: category.slug,
+  }));
+}
+
+export const revalidate = 3600;
 
 export default async function CategoriaPage(props: { params: Params }) {
   const { slug } = await props.params;

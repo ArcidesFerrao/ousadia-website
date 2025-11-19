@@ -2,18 +2,27 @@ import db from "@/lib/prisma";
 import Link from "next/link";
 import ProductSlider from "@/components/ProductSlider";
 import BuyButton from "@/components/BuyButton";
+import { notFound } from "next/navigation";
 
 type Params = Promise<{ id: string }>;
 
+export async function generateStaticParams() {
+  const products = await db.product.findMany({
+    where: {
+      isActive: true,
+    },
+    select: {
+      id: true,
+    },
+  });
+
+  return products.map((product) => ({ id: product.id }));
+}
+
+export const revalidate = 3600; // Revalidate every 60 seconds
+
 export default async function ProdutoPage(props: { params: Params }) {
   const { id } = await props.params;
-
-  if (!id)
-    return (
-      <p className="stext-106 text-center min-h-2/3">
-        Item nao encontrado {id}
-      </p>
-    );
 
   const item = await db.product.findUnique({
     where: {
@@ -25,7 +34,9 @@ export default async function ProdutoPage(props: { params: Params }) {
     },
   });
 
-  if (!item) return <p>Item nao encontrado</p>;
+  if (!item) {
+    notFound();
+  }
 
   const images = [
     item.mainImage && { src: item.mainImage, dataThumb: item.mainImage },

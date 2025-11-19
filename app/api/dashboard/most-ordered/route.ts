@@ -2,6 +2,7 @@ import db from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 
+
 export async function GET() {
   try {
     // Group all orders by productId and sum the quantities

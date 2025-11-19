@@ -1,5 +1,6 @@
 import { getItems } from "@/actions/items";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { Product } from "@/lib/generated/prisma/client";
 import Link from "next/link";
 export default async function ItemsPage() {
   const items = await getItems();
@@ -42,7 +43,7 @@ export default async function ItemsPage() {
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => (
+            {items.map((item: Product) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>{item.color}</td>

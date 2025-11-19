@@ -66,7 +66,7 @@ export async function getMostOrdered() {
 
     // Fetch full product details for each productId
     const products = await Promise.all(
-      mostOrdered.map(async (item) => {
+      mostOrdered.map(async (item: { productId: string; _sum: { quantity: number | null } }) => {
         const product = await db.product.findUnique({
           where: { id: item.productId },
           select: {

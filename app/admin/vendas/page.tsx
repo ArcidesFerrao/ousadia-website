@@ -1,9 +1,10 @@
 import { getCompletedOrders } from "@/actions/orders";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { poppins } from "@/lib/font";
+import { OrderWithProduct } from "@/types/types";
 
 export default async function SalesPage() {
-  const completedOrders = await getCompletedOrders();
+  const completedOrders: OrderWithProduct[] = await getCompletedOrders();
 
   if (completedOrders.length === 0) {
     return (

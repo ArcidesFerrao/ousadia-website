@@ -2,9 +2,10 @@ import { getOrders } from "@/actions/orders";
 import { InfoCard } from "../_components/DashCard";
 import { OrderList } from "../_components/OrderList";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { OrderWithProduct } from "@/types/types";
 
 export default async function OrdersPage() {
-  const orders = await getOrders();
+  const orders: OrderWithProduct[] = await getOrders();
 
   if (orders.length === 0) {
     return (
