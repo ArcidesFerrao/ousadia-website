@@ -119,16 +119,13 @@ export const Footer = () => {
           <div className="p-t-40">
             <p className="stext-107 cl6 txt-center">
               Copyright © All rights reserved | Made by{" "}
-              <a
-                href="https://portfolio-arcidesferraos-projects.vercel.app/"
-                target="_blank"
-              >
+              <a href="https://webstudio-nu-eight.vercel.app/" target="_blank">
                 Arcides Ferrao
-              </a>{" "}
-              &amp; distributed theme by{" "}
+              </a>
+              {/* &amp; distributed theme by{" "}
               <a href="https://themewagon.com" target="_blank">
                 ThemeWagon
-              </a>
+              </a> */}
               {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
             </p>
           </div>
