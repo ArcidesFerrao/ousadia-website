@@ -8,6 +8,7 @@ import { parseWithZod } from "@conform-to/zod";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const CategoryForm = () => {
   const [state, action, pending] = useActionState(createCategory, undefined);
@@ -141,10 +142,10 @@ export const CollectionForm = () => {
               onClientUploadComplete={(res) => {
                 console.log("Files: ", res);
                 if (res && res[0].ufsUrl) setImageUrl(res[0].ufsUrl);
-                alert("Upload Completed");
+                toast.success("Upload Completed");
               }}
               onUploadError={(error: Error) => {
-                alert(`Error ${error.message}`);
+                toast.success(`Error ${error.message}`);
               }}
             />
           )}

@@ -10,6 +10,7 @@ import { Collection } from "@prisma/client";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const SliderForm = () => {
   const [state, action, pending] = useActionState(
@@ -119,10 +120,10 @@ export const SliderForm = () => {
               onClientUploadComplete={(res) => {
                 console.log("Files: ", res);
                 if (res && res[0].ufsUrl) setImage(res[0].ufsUrl);
-                alert("Upload Completed");
+                toast.success("Upload Completed");
               }}
               onUploadError={(error: Error) => {
-                alert(`Error ${error.message}`);
+                toast.success(`Error ${error.message}`);
               }}
             />
           )}

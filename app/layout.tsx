@@ -15,6 +15,8 @@ import "@/public/vendor/perfect-scrollbar/perfect-scrollbar.css";
 import "@/public/css/util.css";
 import "@/public/css/main.css";
 
+import { Toaster } from "react-hot-toast";
+
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Cart } from "@/components/Cart";
@@ -51,6 +53,7 @@ export default function RootLayout({
       </head>
       <body>
         <AppWrapper>
+          <Toaster position="top-right" />
           <Header />
           <Cart />
           {children}

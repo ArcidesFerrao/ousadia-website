@@ -5,6 +5,7 @@ import { Size } from "@prisma/client";
 // import { Size } from "@/lib/generated/prisma/enums";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function BuyButton({
   productId,
@@ -31,7 +32,7 @@ export default function BuyButton({
 
   const handleSubmit = async () => {
     if (!form.name || !form.phone) {
-      alert("por favor preencha o nome e o numero");
+      toast.error("Por favor preencha o nome e o numero de telefone");
       return;
     }
 
