@@ -55,7 +55,7 @@ export const Footer = () => {
             )}
             {collections.length > 0 && (
               <div className="col-sm-6 col-lg-3 p-b-50 max-h-fit">
-                <h4 className="stext-301 cl0 p-b-10">Colecoes</h4>
+                <h4 className="stext-301 cl0 p-b-10">Coleções</h4>
                 <ul>
                   {collections.map((collection) => (
                     <li key={collection.id} className="p-b-10">

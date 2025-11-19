@@ -24,13 +24,13 @@ export default async function CategoriaPage(props: { params: Params }) {
   if (!slug)
     return (
       <p className="stext-106 text-center min-h-2/3">
-        Categoria nao encontrado {slug}
+        Categoria não encontrado {slug}
       </p>
     );
 
   const categoryData = await getCategoryBySlug(slug);
 
-  if (!categoryData) return <p>Items nao encontrados</p>;
+  if (!categoryData) return <p>Items não encontrados</p>;
 
   return (
     <>

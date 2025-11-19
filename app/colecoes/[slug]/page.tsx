@@ -24,13 +24,13 @@ export default async function ColecaoPage(props: { params: Params }) {
   if (!slug)
     return (
       <p className="stext-106 text-center min-h-2/3">
-        Colecao nao encontrado {slug}
+        Coleção não encontrado {slug}
       </p>
     );
 
   const collectionData = await getCollectionBySlug(slug);
 
-  if (!collectionData) return <p>Items nao encontrados</p>;
+  if (!collectionData) return <p>Items não encontrados</p>;
 
   return (
     <>

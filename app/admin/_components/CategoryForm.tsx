@@ -152,7 +152,7 @@ export const CollectionForm = () => {
         </div>
         <input
           type="submit"
-          value={pending ? "..." : "Criar Colecao"}
+          value={pending ? "..." : "Criar Coleção"}
           disabled={pending}
           className="border rounded-sm p-2 pointer"
         />

@@ -29,7 +29,7 @@ export default async function AdminPage() {
             className="px-3 py-2 border rounded-sm opacity-55 hover:opacity-95"
             href="/admin/categorias/collection/new"
           >
-            + Colecao
+            + Coleção
           </Link>
           <Link
             className="px-3 py-2 border rounded-sm opacity-55 hover:opacity-95"
@@ -62,7 +62,7 @@ export default async function AdminPage() {
             className="px-3 py-2 border rounded-sm max-h-fit opacity-55 hover:opacity-95"
             href="/admin/categorias/collection/new"
           >
-            + Colecao
+            + Coleção
           </Link>
           <Link
             className="px-3 py-2 border rounded-sm max-h-fit opacity-55 hover:opacity-95"

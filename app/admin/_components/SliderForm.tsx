@@ -77,7 +77,7 @@ export const SliderForm = () => {
         <div className="flex flex-col gap-4">
           <fieldset className="radio-category border p-4  flex-w gap-5  rounded">
             <legend className="max-w-fit border p-2 text-sm  rounded">
-              Colecoes
+              Coleções
             </legend>
             {collections.length > 0 &&
               collections.map((c) => (

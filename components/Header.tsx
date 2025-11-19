@@ -130,7 +130,7 @@ export const Header = () => {
                   </ul>
                 </li>
                 <li>
-                  <Link href="/colecoes">Colecoes</Link>
+                  <Link href="/colecoes">Coleções</Link>
                   <ul className="sub-menu">
                     {collections.map((collection) => (
                       <li key={collection.id}>
@@ -284,7 +284,7 @@ export const Header = () => {
             <Link href="/colecoes">Coleções</Link>
             <ul
               className="sub-menu-m"
-              style={{ display: isSubMenu === "coleções" ? "block" : "none" }}
+              style={{ display: isSubMenu === "colecoes" ? "block" : "none" }}
             >
               {collections.map((collection) => (
                 <li key={collection.id}>

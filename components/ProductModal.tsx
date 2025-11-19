@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Product } from "@prisma/client";
 
 export const ProductModal = ({ product }: { product: Product }) => {
-  if (!product) return <p>Item nao encontrado</p>;
+  if (!product) return <p>Item não encontrado</p>;
 
   const images = [
     product.mainImage && {

@@ -15,12 +15,12 @@ export default async function CollectionsPage() {
             <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
           </Link>
 
-          <span className="stext-109 cl4">Colecoes</span>
+          <span className="stext-109 cl4">Coleções</span>
         </div>
       </div>
       {collectionsWithProducts.length === 0 ? (
         <div className="container min-h-120 p-5">
-          <p>Nenhuma colecao encontrada!</p>{" "}
+          <p>Nenhuma coleção encontrada!</p>{" "}
         </div>
       ) : (
         <div className="bg0 m-t-23 p-b-140">

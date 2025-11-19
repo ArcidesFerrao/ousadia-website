@@ -6,7 +6,6 @@ import { CategoryWithProducts, CollectionWithProducts } from "@/types/types";
 import { useState } from "react";
 import { ProductModal } from "./ProductModal";
 import { Product } from "@prisma/client";
-// import { Product } from "@/lib/generated/prisma/client";
 
 export function CategorySelection({
   category,
@@ -94,7 +93,7 @@ export function CollectionSelected({
           ))
         ) : (
           <p className="text-nowrap">
-            Nenhum produto encontrado nesta colecao.
+            Nenhum produto encontrado nesta coleção.
           </p>
         )}
       </div>

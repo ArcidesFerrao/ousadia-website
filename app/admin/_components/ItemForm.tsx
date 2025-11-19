@@ -151,7 +151,7 @@ export const ItemForm = () => {
             {fields.categoryId.errors && <p>{fields.categoryId.errors}</p>}
             <fieldset className="radio-category border p-4  flex-w gap-5  rounded">
               <legend className="max-w-fit border p-2 text-sm  rounded">
-                Colecao
+                Coleção
               </legend>
               {collections.length > 0 &&
                 collections.map((c) => (
