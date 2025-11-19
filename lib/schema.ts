@@ -21,6 +21,7 @@ export const itemSchema = z.object({
     color: z.string().min(3),
     description: z.string().min(5),
     categoryId: z.string(),
+    collectionId: z.string().optional(),
     quantityXS:z.coerce.number().int().min(0),
     quantityS:z.coerce.number().int().min(0),
     quantityM:z.coerce.number().int().min(0),

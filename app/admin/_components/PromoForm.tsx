@@ -26,7 +26,9 @@ export const PromoForm = () => {
         const res = await fetch("/api/promo");
         if (!res.ok) throw new Error("Error getting promo");
         const data = await res.json();
-        setPromo(data[0].text);
+        if (data.length > 0) {
+          setPromo(data[0].text);
+        }
       } catch (error) {
         console.error(error);
       }

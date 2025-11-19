@@ -6,7 +6,7 @@ import "@/public/fonts/iconic/css/material-design-iconic-font.min.css";
 import "@/public/fonts/linearicons-v1.0.0/icon-font.min.css";
 import "@/public/vendor/animate/animate.css";
 import "@/public/vendor/css-hamburgers/hamburgers.min.css";
-import "@/public/vendor/animsition/css/animsition.min.css";
+// import "@/public/vendor/animsition/css/animsition.min.css";
 import "@/public/vendor/select2/select2.min.css";
 import "@/public/vendor/daterangepicker/daterangepicker.css";
 import "@/public/vendor/slick/slick.css";
@@ -60,10 +60,10 @@ export default function RootLayout({
           src="/vendor/jquery/jquery-3.2.1.min.js"
           strategy="beforeInteractive"
         />
-        <Script
+        {/* <Script
           src="/vendor/animsition/js/animsition.min.js"
           strategy="afterInteractive"
-        />
+        /> */}
         <Script
           src="/vendor/bootstrap/js/popper.js"
           strategy="beforeInteractive"

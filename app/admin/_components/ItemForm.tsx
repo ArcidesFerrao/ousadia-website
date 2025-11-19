@@ -2,12 +2,11 @@
 
 import { addItem } from "@/actions/items";
 import { poppins } from "@/lib/font";
-// import type { Category } from "@/lib/generated/prisma/client";
 import { itemSchema } from "@/lib/schema";
 import { UploadButton } from "@/utils/uploadthing";
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import { Category } from "@prisma/client";
+import { Category, Collection } from "@prisma/client";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
@@ -20,6 +19,10 @@ export const ItemForm = () => {
   const [image3, setImage3] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [collections, setCollections] = useState<Collection[]>([]);
+  const [selectedCollection, setSelectedCollection] = useState<string | null>(
+    null
+  );
 
   const [form, fields] = useForm({
     onValidate({ formData }) {
@@ -45,14 +48,33 @@ export const ItemForm = () => {
         console.error(error);
       }
     };
+    const getCollections = async () => {
+      try {
+        const res = await fetch("/api/collections");
+        if (!res.ok) throw new Error("Error getting collections");
+        const collectionsData = await res.json();
+        setCollections(collectionsData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
     getCategories();
+    getCollections();
   }, [state]);
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSelectedCategory(value);
     console.log(selectedCategory);
+    console.log(value);
+  };
+  const handleCollectionChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const value = event.target.value;
+    setSelectedCollection(value);
+    console.log(selectedCollection);
     console.log(value);
   };
 
@@ -127,6 +149,29 @@ export const ItemForm = () => {
                 ))}
             </fieldset>
             {fields.categoryId.errors && <p>{fields.categoryId.errors}</p>}
+            <fieldset className="radio-category border p-4  flex-w gap-5  rounded">
+              <legend className="max-w-fit border p-2 text-sm  rounded">
+                Colecao
+              </legend>
+              {collections.length > 0 &&
+                collections.map((c) => (
+                  <label
+                    key={c.id}
+                    id={c.id}
+                    className="flex radio-label h-fit"
+                  >
+                    <input
+                      type="radio"
+                      name="collectionId"
+                      id="collectionId"
+                      value={c.id}
+                      onChange={handleCollectionChange}
+                    />
+                    <span className="radio-option">{c.name}</span>
+                  </label>
+                ))}
+            </fieldset>
+            {fields.collectionId.errors && <p>{fields.collectionId.errors}</p>}
             <fieldset className="border p-4 flex flex-w gap-2  rounded">
               <legend className="max-w-fit border p-2 text-sm  rounded">
                 Tamanhos

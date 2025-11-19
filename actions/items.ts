@@ -31,6 +31,7 @@ export async function addItem(prevState: unknown, formData: FormData) {
                 image2: submission.value.image2,
                 image3: submission.value.image3,
                 categoryId: submission.value.categoryId,
+                collectionId: submission.value.collectionId,
                 quantityL: submission.value.quantityL,
                 quantityXL: submission.value.quantityXL,
                 quantityM: submission.value.quantityM,
