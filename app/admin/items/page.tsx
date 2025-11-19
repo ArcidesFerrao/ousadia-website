@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getItems } from "@/actions/items";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import Link from "next/link";
