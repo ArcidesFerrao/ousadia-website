@@ -35,7 +35,11 @@ export const ItemForm = () => {
 
   useEffect(() => {
     if (state?.status === "success") {
-      console.log(state.message);
+      const rawMessage = state?.message;
+      const message = Array.isArray(rawMessage)
+        ? rawMessage.join(", ")
+        : rawMessage;
+      toast.success(message || "Item criado com sucesso");
       redirect("/admin");
     }
 
@@ -67,16 +71,16 @@ export const ItemForm = () => {
   const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSelectedCategory(value);
-    console.log(selectedCategory);
-    console.log(value);
+    // console.log(selectedCategory);
+    // console.log(value);
   };
   const handleCollectionChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = event.target.value;
     setSelectedCollection(value);
-    console.log(selectedCollection);
-    console.log(value);
+    // console.log(selectedCollection);
+    // console.log(value);
   };
 
   return (

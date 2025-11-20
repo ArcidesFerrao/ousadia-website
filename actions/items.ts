@@ -43,7 +43,7 @@ export async function addItem(prevState: unknown, formData: FormData) {
         if (submission.status === "success") {
             return {
                 status: "success",
-                message: "Category created successfully",
+                message: "Item criado com sucesso",
                 addedItem
             }
         }
@@ -115,7 +115,7 @@ customerMessage}:{
     *Valor:* ${basePrice * quantity}
     ID do produto: ${productId}
     `
-    const whatsappNumber = "258852740554"
+    const whatsappNumber = "258845398661"
     const encodedMessage = encodeURIComponent(message.trim());
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
     
