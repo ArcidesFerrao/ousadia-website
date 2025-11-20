@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Card, ProductCard } from "./Card";
-// import { Category, Product } from "@/lib/generated/prisma/client";
+import { ProductCard } from "./Card";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ProductModal } from "./ProductModal";
@@ -103,7 +102,6 @@ export default function ClientItemsList({
                 showSearch ? " zmdi-close" : " zmdi-search"
               }`}
             />
-            {/* <i className="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" /> */}
             Busca
           </div>
         </div>
@@ -133,7 +131,6 @@ export default function ClientItemsList({
       ) : (
         <>
           <div className="row isotope-grid">
-            <Card />
             {filteredItems.map((i) => (
               <div
                 key={i.id}

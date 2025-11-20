@@ -17,18 +17,13 @@ export const Banner = async () => {
                 imageUrl={ad.imageUrl}
               />
             ))}
+
           {/* <Block
-            title="Collabs"
-            details="Mais Recentes"
-            url="/produtos"
-            imageUrl="/images/banner-02.jpg"
-          /> */}
-          <Block
             title="Bones"
             details="Nova Trend"
             url="/produtos"
             imageUrl="/images/banner-03.jpg"
-          />
+          /> */}
         </div>
       </div>
     </div>
