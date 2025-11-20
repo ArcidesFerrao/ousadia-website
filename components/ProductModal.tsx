@@ -1,6 +1,5 @@
 "use client";
 
-// import { Product } from "@/lib/generated/prisma/client";
 import Image from "next/image";
 import ProductSlider from "./ProductSlider";
 import BuyButton from "./BuyButton";

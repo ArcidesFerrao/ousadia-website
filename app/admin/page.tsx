@@ -10,7 +10,6 @@ import Link from "next/link";
 import { PromoForm } from "./_components/PromoForm";
 import { getBannerAds, getSliderAds } from "@/actions/promo";
 import { completedTotal, getOrdersCount } from "@/actions/orders";
-// import { BannerAd, SliderAd } from "@/lib/generated/prisma/client";
 
 export default async function AdminPage() {
   const items = getItems();
@@ -141,8 +140,6 @@ export default async function AdminPage() {
                   imageUrl={ad.imageUrl}
                 />
               ))}
-            {/* <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" />
-            <SliderCard detail="Nova Colecao" title="Verao" imageUrl="/" /> */}
           </div>
         </div>
       </div>

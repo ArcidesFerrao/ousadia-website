@@ -3,12 +3,10 @@
 import { useEffect, useState } from "react";
 import { PromoCard } from "./DashCard";
 import { createPromo } from "@/actions/promo";
-// import { redirect } from "next/navigation";
 
 export const PromoForm = () => {
   const [onEdit, setOnEdit] = useState(false);
   const [promo, setPromo] = useState("");
-  //   const [state, setState] = useState("");
 
   const handleEdit = () => {
     setOnEdit((prev) => !prev);
@@ -43,9 +41,7 @@ export const PromoForm = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            // const createdPromo =
             createPromo(promo);
-            // if (createdPromo) redirect("/admin");
           }}
           className="flex flex-col bg3 gap-5 p-2 w-full  min-w-40 opacity-70 hover:opacity-95"
         >

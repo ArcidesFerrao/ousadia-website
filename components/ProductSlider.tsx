@@ -44,15 +44,3 @@ export default function ProductSlider({ images }: { images: ImageItem[] }) {
     </div>
   );
 }
-
-// const PrevArrow = (props: any) => (
-//   <button {...props} className="arrow-slick3 prev-slick3 slick-prev">
-//     <i className="fa fa-angle-left" aria-hidden="true"></i>
-//   </button>
-// );
-
-// const NextArrow = (props: any) => (
-//   <button {...props} className="arrow-slick3 next-slick3 slick-next">
-//     <i className="fa fa-angle-right" aria-hidden="true"></i>
-//   </button>
-// );

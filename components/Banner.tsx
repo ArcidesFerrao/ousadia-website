@@ -17,13 +17,6 @@ export const Banner = async () => {
                 imageUrl={ad.imageUrl}
               />
             ))}
-
-          {/* <Block
-            title="Bones"
-            details="Nova Trend"
-            url="/produtos"
-            imageUrl="/images/banner-03.jpg"
-          /> */}
         </div>
       </div>
     </div>

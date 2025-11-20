@@ -122,11 +122,6 @@ export const Footer = () => {
               <a href="https://webstudio-nu-eight.vercel.app/" target="_blank">
                 Arcides Ferrao
               </a>
-              {/* &amp; distributed theme by{" "}
-              <a href="https://themewagon.com" target="_blank">
-                ThemeWagon
-              </a> */}
-              {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
             </p>
           </div>
         </div>

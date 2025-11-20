@@ -1,5 +1,4 @@
 import ContactForm from "@/components/ContactForm";
-// import Image from "next/image";
 
 export default function ContactoPage() {
   return (
@@ -15,53 +14,6 @@ export default function ContactoPage() {
           <div className="flex-w flex-tr">
             <div className="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
               <ContactForm />
-              {/* <form>
-                <div className="bor8 m-b-20 how-pos4-parent">
-                  <input
-                    className="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-                    type="text"
-                    name="email"
-                    placeholder="Endereço Electronico"
-                  />
-                  <Image
-                    className="how-pos4 pointer-none"
-                    src="/images/icons/icon-email.png"
-                    alt="ICON"
-                    width={18}
-                    height={18}
-                  />
-                </div>
-                <div className="bor8 m-b-20 how-pos4-parent">
-                  <input
-                    className="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-                    type="text"
-                    name="name"
-                    placeholder="Nome Completo"
-                  />
-                </div>
-                <div className="bor8 m-b-20 how-pos4-parent">
-                  <input
-                    className="stext-111 cl2 plh3 size-116 p-l-62 p-r-30"
-                    type="text"
-                    name="subject"
-                    placeholder="Assunto"
-                  />
-                </div>
-                <div className="bor8 m-b-30">
-                  <textarea
-                    className="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25"
-                    name="msg"
-                    placeholder="Como podemos ajudar?"
-                    defaultValue={""}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer"
-                >
-                  Enviar
-                </button>
-              </form> */}
             </div>
             <div className="size-210 bor10 m-t-20 flex-w flex-col-m gap-5 p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
               <div className="flex-w w-full ">

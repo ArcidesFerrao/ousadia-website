@@ -14,9 +14,7 @@ export default function NewItemPage() {
           Cancel
         </Link>
       </div>
-      <ItemForm
-      // addItem={addItem}
-      />
+      <ItemForm />
     </div>
   );
 }

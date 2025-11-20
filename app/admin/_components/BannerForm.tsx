@@ -1,7 +1,6 @@
 "use client";
 
 import { createCategoryBannerAd } from "@/actions/categories";
-// import type { Category } from "@/lib/generated/prisma/client";
 import { bannerSchema } from "@/lib/schema";
 import { UploadButton } from "@/utils/uploadthing";
 import { useForm } from "@conform-to/react";
@@ -27,14 +26,6 @@ export const BannerForm = () => {
   const [image, setImage] = useState("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  //   const [slug, setSlug] = useState("");
-
-  //   const handleSlug = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     const value = e.target.value;
-  //     setName(value);
-  //     setSlug(value.toLowerCase());
-  //   };
 
   useEffect(() => {
     if (state?.status === "success") {

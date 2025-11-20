@@ -17,7 +17,6 @@ export function Block({
       {/* Block1 */}
       <div className="block1 wrap-pic-w">
         <Image
-          //   src="/images/banner-01.jpg"
           src={imageUrl}
           alt="IMG-BANNER"
           width={420}
@@ -33,8 +32,7 @@ export function Block({
             <span className="block1-name ltext-102 trans-04 p-b-8">
               {title}
             </span>
-            {/* <span className="block1-name ltext-102 trans-04 p-b-8">Shetas</span> */}
-            {/* <span className="block1-info stext-102 trans-04">Colecao Exclusiva            </span> */}
+
             <span className="block1-info stext-102 trans-04">{details} </span>
           </div>
           <div className="block1-txt-child2 p-b-4 trans-05">

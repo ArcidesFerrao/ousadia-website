@@ -2,7 +2,6 @@
 
 import { buyItem } from "@/actions/items";
 import { Size } from "@prisma/client";
-// import { Size } from "@/lib/generated/prisma/enums";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -19,7 +18,6 @@ export default function BuyButton({
   const [size, setSize] = useState<Size | "Choose an option">(
     "Choose an option"
   );
-  //   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({
@@ -155,8 +153,6 @@ export default function BuyButton({
           </div>
         </div>
       )}
-
-      {/* </div> */}
     </div>
   );
 }

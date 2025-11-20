@@ -71,16 +71,14 @@ export const ItemForm = () => {
   const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     setSelectedCategory(value);
-    // console.log(selectedCategory);
-    // console.log(value);
+    console.log(selectedCategory);
   };
   const handleCollectionChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = event.target.value;
     setSelectedCollection(value);
-    // console.log(selectedCollection);
-    // console.log(value);
+    console.log(selectedCollection);
   };
 
   return (
@@ -88,11 +86,6 @@ export const ItemForm = () => {
       noValidate
       id={form.id}
       onSubmit={form.onSubmit}
-      // onSubmit={(e) => {
-      //   e.preventDefault();
-      //   console.log("form submitting");
-      //   form.onSubmit(e);
-      // }}
       action={action}
       className={`${poppins.className} flex flex-col gap-4 p-2`}
     >

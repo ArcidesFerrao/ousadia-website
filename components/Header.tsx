@@ -90,9 +90,6 @@ export const Header = () => {
               <a href="/termos" className="flex-c-m trans-04 p-lr-25">
                 Termos &amp; Condiçoes
               </a>
-              {/* <a href="#" className="flex-c-m trans-04 p-lr-25">
-                My Account
-              </a> */}
             </div>
           </div>
         </div>
@@ -101,7 +98,6 @@ export const Header = () => {
             {/* Logo desktop */}
             <Link href="/" className="logo">
               <Image
-                // src="/images/icons/logo-01.png"
                 src="/images/icons/logomarca.png"
                 alt="IMG-LOGO"
                 width={120}
@@ -154,19 +150,6 @@ export const Header = () => {
               <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                 <i className="zmdi zmdi-search" />
               </div>
-              {/* <div
-                className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                data-notify={2}
-              >
-                <i className="zmdi zmdi-shopping-cart" />
-              </div> */}
-              {/* <a
-                href="#"
-                className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                data-notify={0}
-              >
-                <i className="zmdi zmdi-favorite-outline" />
-              </a> */}
             </div>
           </nav>
         </div>
@@ -177,7 +160,6 @@ export const Header = () => {
         <div className="logo-mobile">
           <Link href="/">
             <Image
-              // src="/images/icons/logo-01.png"
               src="/images/icons/logomarca.png"
               alt="IMG-LOGO"
               width={120}
@@ -185,25 +167,7 @@ export const Header = () => {
             />
           </Link>
         </div>
-        {/* Icon header */}
-        {/* <div className="wrap-icon-header flex-w flex-r-m m-r-15">
-          <div className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-            <i className="zmdi zmdi-search" />
-          </div>
-          <div
-            className="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-            data-notify={2}
-          >
-            <i className="zmdi zmdi-shopping-cart" />
-          </div>
-          <a
-            href="#"
-            className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-            data-notify={0}
-          >
-            <i className="zmdi zmdi-favorite-outline" />
-          </a>
-        </div> */}
+
         {/* Button show menu */}
         <div
           onClick={handleMenuToggle}
@@ -230,15 +194,6 @@ export const Header = () => {
               <a href="/termos" className="flex-c-m p-lr-10 trans-04">
                 Termos &amp; Condiçoes
               </a>
-              {/* <a href="#" className="flex-c-m p-lr-10 trans-04">
-                My Account
-              </a>
-              <a href="#" className="flex-c-m p-lr-10 trans-04">
-                EN
-              </a>
-              <a href="#" className="flex-c-m p-lr-10 trans-04">
-                USD
-              </a> */}
             </div>
           </li>
         </ul>
@@ -249,16 +204,7 @@ export const Header = () => {
           <li>
             <Link href="/produtos">Loja</Link>
           </li>
-          {/* <li>
-            <a
-            href="shoping-cart.html"
-            className="label1 rs1"
-            data-label1="hot"
-            >
-            Features
-            </a>
-            </li>
-            */}
+
           <li>
             <Link href="/categorias">Categorias</Link>
             <ul
@@ -310,7 +256,7 @@ export const Header = () => {
         </ul>
       </div>
       {/* Modal Search */}
-      {/*       
+
       <div className="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div className="container-search-header">
           <button className="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
@@ -334,9 +280,8 @@ export const Header = () => {
               // height={24}
             />
           </form>
-        </div> 
+        </div>
       </div>
-        */}
     </header>
   );
 };

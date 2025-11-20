@@ -66,15 +66,6 @@ export default function SobrePage() {
                   Moçambique por nossas máquinas.Valorizamos a produção local,
                   com mão-de-obra justa e qualificada.
                 </p>
-                {/* <div className="bor16 p-l-29 p-b-9 m-t-22">
-                  <p className="stext-114 cl6 p-r-40 p-b-11">
-                    Creativity is just connecting things. When you ask creative
-                    people how they did something, they feel a little guilty
-                    because they didn&apos;t really do it, they just saw
-                    something. It seemed obvious to them after a while.
-                  </p>
-                  <span className="stext-111 cl8">- Steve Job’s</span>
-                </div> */}
               </div>
             </div>
             <div className="order-md-1 col-11 col-md-5 col-lg-4 m-lr-auto p-b-30">

@@ -44,7 +44,6 @@ export default async function ProdutoPage(props: { params: Params }) {
     item.image3 && { src: item.image3, dataThumb: item.image3 },
   ].filter(Boolean) as { src: string; dataThumb: string }[];
 
-  // console.log(item.mainImage);
   return (
     <>
       {/* breadcrumb */}
@@ -82,42 +81,6 @@ export default async function ProdutoPage(props: { params: Params }) {
                   productName={item.name}
                   basePrice={item.basePrice}
                 />
-                {/* <div className="p-t-33 flex flex-col gap-2">
-                  <div className="flex justify-between w-full p-b-10">
-                    <div className=" flex-c-m respon6">Size</div>
-                    <div className="rs1-select2 bor8 bg0">
-                      <select className="" name="time">
-                        <option>Choose an option</option>
-                        <option>S</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-between w-full  p-b-10">
-                    <div className=" flex-w flex-m w-full">
-                      <div className="wrap-num-product flex-w m-r-20 m-tb-10">
-                        <div className="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                          <i className="fs-16 zmdi zmdi-minus" />
-                        </div>
-                        <input
-                          className="mtext-104 cl3 txt-center num-product"
-                          type="number"
-                          name="num-product"
-                          defaultValue={1}
-                        />
-                        <div className="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                          <i className="fs-16 zmdi zmdi-plus" />
-                        </div>
-                      </div>
-                      <button className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 w-full">
-                        Comprar
-                      </button>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
