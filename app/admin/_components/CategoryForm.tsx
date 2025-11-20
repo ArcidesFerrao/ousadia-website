@@ -52,7 +52,7 @@ export const CategoryForm = () => {
 
         <div className="flex gap-2 rounded-sm justify-between border p-2">
           <label htmlFor="slug">Slug</label>
-          <input type="text" name="slug" id="slug" value={slug} />
+          <input type="text" name="slug" id="slug" value={slug} readOnly />
           {fields.slug.allErrors && <p>{fields.slug.errors}</p>}
         </div>
         <input

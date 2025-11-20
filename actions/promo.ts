@@ -1,7 +1,6 @@
 'use server'
 
 import db from "@/lib/prisma"
-import { redirect } from "next/navigation"
 
 export async function createPromo(promo: string) {
 
@@ -12,7 +11,7 @@ export async function createPromo(promo: string) {
     })
 
     if (addedPromo) {
-        redirect("/admin")
+        return {success: true, addedPromo};
     }
 }
 export async function getBannerAds() {

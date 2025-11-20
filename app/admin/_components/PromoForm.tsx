@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { PromoCard } from "./DashCard";
 import { createPromo } from "@/actions/promo";
+import toast from "react-hot-toast";
 
 export const PromoForm = () => {
   const [onEdit, setOnEdit] = useState(false);
@@ -18,6 +19,15 @@ export const PromoForm = () => {
     setPromo(value);
   };
 
+  const handleCreateProomo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const created = await createPromo(promo);
+    if (created?.success) {
+      setOnEdit(false);
+      toast.success("Top Bar Promo Adicionada!");
+    }
+  };
+
   useEffect(() => {
     const getPromo = async () => {
       try {
@@ -31,7 +41,6 @@ export const PromoForm = () => {
         console.error(error);
       }
     };
-
     getPromo();
   }, []);
 
@@ -41,7 +50,7 @@ export const PromoForm = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            createPromo(promo);
+            handleCreateProomo(e);
           }}
           className="flex flex-col bg3 gap-5 p-2 w-full  min-w-40 opacity-70 hover:opacity-95"
         >
