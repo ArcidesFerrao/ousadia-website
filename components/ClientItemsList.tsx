@@ -64,7 +64,7 @@ export default function ClientItemsList({
           Filtro
         </div>
         <div
-          className={` p-l-15 filter-tope-group m-tb-10 panel-filter ${
+          className={` p-l-15 filter-tope-group  panel-filter ${
             showFilter ? "show" : ""
           }`}
         >
@@ -106,11 +106,7 @@ export default function ClientItemsList({
           </div>
         </div>
         {/* Search product */}
-        <div
-          className={`panel-search w-full p-t-10 p-b-15 ${
-            showSearch ? "show" : ""
-          }`}
-        >
+        <div className={`panel-search w-full  ${showSearch ? "show" : ""}`}>
           <div className="bor8 dis-flex p-l-15">
             <button className="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
               <i className="zmdi zmdi-search" />

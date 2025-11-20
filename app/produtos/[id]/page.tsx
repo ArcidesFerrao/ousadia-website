@@ -1,8 +1,8 @@
 import db from "@/lib/prisma";
-import Link from "next/link";
 import ProductSlider from "@/components/ProductSlider";
 import BuyButton from "@/components/BuyButton";
 import { notFound } from "next/navigation";
+import { Breadcrumb } from "@/components/Breadcrumb";
 
 type Params = Promise<{ id: string }>;
 
@@ -47,19 +47,13 @@ export default async function ProdutoPage(props: { params: Params }) {
   return (
     <>
       {/* breadcrumb */}
-      <div className="container">
-        <div className="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-          <Link href="/" className="stext-109 cl8 hov-cl1 trans-04">
-            Home
-            <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
-          </Link>
-          <Link href="/produtos" className="stext-109 cl8 hov-cl1 trans-04">
-            Loja
-            <i className="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true" />
-          </Link>
-          <span className="stext-109 cl4">{item?.name}</span>
-        </div>
-      </div>
+
+      <Breadcrumb
+        breadcrumbs={{
+          links: [{ name: "Loja", href: "/produtos" }],
+          last: item.name,
+        }}
+      />
       {/* Product Detail */}
       <section className="sec-product-detail mt-16 bg0 p-t-65 p-b-60">
         <div className="container">

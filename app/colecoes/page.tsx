@@ -1,4 +1,5 @@
 import { getCollectionsWithProducts } from "@/actions/categories";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { CollectionSelection } from "@/components/CategorySelection";
 import { CollectionWithProducts } from "@/types/types";
 import Link from "next/link";
@@ -18,6 +19,12 @@ export default async function CollectionsPage() {
           <span className="stext-109 cl4">Coleções</span>
         </div>
       </div>
+      <Breadcrumb
+        breadcrumbs={{
+          links: [],
+          last: "Coleções",
+        }}
+      />
       {collectionsWithProducts.length === 0 ? (
         <div className="container min-h-120 p-5">
           <p>Nenhuma coleção encontrada!</p>{" "}
