@@ -107,13 +107,21 @@ export const Header = () => {
             {/* Menu desktop */}
             <div className="menu-desktop">
               <ul className="main-menu">
-                <li className="active-menu">
+                <li className={pathname === "/" ? "active-menu" : ""}>
                   <Link href="/">Home</Link>
                 </li>
-                <li>
+                <li
+                  className={
+                    pathname.startsWith("/produtos") ? "active-menu" : ""
+                  }
+                >
                   <Link href="/produtos">Loja</Link>
                 </li>
-                <li>
+                <li
+                  className={
+                    pathname.startsWith("/categorias") ? "active-menu" : ""
+                  }
+                >
                   <Link href="/categorias">Categorias</Link>
                   <ul className="sub-menu">
                     {categories.map((category) => (
@@ -125,7 +133,11 @@ export const Header = () => {
                     ))}
                   </ul>
                 </li>
-                <li>
+                <li
+                  className={
+                    pathname.startsWith("/colecoes") ? "active-menu" : ""
+                  }
+                >
                   <Link href="/colecoes">Coleções</Link>
                   <ul className="sub-menu">
                     {collections.map((collection) => (
@@ -137,10 +149,10 @@ export const Header = () => {
                     ))}
                   </ul>
                 </li>
-                <li>
+                <li className={pathname === "/sobre" ? "active-menu" : ""}>
                   <a href="/sobre">Sobre Ousadia</a>
                 </li>
-                <li>
+                <li className={pathname === "/contacto" ? "active-menu" : ""}>
                   <a href="/contacto">Contacto</a>
                 </li>
               </ul>
